@@ -1,0 +1,15 @@
+<?php ?>
+<?php $_filters = $this->getFilters(); ?>
+<?php if ($_filters->getSize() > 0) : ?>
+    <div class="filters-list-container">
+        <div class="filter-list-item">
+            <i class="fa fa-folder-open" aria-hidden="true"></i>
+            <?php foreach ($_filters as $_filter) : ?>
+                <a href="<?php echo $_filter->getFilterUrl() ?>">
+                    <?php echo $_filter->getName(); ?>
+                </a>
+                <span>,</span>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

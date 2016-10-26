@@ -1,0 +1,19 @@
+<?php ?>
+<?php $_filter = $this->getCurrentFilter(); ?>
+<?php if ($_filter) : ?>
+    <div class="filter-widget-view">
+        <h3><?php echo $_filter->getName() ?></h3>
+        <div>
+            <div class="name-widget">
+                <?php echo Mage::helper('dls_dlsblog')->__('Name'); ?>:<?php echo $_filter->getName(); ?>
+            </div>
+            <div class="description-widget">
+                <?php echo Mage::helper('dls_dlsblog')->__('Description'); ?>:<?php echo $_filter->getDescription(); ?>
+            </div>
+            <div class="exposed-widget">
+                <?php echo Mage::helper('dls_dlsblog')->__("Exposed filter"); ?>:<?php echo ($_filter->getExposed() == 1) ? Mage::helper('dls_dlsblog')->__('Yes') : Mage::helper('dls_dlsblog')->__('No') ?>
+            </div>
+
+        </div>
+    </div>
+<?php endif; ?>

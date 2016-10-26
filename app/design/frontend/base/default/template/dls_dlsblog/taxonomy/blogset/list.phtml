@@ -1,0 +1,16 @@
+<?php ?>
+<?php $_blogsets = $this->getBlogsets(); ?>
+<?php if ($_blogsets->getSize() > 0) : ?>
+    <div class="page-title blogset-title">
+        <h2><?php echo Mage::helper('dls_dlsblog')->__('Blogs setting') ?></h2>
+    </div>
+    <div class="blogsets-list-container">
+        <?php foreach ($_blogsets as $_blogset) : ?>
+            <div class="blogset-list-item">
+                <a href="<?php echo $_blogset->getBlogsetUrl() ?>">
+                    <?php echo $_blogset->getName(); ?>
+                </a><br />
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

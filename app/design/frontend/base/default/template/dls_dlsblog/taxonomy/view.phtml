@@ -1,0 +1,29 @@
+<?php ?>
+<?php $_taxonomy = $this->getCurrentTaxonomy(); ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title taxonomy-title">
+    <h1><?php echo $_taxonomy->getName(); ?></h1>
+</div>
+<div class="taxonomy-view">
+    <div class="taxonomy-name">
+        <?php echo Mage::helper('dls_dlsblog')->__('Name'); ?>:<?php echo $_taxonomy->getName(); ?>
+
+    </div>
+    <div class="taxonomy-description">
+        <?php echo Mage::helper('dls_dlsblog')->__('Description'); ?>:<?php echo $_taxonomy->getDescription(); ?>
+
+    </div>
+    <div class="taxonomy-small_image">
+        <?php if ($_taxonomy->getSmallImage()) : ?>
+            <img src="<?php echo Mage::helper('dls_dlsblog/taxonomy_image')->init($_taxonomy, 'small_image')->resize(75); ?>" alt="<?php echo $this->escapeHtml($_taxonomy->getName()); ?>" />
+        <?php endif; ?>
+
+    </div>
+    <div class="taxonomy-large_image">
+        <?php if ($_taxonomy->getLargeImage()) : ?>
+            <img src="<?php echo Mage::helper('dls_dlsblog/taxonomy_image')->init($_taxonomy, 'large_image')->resize(75); ?>" alt="<?php echo $this->escapeHtml($_taxonomy->getName()); ?>" />
+        <?php endif; ?>
+
+    </div>
+
+</div>

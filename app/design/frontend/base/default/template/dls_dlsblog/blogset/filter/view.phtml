@@ -1,0 +1,14 @@
+<?php $_filter = $this->getFilterContent(); ?>
+<div class="filter-title">
+    <h2><?php echo Mage::helper('dls_dlsblog')->__('Filter') ?></h2>
+</div>
+<div class="filters-view-container">
+    <div class="filter-name">
+        <?php echo Mage::helper('dls_dlsblog')->__('Name'); ?>:<?php echo $_filter->getName(); ?>
+    </div>
+    <div clas="filter-description">
+        <?php echo Mage::helper('dls_dlsblog')->__('Description'); ?>:<?php echo $_filter->getDescription(); ?>
+    </div>
+    <div class="filter-exposed"><?php echo Mage::helper('dls_dlsblog')->__('Exposed'); ?>:<?php echo ($_filter->getExposed() == 1) ? Mage::helper('dls_dlsblog')->__('Yes') : Mage::helper('dls_dlsblog')->__('No') ?>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<?php $_taxonomies = $this->getTaxonomies(); ?>
+<?php if ($_taxonomies->getSize() > 0) : ?>
+    <div class="taxonomies-list-container">
+        <div class="taxonomy-list-item">
+            <ol class="nav-primary sub-menu-taxonomies clearfix">
+                <li class="parent sub-menu-title-wrapper"><a href="/cblog" class="sub-menu-title">Blog</a></li>
+                <?php foreach ($_taxonomies as $_taxonomy) : ?>
+                <li class="parent">
+                    <a href="<?php echo $_taxonomy->getTaxonomyUrl() ?>" class="level0 menu-item">
+                        <?php echo $_taxonomy->getName(); ?>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ol>
+        </div>
+    </div>
+<?php endif; ?>
