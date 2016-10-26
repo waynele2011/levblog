@@ -1,0 +1,7 @@
+
+<?php $_filter = $this->getCurrentFilter(); ?>
+<?php if ($_filter) : ?>
+    <div class="filter-widget-link">
+        <a href="<?php echo $_filter->getFilterUrl() ?>"><?php echo $_filter->getName() ?></a>
+    </div>
+<?php endif; ?>

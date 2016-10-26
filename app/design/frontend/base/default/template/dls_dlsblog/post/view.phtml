@@ -1,0 +1,41 @@
+
+<?php $_post = $this->getCurrentPost(); ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title post-title">
+    <h1><?php echo $_post->getTitle(); ?></h1>
+</div>
+<div class="post-view">
+    <div class="post-title">
+        <?php echo Mage::helper('dls_dlsblog')->__('Title'); ?>:<?php echo $_post->getTitle(); ?>
+
+    </div>
+    <div class="post-main_content">
+        <?php echo Mage::helper('dls_dlsblog')->__('Main content'); ?>:<?php echo $_post->getMainContent(); ?>
+
+    </div>
+    <div class="post-short_content">
+        <?php echo Mage::helper('dls_dlsblog')->__('Short content'); ?>:<?php echo $_post->getShortContent(); ?>
+
+    </div>
+    <div class="post-publish_status">
+        <?php echo Mage::helper('dls_dlsblog')->__("Publishing status"); ?>:<?php echo $_post->getAttributeText('publish_status'); ?>
+
+    </div>
+    <div class="post-small_image">
+        <?php if ($_post->getSmallImage()) : ?>
+            <img src="<?php echo Mage::helper('dls_dlsblog/post_image')->init($_post, 'small_image')->resize(75); ?>" alt="<?php echo $this->escapeHtml($_post->getTitle()); ?>" />
+        <?php endif; ?>
+
+    </div>
+    <div class="post-large_image">
+        <?php if ($_post->getLargeImage()) : ?>
+            <img src="<?php echo Mage::helper('dls_dlsblog/post_image')->init($_post, 'large_image')->resize(75); ?>" alt="<?php echo $this->escapeHtml($_post->getTitle()); ?>" />
+        <?php endif; ?>
+
+    </div>
+    <div class="post-publish_date">
+        <?php echo Mage::helper('dls_dlsblog')->__("Publish date"); ?>: <?php echo Mage::helper('core')->formatDate($_post->getPublishDate(), 'full'); ?>
+
+    </div>
+
+</div>

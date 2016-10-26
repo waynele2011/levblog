@@ -1,0 +1,17 @@
+
+<?php $_blogset = $this->getCurrentBlogset(); ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title blogset-title">
+    <h1><?php echo $_blogset->getName(); ?></h1>
+</div>
+<div class="blogset-view">
+    <div class="blogset-name">
+        <?php echo Mage::helper('dls_dlsblog')->__('Blog name'); ?>:<?php echo $_blogset->getName(); ?>
+
+    </div>
+    <div class="blogset-description">
+        <?php echo Mage::helper('dls_dlsblog')->__('Blog description'); ?>:<?php echo $_blogset->getDescription(); ?>
+
+    </div>
+
+</div>
