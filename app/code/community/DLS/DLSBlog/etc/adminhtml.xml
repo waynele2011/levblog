@@ -62,43 +62,49 @@
             <title>DLS Blog</title>
             <sort_order>65</sort_order>
             <children>
-                <blogset translate="title" module="dls_dlsblog">
-                    <title>Blog Setting</title>
-                    <action>adminhtml/dlsblog_blogset</action>
-                    <sort_order>0</sort_order>
-                </blogset>
-                <taxonomy translate="title" module="dls_dlsblog">
-                    <title>Taxonomy</title>
-                    <action>adminhtml/dlsblog_taxonomy</action>
-                    <sort_order>10</sort_order>
-                </taxonomy>
-                <filter translate="title" module="dls_dlsblog">
-                    <title>Filter</title>
-                    <action>adminhtml/dlsblog_filter</action>
-                    <sort_order>20</sort_order>
-                </filter>
-                <layoutdesign translate="title" module="dls_dlsblog">
-                    <title>Layout Design</title>
-                    <action>adminhtml/dlsblog_layoutdesign</action>
-                    <sort_order>30</sort_order>
-                </layoutdesign>
                 <post translate="title" module="dls_dlsblog">
-                    <title>Post</title>
+                    <title>Manage Posts</title>
                     <action>adminhtml/dlsblog_post</action>
-                    <sort_order>40</sort_order>
+                    <sort_order>10</sort_order>
                 </post>
                 <post_comments translate="title" module="dls_dlsblog">
-                    <title>Manage Post Comments</title>
+                    <title>Manage post comments</title>
                     <action>adminhtml/dlsblog_post_comment</action>
-                    <sort_order>44</sort_order>
+                    <sort_order>20</sort_order>
                 </post_comments>
-                <post_attributes translate="title" module="dls_dlsblog">
-                    <title>Manage Post Attributes</title>
-                    <action>adminhtml/dlsblog_post_attribute</action>
-                    <sort_order>47</sort_order>
-                </post_attributes>
+                <blogsetting translate="title" module="dls_dlsblog">
+                    <title>Blog setting</title>
+                    <sort_order>40</sort_order>
+                    <children>
+                        <blogset translate="title" module="dls_dlsblog">
+                            <title>Blog set</title>
+                            <action>adminhtml/dlsblog_blogset</action>
+                            <sort_order>0</sort_order>
+                        </blogset>
+                        <taxonomy translate="title" module="dls_dlsblog">
+                            <title>Taxonomy/Categories</title>
+                            <action>adminhtml/dlsblog_taxonomy</action>
+                            <sort_order>10</sort_order>
+                        </taxonomy>
+                        <filter translate="title" module="dls_dlsblog">
+                            <title>Post filter</title>
+                            <action>adminhtml/dlsblog_filter</action>
+                            <sort_order>20</sort_order>
+                        </filter>
+                        <layoutdesign translate="title" module="dls_dlsblog">
+                            <title>Layout design</title>
+                            <action>adminhtml/dlsblog_layoutdesign</action>
+                            <sort_order>30</sort_order>
+                        </layoutdesign>
+                        <post_attributes translate="title" module="dls_dlsblog">
+                            <title>Manage post attributes</title>
+                            <action>adminhtml/dlsblog_post_attribute</action>
+                            <sort_order>40</sort_order>
+                        </post_attributes>
+                    </children>
+                </blogsetting>
                 <tag translate="title" module="dls_dlsblog">
-                    <title>Tag</title>
+                    <title>Manage tags</title>
                     <action>adminhtml/dlsblog_tag</action>
                     <sort_order>50</sort_order>
                 </tag>
