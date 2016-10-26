@@ -1,7 +1,0 @@
-li.dls-tab-block dl > dt.label:before {
-    content: url("images/dls_logo.png");
-    vertical-align: middle;
-    display: inline-block;
-    padding-right: 7px;
-    left: 16px;
-}

@@ -373,6 +373,10 @@ class Mage_Catalog_Model_Product_Image extends Mage_Core_Model_Abstract
     public function getImageProcessor()
     {
         if( !$this->_processor ) {
+//            var_dump($this->_checkMemory());
+//            if (!$this->_checkMemory()) {
+//                $this->_baseFile = null;
+//            }
             $this->_processor = new Varien_Image($this->getBaseFile());
         }
         $this->_processor->keepAspectRatio($this->_keepAspectRatio);

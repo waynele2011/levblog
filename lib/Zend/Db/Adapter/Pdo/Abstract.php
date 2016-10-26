@@ -220,10 +220,6 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
      */
     public function query($sql, $bind = array())
     {
-        
-        
-        Mage::log($sql.var_export($bind, true), null, "debug-sql.log");
-        
         if (empty($bind) && $sql instanceof Zend_Db_Select) {
             $bind = $sql->getBind();
         }
@@ -245,7 +241,6 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
              * @see Zend_Db_Statement_Exception
              */
             #require_once 'Zend/Db/Statement/Exception.php';
-            Mage::log("EXEXEX", null, "debug-sql.log");
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
         }
     }
