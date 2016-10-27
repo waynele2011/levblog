@@ -53,39 +53,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Tabs extends Mage_Adminhtml_Bloc
                 ->toHtml(),
             )
         );
-        $this->addTab(
-            'blogsets',
-            array(
-                'label'   => Mage::helper('dls_dlsblog')->__('Blogs setting'),
-                'content' => $this->getLayout()->createBlock(
-                    'dls_dlsblog/adminhtml_taxonomy_edit_tab_blogset',
-                    'taxonomy.blogset.grid'
-                )
-                ->toHtml(),
-            )
-        );
-        $this->addTab(
-            'filters',
-            array(
-                'label'   => Mage::helper('dls_dlsblog')->__('Filters'),
-                'content' => $this->getLayout()->createBlock(
-                    'dls_dlsblog/adminhtml_taxonomy_edit_tab_filter',
-                    'taxonomy.filter.grid'
-                )
-                ->toHtml(),
-            )
-        );
-        $this->addTab(
-            'posts',
-            array(
-                'label'   => Mage::helper('dls_dlsblog')->__('Posts'),
-                'content' => $this->getLayout()->createBlock(
-                    'dls_dlsblog/adminhtml_taxonomy_edit_tab_post',
-                    'taxonomy.post.grid'
-                )
-                ->toHtml(),
-            )
-        );
+        
         return parent::_beforeToHtml();
     }
 
