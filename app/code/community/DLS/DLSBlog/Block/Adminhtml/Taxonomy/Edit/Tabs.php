@@ -30,15 +30,6 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Tabs extends Mage_Adminhtml_Bloc
                     ->toHtml(),
                 )
         );
-        $this->addTab(
-                'blogsets', array(
-            'label' => Mage::helper('dls_dlsblog')->__('Blogs setting'),
-            'content' => $this->getLayout()->createBlock(
-                            'dls_dlsblog/adminhtml_taxonomy_edit_tab_blogset', 'taxonomy.blogset.grid'
-                    )
-                    ->toHtml(),
-                )
-        );
         return parent::_beforeToHtml();
     }
 

@@ -1,0 +1,20 @@
+
+<?php $_taxonomy = $this->getCurrentTaxonomy(); ?>
+<?php if ($_taxonomy) : ?>
+    <div class="taxonomy-widget-view">
+        <h3><?php echo $_taxonomy->getName() ?></h3>
+        <div>
+            <div class="name-widget">
+                <?php echo Mage::helper('dls_dlsblog')->__('Name'); ?>:<?php echo $_taxonomy->getName(); ?>
+            </div>
+            <div class="description-widget">
+                <?php echo Mage::helper('dls_dlsblog')->__('Description'); ?>:<?php echo $_taxonomy->getdescription(); ?>
+            </div>
+            <div class="small_image-widget">
+                <?php if ($_taxonomy->getSmallImage()) : ?>
+                    <img src="<?php echo Mage::helper('dls_dlsblog/post_image')->init($_taxonomy, 'small_image')->resize(75); ?>" alt="<?php echo $this->escapeHtml($_taxonomy->getName()); ?>" />
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -37,6 +37,16 @@ class DLS_DLSBlog_Block_Adminhtml_Filter_Edit_Tabs extends Mage_Adminhtml_Block_
             'class' => 'ajax'
                 )
         );
+        $this->addTab(
+                'form_condition_filter', array(
+            'label' => Mage::helper('dls_dlsblog')->__('Filter conditions'),
+            'title' => Mage::helper('dls_dlsblog')->__('Filter conditions'),
+            'content' => $this->getLayout()->createBlock(
+                            'dls_dlsblog/adminhtml_filter_edit_tab_condition'
+                    )
+                    ->toHtml(),
+                )
+        );
         return parent::_beforeToHtml();
     }
 

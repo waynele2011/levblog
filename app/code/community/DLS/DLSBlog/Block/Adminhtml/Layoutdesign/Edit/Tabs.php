@@ -20,6 +20,16 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tabs extends Mage_Adminhtml_
                     ->toHtml(),
                 )
         );
+        $this->addTab(
+                'form_designer', array(
+            'label' => Mage::helper('dls_dlsblog')->__('Designer'),
+            'title' => Mage::helper('dls_dlsblog')->__('Designer'),
+            'content' => $this->getLayout()->createBlock(
+                            'dls_dlsblog/adminhtml_layoutdesign_edit_tab_designer'
+                    )
+                    ->toHtml(),
+                )
+        );
         return parent::_beforeToHtml();
     }
 

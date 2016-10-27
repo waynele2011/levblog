@@ -89,4 +89,48 @@
             </post_id>
         </parameters>
     </dlsblog_post_link>
+    <dlsblog_taxonomy_view type="dls_dlsblog/taxonomy_widget_view" translate="name description" module="dls_dlsblog">
+        <name>Taxonomy view</name>
+        <description>Taxonomy view widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <taxonomy_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Taxonomy</label>
+                <type>label</type>
+                <helper_block>
+                    <type>dls_dlsblog/adminhtml_taxonomy_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Taxonomy</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>120</sort_order>
+            </taxonomy_id>
+        </parameters>
+    </dlsblog_taxonomy_view>
+    <dlsblog_taxonomy_link type="dls_dlsblog/taxonomy_widget_link" translate="name description" module="dls_dlsblog">
+        <name>Taxonomy link</name>
+        <description>Taxonomy link widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <taxonomy_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Post</label>
+                <type>label</type>
+                <helper_block>
+                    <type>dls_dlsblog/adminhtml_taxonomy_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Taxonomy</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>130</sort_order>
+            </taxonomy_id>
+        </parameters>
+    </dlsblog_taxonomy_link>
 </widgets>

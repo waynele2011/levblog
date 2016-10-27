@@ -1,0 +1,61 @@
+<?php
+$_block_collection = $this->getBlockCollection();
+$_design_code = $this->getLayoutDesignCode();
+?>
+<div id="designer-wrapper">
+    <div id="designer-frame">
+        <div id="frame-item">
+            <div id="layouts-accordion" class="connectedSortable">
+                <h3 data='top'><?php echo Mage::helper('dls_dlsblog')->__('Content top') ?></h3>
+                <div class="layout-position" position="top">
+                    <ul class="layout-position-container">
+                        <?php if (isset($_design_code['top'])): ?>
+                            <?php echo $this->items_html($_design_code['top'], 'top') ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <h3><?php echo Mage::helper('dls_dlsblog')->__('Left sidebar') ?></h3>
+                <div class="layout-position" position="left">
+                    <ul class="layout-position-container">
+                        <?php if (isset($_design_code['left'])): ?>
+                            <?php echo $this->items_html($_design_code['left'], 'left') ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <h3><?php echo Mage::helper('dls_dlsblog')->__('Right sidebar') ?></h3>
+                <div class="layout-position" position="right">
+                    <ul class="layout-position-container">
+                        <?php if (isset($_design_code['right'])): ?>
+                            <?php echo $this->items_html($_design_code['right'], 'right') ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <h3><?php echo Mage::helper('dls_dlsblog')->__('Content Bottom') ?></h3>
+                <div class="layout-position" position="bottom">
+                    <ul class="layout-position-container">
+                        <?php if (isset($_design_code['bottom'])): ?>
+                            <?php echo $this->items_html($_design_code['bottom'], 'bottom') ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="blocks-list">
+        <div id="blocks-accordion" class="connectedSortable">
+            <h3><?php echo Mage::helper('dls_dlsblog')->__('Static Blocks') ?></h3>
+            <div class="blocks-list-content-wrapper">
+                <ul id="static-block" class="connectedSortable">
+                    <?php foreach ($_block_collection as $key => $_block): ?>
+                        <li class="block-item block-item-listed"
+                            title="<?php echo $_block->getTitle() ?>"
+                            identifier="<?php echo $_block->getIdentifier() ?>"
+                            block_id="<?php echo $_block->getId() ?>">
+                                <?php echo $_block->getTitle() ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
