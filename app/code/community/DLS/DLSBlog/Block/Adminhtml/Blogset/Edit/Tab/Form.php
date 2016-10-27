@@ -52,7 +52,8 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tab_Form extends Mage_Adminhtml_B
 
            )
         );
-$values = Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
+
+        $values = Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
             ->toOptionArray();
         array_unshift($values, array('label' => '', 'value' => ''));
 
@@ -86,18 +87,53 @@ $values = Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
             )
         );
 
+        $values = Mage::getResourceModel('dls_dlsblog/filter_collection')
+            ->toOptionArray();
+        array_unshift($values, array('label' => '', 'value' => ''));
+
+        $html = '<a href="{#url}" id="blogset_custom_default_filter_link" target="_blank"></a>';
+        $html .= '<script type="text/javascript">
+            function changeFilterIdLink() {
+                if ($(\'blogset_custom_default_filter\').value == \'\') {
+                    $(\'blogset_custom_default_filter_link\').hide();
+                } else {
+                    $(\'blogset_custom_default_filter_link\').show();
+                    var url = \''.$this->getUrl('adminhtml/dlsblog_filter/edit', array('id'=>'{#id}', 'clear'=>1)).'\';
+                    var text = \''.Mage::helper('core')->escapeHtml($this->__('View {#name}')).'\';
+                    var realUrl = url.replace(\'{#id}\', $(\'blogset_custom_default_filter\').value);
+                    $(\'blogset_custom_default_filter_link\').href = realUrl;
+                    $(\'blogset_custom_default_filter_link\').innerHTML = text.replace(\'{#name}\', $(\'blogset_custom_default_filter\').options[$(\'blogset_custom_default_filter\').selectedIndex].innerHTML);
+                }
+            }
+            $(\'blogset_custom_default_filter\').observe(\'change\', changeFilterIdLink);
+            changeFilterIdLink();
+            </script>';
+
         $fieldset->addField(
             'custom_default_filter',
             'select',
             array(
-                'label' => Mage::helper('dls_dlsblog')->__('Default filter'),
-                'name'  => 'custom_default_filter',
-                'required'  => true,
-                'class' => 'required-entry',
-
-                'values'=> Mage::getModel('dls_dlsblog/blogset_attribute_source_customdefaultfilter')->getAllOptions(true),
-           )
+                'label'     => Mage::helper('dls_dlsblog')->__('Filter'),
+                'name'      => 'custom_default_filter',
+                'required'  => false,
+                'values'    => $values,
+                'after_element_html' => $html
+            )
         );
+
+
+//        $fieldset->addField(
+//            'custom_default_filter',
+//            'select',
+//            array(
+//                'label' => Mage::helper('dls_dlsblog')->__('Default filter'),
+//                'name'  => 'custom_default_filter',
+//                'required'  => true,
+//                'class' => 'required-entry',
+//
+//                'values'=> Mage::getModel('dls_dlsblog/blogset_attribute_source_customdefaultfilter')->getAllOptions(true),
+//           )
+//        );
 
         $fieldset->addField(
             'logo',

@@ -184,6 +184,31 @@ class DLS_DLSBlog_Model_Blogset extends Mage_Core_Model_Abstract
         }
         return $this->getData('_post_collection');
     }
+    
+    /**
+     * Retrieve parent 
+     *
+     * @access public
+     * @return null|DLS_DLSBlog_Model_Filter
+     * @author Ultimate Module Creator
+     */
+    public function getParentFilter()
+    {
+        if (!$this->hasData('_parent_filter')) {
+            if (!$this->getCustomDefaultFilter()) {
+                return null;
+            } else {
+                $filter = Mage::getModel('dls_dlsblog/filter')
+                    ->load($this->getCustomDefaultFilter());
+                if ($filter->getId()) {
+                    $this->setData('_parent_filter', $filter);
+                } else {
+                    $this->setData('_parent_filter', null);
+                }
+            }
+        }
+        return $this->getData('_parent_filter');
+    }
 
     /**
      * Retrieve parent 
