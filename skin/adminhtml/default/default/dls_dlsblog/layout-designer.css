@@ -1,0 +1,66 @@
+#designer-wrapper {
+    width: 100%;
+    display: block;
+    min-width: 600px;
+    box-sizing: border-box;
+}
+#designer-frame {
+    width: 60%;
+    height: 100%;
+    min-height: 500px;
+    display: block;
+    float: left;
+}
+#blocks-list {
+    width: 35%;
+    height: 100%;
+    min-height: 500px;
+    display: block;
+    float: right;
+}
+.layout-position {
+    display: block;
+    margin: 0 0px;
+    box-sizing: border-box;
+}
+.layout-position-container {
+    margin-bottom: 10px;
+    padding: 3px;
+    min-height: 50px;
+    background: #f1fbea;
+}
+.block-item-listed, .block-item-added {
+    padding: 2px 2px 2px 5px;
+    border-radius: 2px;
+    margin: 0;
+    cursor: pointer;
+}
+.block-item-listed {
+    background: #EEEEEE;
+    border: 1px solid #DDDDDD;
+}
+.block-item-listed:hover, .block-item-added {
+    background: #d2fdb2;
+    border: 1px solid #d2fdb2;
+}
+a.bt-remove-block{
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 5px;
+    background: #fa9942;
+    color: #FFF;
+    font-weight: bold;
+    border-radius: 2px;
+}
+.ui-accordion-header {
+    cursor: pointer;
+    border-radius: 2px;
+    background: #EEEEEE;
+    padding: 0 5px;
+    border: 1px solid #DDDDDD;
+}
+.ui-accordion-header:hover {
+    background: #FAFAFA;
+}
+.ui-state-highlight { height: 1.5em; line-height: 1.2em; border: 1px dashed yellow; }
