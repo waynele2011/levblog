@@ -61,7 +61,44 @@ class DLS_DLSBlog_Model_Blogset extends Mage_Core_Model_Abstract
         $this->setUpdatedAt($now);
         return $this;
     }
+    
+    /**
+     * get the url to the blog setting details page
+     *
+     * @access public
+     * @return string
+     * @author Ultimate Module Creator
+     */
+    public function getBlogsetUrl()
+    {
+        if ($this->getUrlKey()) {
+            $urlKey = '';
+            if ($prefix = Mage::getStoreConfig('dls_dlsblog/blogset/url_prefix')) {
+                $urlKey .= $prefix.'/';
+            }
+            $urlKey .= $this->getUrlKey();
+            if ($suffix = Mage::getStoreConfig('dls_dlsblog/blogset/url_suffix')) {
+                $urlKey .= '.'.$suffix;
+            }
+            return Mage::getUrl('', array('_direct'=>$urlKey));
+        }
+        return Mage::getUrl('dls_dlsblog/blogset/view', array('id'=>$this->getId()));
+    }
 
+    /**
+     * check URL key
+     *
+     * @access public
+     * @param string $urlKey
+     * @param bool $active
+     * @return mixed
+     * @author Ultimate Module Creator
+     */
+    public function checkUrlKey($urlKey, $active = true)
+    {
+        return $this->_getResource()->checkUrlKey($urlKey, $active);
+    }
+    
     /**
      * save blog setting relation
      *

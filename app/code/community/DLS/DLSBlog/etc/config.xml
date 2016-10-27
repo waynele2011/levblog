@@ -196,6 +196,9 @@
     </frontend>
     <default>
         <dls_dlsblog>
+            <blogset>
+                <breadcrumbs>1</breadcrumbs>
+            </blogset>
             <taxonomy>
                 <breadcrumbs>1</breadcrumbs>
                 <meta_title>Taxonomies</meta_title>

@@ -14,6 +14,17 @@
             <block type="dls_dlsblog/post_list" name="post_list" template="dls_dlsblog/post/list.phtml" />
         </reference>
     </dls_dlsblog_post_index>
+    <dls_dlsblog_blogset_view translate="label" module="dls_dlsblog">
+        <label>Blog setting view page</label>
+        <update handle="page_one_column" />
+        <reference name="content">
+            <block type="dls_dlsblog/blogset_view" name="blogset_view" template="dls_dlsblog/blogset/view.phtml" />
+            <block type="dls_dlsblog/blogset_filter_list" name="blogset.filter_list" as="blogset_filters" template="dls_dlsblog/blogset/filter/list.phtml" />
+            <block type="dls_dlsblog/blogset_tag_list" name="blogset.tag_list" as="blogset_tags" template="dls_dlsblog/blogset/tag/list.phtml" />
+            <block type="dls_dlsblog/blogset_post_list" name="blogset.post_list" as="blogset_posts" template="dls_dlsblog/blogset/post/list.phtml" />
+            <block type="dls_dlsblog/blogset_taxonomy_list" name="blogset.taxonomy_list" as="blogset_taxonomies" template="dls_dlsblog/blogset/taxonomy/list.phtml" />
+        </reference>
+    </dls_dlsblog_blogset_view>
     <dls_dlsblog_taxonomy_view translate="label" module="dls_dlsblog">
         <label>Taxonomy view page</label>
         <update handle="page_one_column" />

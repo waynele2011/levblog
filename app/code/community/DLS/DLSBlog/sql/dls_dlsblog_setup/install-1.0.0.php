@@ -71,6 +71,12 @@ $table = $this->getConnection()
         'Blog setting Modification Time'
     )
     ->addColumn(
+        'url_key',
+        Varien_Db_Ddl_Table::TYPE_TEXT, 255,
+        array(),
+        'URL key'
+    )
+    ->addColumn(
         'created_at',
         Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
         null,

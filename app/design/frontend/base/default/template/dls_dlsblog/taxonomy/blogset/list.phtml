@@ -16,8 +16,9 @@
 <div class="blogsets-list-container">
     <?php foreach ($_blogsets as $_blogset) : ?>
         <div class="blogset-list-item">
-            <?php echo $_blogset->getName();?>
-<br />
+            <a href="<?php echo $_blogset->getBlogsetUrl()?>">
+                <?php echo $_blogset->getName();?>
+            </a><br />
         </div>
     <?php endforeach;?>
 </div>

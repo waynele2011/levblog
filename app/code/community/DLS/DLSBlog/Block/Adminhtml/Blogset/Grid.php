@@ -95,6 +95,13 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
             )
         );
         $this->addColumn(
+            'url_key',
+            array(
+                'header' => Mage::helper('dls_dlsblog')->__('URL key'),
+                'index'  => 'url_key',
+            )
+        );
+        $this->addColumn(
             'action',
             array(
                 'header'  =>  Mage::helper('dls_dlsblog')->__('Action'),

@@ -1,0 +1,25 @@
+<?php 
+
+/**
+ * Blogset Taxonomy list template
+ *
+ * @category    DLS
+ * @package     DLS_DLSBlog
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_taxonomies = $this->getTaxonomies(); ?>
+<?php if ($_taxonomies->getSize() > 0) :?>
+<div class="page-title taxonomy-title">
+    <h2><?php echo Mage::helper('dls_dlsblog')->__('Taxonomies') ?></h2>
+</div>
+<div class="taxonomies-list-container">
+    <?php foreach ($_taxonomies as $_taxonomy) : ?>
+        <div class="taxonomy-list-item">
+            <a href="<?php echo $_taxonomy->getTaxonomyUrl()?>">
+                <?php echo $_taxonomy->getName();?>
+            </a><br />
+        </div>
+    <?php endforeach;?>
+</div>
+<?php endif;?>

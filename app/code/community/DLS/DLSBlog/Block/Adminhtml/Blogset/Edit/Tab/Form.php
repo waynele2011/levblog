@@ -145,6 +145,15 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tab_Form extends Mage_Adminhtml_B
            )
         );
         $fieldset->addField(
+            'url_key',
+            'text',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Url key'),
+                'name'  => 'url_key',
+                'note'  => Mage::helper('dls_dlsblog')->__('Relative to Website Base URL')
+            )
+        );
+        $fieldset->addField(
             'status',
             'select',
             array(

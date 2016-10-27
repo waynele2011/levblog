@@ -42,6 +42,19 @@ class DLS_DLSBlog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
         }
         $urlKey = trim($request->getPathInfo(), '/');
         $check = array();
+        $check['blogset'] = new Varien_Object(
+            array(
+                'prefix'        => Mage::getStoreConfig('dls_dlsblog/blogset/url_prefix'),
+                'suffix'        => Mage::getStoreConfig('dls_dlsblog/blogset/url_suffix'),
+                'list_key'      => Mage::getStoreConfig('dls_dlsblog/blogset/url_rewrite_list'),
+                'list_action'   => 'index',
+                'model'         =>'dls_dlsblog/blogset',
+                'controller'    => 'blogset',
+                'action'        => 'view',
+                'param'         => 'id',
+                'check_path'    => 0
+            )
+        );
         $check['taxonomy'] = new Varien_Object(
             array(
                 'prefix'        => Mage::getStoreConfig('dls_dlsblog/taxonomy/url_prefix'),
