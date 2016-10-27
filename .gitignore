@@ -68,6 +68,7 @@ build.properties
 
 # Custom
 *.zip
+*.tgz
 .zip
 .git_dls
 /.git_dls
