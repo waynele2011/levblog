@@ -115,6 +115,12 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
             try {
                 $blogset = $this->_initBlogset();
                 $blogset->addData($data);
+                $logoName = $this->_uploadAndGetName(
+                    'logo',
+                    Mage::helper('dls_dlsblog/blogset_image')->getImageBaseDir(),
+                    $data
+                );
+                $blogset->setData('logo', $logoName);
                 $taxonomies = $this->getRequest()->getPost('taxonomy_ids', -1);
                 if ($taxonomies != -1) {
                     $taxonomies = explode(',', $taxonomies);
@@ -133,12 +139,18 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                 $this->_redirect('*/*/');
                 return;
             } catch (Mage_Core_Exception $e) {
+                if (isset($data['logo']['value'])) {
+                    $data['logo'] = $data['logo']['value'];
+                }
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setBlogsetData($data);
                 $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                 return;
             } catch (Exception $e) {
                 Mage::logException($e);
+                if (isset($data['logo']['value'])) {
+                    $data['logo'] = $data['logo']['value'];
+                }
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('dls_dlsblog')->__('There was a problem saving the blog setting.')
                 );
@@ -245,6 +257,43 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                             ->setStatus($this->getRequest()->getParam('status'))
                             ->setIsMassupdate(true)
                             ->save();
+                }
+                $this->_getSession()->addSuccess(
+                    $this->__('Total of %d blogs setting were successfully updated.', count($blogsetIds))
+                );
+            } catch (Mage_Core_Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError(
+                    Mage::helper('dls_dlsblog')->__('There was an error updating blogs setting.')
+                );
+                Mage::logException($e);
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+    /**
+     * mass Default filter change - action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function massCustomDefaultFilterAction()
+    {
+        $blogsetIds = $this->getRequest()->getParam('blogset');
+        if (!is_array($blogsetIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(
+                Mage::helper('dls_dlsblog')->__('Please select blogs setting.')
+            );
+        } else {
+            try {
+                foreach ($blogsetIds as $blogsetId) {
+                $blogset = Mage::getSingleton('dls_dlsblog/blogset')->load($blogsetId)
+                    ->setCustomDefaultFilter($this->getRequest()->getParam('flag_custom_default_filter'))
+                    ->setIsMassupdate(true)
+                    ->save();
                 }
                 $this->_getSession()->addSuccess(
                     $this->__('Total of %d blogs setting were successfully updated.', count($blogsetIds))

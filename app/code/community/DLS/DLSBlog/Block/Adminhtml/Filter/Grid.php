@@ -85,9 +85,6 @@ class DLS_DLSBlog_Block_Adminhtml_Filter_Grid extends Mage_Adminhtml_Block_Widge
                 'params'    => array(
                     'id'    => 'getLayoutdesignId'
                 ),
-                'static' => array(
-                    'clear' => 1
-                ),
                 'base_link' => 'adminhtml/dlsblog_layoutdesign/edit'
             )
         );

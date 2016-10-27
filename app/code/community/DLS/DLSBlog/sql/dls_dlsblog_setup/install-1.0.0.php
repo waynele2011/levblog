@@ -44,6 +44,20 @@ $table = $this->getConnection()
         'Blog description'
     )
     ->addColumn(
+        'custom_default_filter',
+        Varien_Db_Ddl_Table::TYPE_INTEGER, null,
+        array(
+            'nullable'  => false,
+        ),
+        'Default filter'
+    )
+    ->addColumn(
+        'logo',
+        Varien_Db_Ddl_Table::TYPE_TEXT, 255,
+        array(),
+        'Logo image'
+    )
+    ->addColumn(
         'status',
         Varien_Db_Ddl_Table::TYPE_SMALLINT, null,
         array(),
@@ -371,44 +385,6 @@ $table = $this->getConnection()
         Varien_Db_Ddl_Table::TYPE_SMALLINT, null,
         array(),
         'Enabled'
-    )
-    ->addColumn(
-        'parent_id',
-        Varien_Db_Ddl_Table::TYPE_INTEGER, null,
-        array(
-            'unsigned'  => true,
-        ),
-        'Parent id'
-    )
-    ->addColumn(
-        'path',
-        Varien_Db_Ddl_Table::TYPE_TEXT, 255,
-        array(),
-        'Path'
-    )
-    ->addColumn(
-        'position',
-        Varien_Db_Ddl_Table::TYPE_INTEGER, null,
-        array(
-            'unsigned'  => true,
-        ),
-        'Position'
-    )
-    ->addColumn(
-        'level',
-        Varien_Db_Ddl_Table::TYPE_INTEGER, null,
-        array(
-            'unsigned'  => true,
-        ),
-        'Level'
-    )
-    ->addColumn(
-        'children_count',
-        Varien_Db_Ddl_Table::TYPE_INTEGER, null,
-        array(
-            'unsigned'  => true,
-        ),
-        'Children count'
     )
     ->addColumn(
         'updated_at',

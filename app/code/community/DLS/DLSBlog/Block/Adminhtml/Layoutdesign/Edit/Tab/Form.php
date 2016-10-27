@@ -26,37 +26,6 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tab_Form extends Mage_Adminh
             'layoutdesign_form',
             array('legend' => Mage::helper('dls_dlsblog')->__('Layout design'))
         );
-        if (!$this->getLayoutdesign()->getId()) {
-            $parentId = $this->getRequest()->getParam('parent');
-            if (!$parentId) {
-                $parentId = Mage::helper('dls_dlsblog/layoutdesign')->getRootLayoutdesignId();
-            }
-            $fieldset->addField(
-                'path',
-                'hidden',
-                array(
-                    'name'  => 'path',
-                    'value' => $parentId
-                )
-            );
-        } else {
-            $fieldset->addField(
-                'id',
-                'hidden',
-                array(
-                    'name'  => 'id',
-                    'value' => $this->getLayoutdesign()->getId()
-                )
-            );
-            $fieldset->addField(
-                'path',
-                'hidden',
-                array(
-                    'name'  => 'path',
-                    'value' => $this->getLayoutdesign()->getPath()
-                )
-            );
-        }
 
         $fieldset->addField(
             'name',
@@ -120,18 +89,17 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tab_Form extends Mage_Adminh
                 ),
             )
         );
-        $form->addValues($this->getLayoutdesign()->getData());
+        $formValues = Mage::registry('current_layoutdesign')->getDefaultValues();
+        if (!is_array($formValues)) {
+            $formValues = array();
+        }
+        if (Mage::getSingleton('adminhtml/session')->getLayoutdesignData()) {
+            $formValues = array_merge($formValues, Mage::getSingleton('adminhtml/session')->getLayoutdesignData());
+            Mage::getSingleton('adminhtml/session')->setLayoutdesignData(null);
+        } elseif (Mage::registry('current_layoutdesign')) {
+            $formValues = array_merge($formValues, Mage::registry('current_layoutdesign')->getData());
+        }
+        $form->setValues($formValues);
         return parent::_prepareForm();
-    }
-
-    /**
-     * get the current layout design
-     *
-     * @access public
-     * @return DLS_DLSBlog_Model_Layoutdesign
-     */
-    public function getLayoutdesign()
-    {
-        return Mage::registry('layoutdesign');
     }
 }

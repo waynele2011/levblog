@@ -26,6 +26,10 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tab_Form extends Mage_Adminhtml_B
             'blogset_form',
             array('legend' => Mage::helper('dls_dlsblog')->__('Blog setting'))
         );
+        $fieldset->addType(
+            'image',
+            Mage::getConfig()->getBlockClassName('dls_dlsblog/adminhtml_blogset_helper_image')
+        );
         $values = Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
             ->toOptionArray();
         array_unshift($values, array('label' => '', 'value' => ''));
@@ -78,6 +82,29 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tab_Form extends Mage_Adminhtml_B
             array(
                 'label' => Mage::helper('dls_dlsblog')->__('Blog description'),
                 'name'  => 'description',
+
+           )
+        );
+
+        $fieldset->addField(
+            'custom_default_filter',
+            'select',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Default filter'),
+                'name'  => 'custom_default_filter',
+                'required'  => true,
+                'class' => 'required-entry',
+
+                'values'=> Mage::getModel('dls_dlsblog/blogset_attribute_source_customdefaultfilter')->getAllOptions(true),
+           )
+        );
+
+        $fieldset->addField(
+            'logo',
+            'image',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Logo image'),
+                'name'  => 'logo',
 
            )
         );

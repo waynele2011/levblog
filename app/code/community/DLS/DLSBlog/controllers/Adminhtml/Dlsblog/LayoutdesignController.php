@@ -10,25 +10,18 @@
 class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_Controller_Adminhtml_DLSBlog
 {
     /**
-     * init layout design
+     * init the layout design
      *
      * @access protected
      * @return DLS_DLSBlog_Model_Layoutdesign
-     * @author Ultimate Module Creator
      */
     protected function _initLayoutdesign()
     {
-        $layoutdesignId = (int) $this->getRequest()->getParam('id', false);
-        $layoutdesign = Mage::getModel('dls_dlsblog/layoutdesign');
+        $layoutdesignId  = (int) $this->getRequest()->getParam('id');
+        $layoutdesign    = Mage::getModel('dls_dlsblog/layoutdesign');
         if ($layoutdesignId) {
             $layoutdesign->load($layoutdesignId);
-        } else {
-            $layoutdesign->setData($layoutdesign->getDefaultValues());
         }
-        if ($activeTabId = (string) $this->getRequest()->getParam('active_tab_id')) {
-            Mage::getSingleton('admin/session')->setLayoutdesignActiveTabId($activeTabId);
-        }
-        Mage::register('layoutdesign', $layoutdesign);
         Mage::register('current_layoutdesign', $layoutdesign);
         return $layoutdesign;
     }
@@ -42,24 +35,26 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
      */
     public function indexAction()
     {
-        $this->_forward('edit');
+        $this->loadLayout();
+        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+             ->_title(Mage::helper('dls_dlsblog')->__('Layout designs'));
+        $this->renderLayout();
     }
 
     /**
-     * Add new layout design form
+     * grid action
      *
      * @access public
      * @return void
      * @author Ultimate Module Creator
      */
-    public function addAction()
+    public function gridAction()
     {
-        Mage::getSingleton('admin/session')->unsLayoutdesignActiveTabId();
-        $this->_forward('edit');
+        $this->loadLayout()->renderLayout();
     }
 
     /**
-     * Edit layout design page
+     * edit layout design - action
      *
      * @access public
      * @return void
@@ -67,68 +62,28 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
      */
     public function editAction()
     {
-        $params['_current'] = true;
-        $redirect = false;
-        $parentId = (int) $this->getRequest()->getParam('parent');
-        $layoutdesignId = (int) $this->getRequest()->getParam('id');
-        $_prevLayoutdesignId = Mage::getSingleton('admin/session')->getLastEditedLayoutdesign(true);
-        if ($_prevLayoutdesignId &&
-            !$this->getRequest()->getQuery('isAjax') &&
-            !$this->getRequest()->getParam('clear')) {
-            $this->getRequest()->setParam('id', $_prevLayoutdesignId);
-        }
-        if ($redirect) {
-            $this->_redirect('*/*/edit', $params);
-            return;
-        }
-        if (!($layoutdesign = $this->_initLayoutdesign())) {
-            return;
-        }
-        $this->_title($layoutdesignId ? $layoutdesign->getName() : $this->__('New Layout design'));
-        $data = Mage::getSingleton('adminhtml/session')->getLayoutdesignData(true);
-        if (isset($data['layoutdesign'])) {
-            $layoutdesign->addData($data['layoutdesign']);
-        }
-        if ($this->getRequest()->getQuery('isAjax')) {
-            $breadcrumbsPath = $layoutdesign->getPath();
-            if (empty($breadcrumbsPath)) {
-                $breadcrumbsPath = Mage::getSingleton('admin/session')->getLayoutdesignDeletedPath(true);
-                if (!empty($breadcrumbsPath)) {
-                    $breadcrumbsPath = explode('/', $breadcrumbsPath);
-                    if (count($breadcrumbsPath) <= 1) {
-                        $breadcrumbsPath = '';
-                    } else {
-                        array_pop($breadcrumbsPath);
-                        $breadcrumbsPath = implode('/', $breadcrumbsPath);
-                    }
-                }
-            }
-            Mage::getSingleton('admin/session')->setLastEditedLayoutdesign($layoutdesign->getId());
-            $this->loadLayout();
-            $eventResponse = new Varien_Object(
-                array(
-                    'content' => $this->getLayout()->getBlock('layoutdesign.edit')->getFormHtml().
-                        $this->getLayout()->getBlock('layoutdesign.tree')->getBreadcrumbsJavascript(
-                            $breadcrumbsPath,
-                            'editingLayoutdesignBreadcrumbs'
-                        ),
-                    'messages' => $this->getLayout()->getMessagesBlock()->getGroupedHtml(),
-                )
+        $layoutdesignId    = $this->getRequest()->getParam('id');
+        $layoutdesign      = $this->_initLayoutdesign();
+        if ($layoutdesignId && !$layoutdesign->getId()) {
+            $this->_getSession()->addError(
+                Mage::helper('dls_dlsblog')->__('This layout design no longer exists.')
             );
-            $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($eventResponse->getData()));
+            $this->_redirect('*/*/');
             return;
         }
+        $data = Mage::getSingleton('adminhtml/session')->getLayoutdesignData(true);
+        if (!empty($data)) {
+            $layoutdesign->setData($data);
+        }
+        Mage::register('layoutdesign_data', $layoutdesign);
         $this->loadLayout();
         $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Layout designs'));
-        $this->_setActiveMenu('dls_dlsblog/layoutdesign');
-        $this->getLayout()->getBlock('head')->setCanLoadExtJs(true)
-            ->setContainerCssClass('layoutdesign');
-
-        $this->_addBreadcrumb(
-            Mage::helper('dls_dlsblog')->__('Manage Layout designs'),
-            Mage::helper('dls_dlsblog')->__('Manage Layout designs')
-        );
+        if ($layoutdesign->getId()) {
+            $this->_title($layoutdesign->getName());
+        } else {
+            $this->_title(Mage::helper('dls_dlsblog')->__('Add layout design'));
+        }
         if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
             $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
         }
@@ -136,116 +91,64 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
     }
 
     /**
-     * Get tree node (Ajax version)
+     * new layout design action
      *
      * @access public
      * @return void
      * @author Ultimate Module Creator
      */
-    public function layoutdesignsJsonAction()
+    public function newAction()
     {
-        if ($this->getRequest()->getParam('expand_all')) {
-            Mage::getSingleton('admin/session')->setLayoutdesignIsTreeWasExpanded(true);
-        } else {
-            Mage::getSingleton('admin/session')->setLayoutdesignIsTreeWasExpanded(false);
-        }
-        if ($layoutdesignId = (int) $this->getRequest()->getPost('id')) {
-            $this->getRequest()->setParam('id', $layoutdesignId);
-            if (!$layoutdesign = $this->_initLayoutdesign()) {
+        $this->_forward('edit');
+    }
+
+    /**
+     * save layout design - action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function saveAction()
+    {
+        if ($data = $this->getRequest()->getPost('layoutdesign')) {
+            try {
+                $layoutdesign = $this->_initLayoutdesign();
+                $layoutdesign->addData($data);
+                $layoutdesign->save();
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('dls_dlsblog')->__('Layout design was successfully saved')
+                );
+                Mage::getSingleton('adminhtml/session')->setFormData(false);
+                if ($this->getRequest()->getParam('back')) {
+                    $this->_redirect('*/*/edit', array('id' => $layoutdesign->getId()));
+                    return;
+                }
+                $this->_redirect('*/*/');
+                return;
+            } catch (Mage_Core_Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                Mage::getSingleton('adminhtml/session')->setLayoutdesignData($data);
+                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                return;
+            } catch (Exception $e) {
+                Mage::logException($e);
+                Mage::getSingleton('adminhtml/session')->addError(
+                    Mage::helper('dls_dlsblog')->__('There was a problem saving the layout design.')
+                );
+                Mage::getSingleton('adminhtml/session')->setLayoutdesignData($data);
+                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                 return;
             }
-            $this->getResponse()->setBody(
-                $this->getLayout()->createBlock('dls_dlsblog/adminhtml_layoutdesign_tree')
-                    ->getTreeJson($layoutdesign)
-            );
         }
-    }
-
-    /**
-     * Move layout design action
-     * @access public
-     * @author Ultimate Module Creator
-     */
-    public function moveAction()
-    {
-        $layoutdesign = $this->_initLayoutdesign();
-        if (!$layoutdesign) {
-            $this->getResponse()->setBody(
-                Mage::helper('dls_dlsblog')->__('Layout design move error')
-            );
-            return;
-        }
-        $parentNodeId   = $this->getRequest()->getPost('pid', false);
-        $prevNodeId = $this->getRequest()->getPost('aid', false);
-        try {
-            $layoutdesign->move($parentNodeId, $prevNodeId);
-            $this->getResponse()->setBody("SUCCESS");
-        } catch (Mage_Core_Exception $e) {
-            $this->getResponse()->setBody($e->getMessage());
-        } catch (Exception $e) {
-            $this->getResponse()->setBody(
-                Mage::helper('dls_dlsblog')->__('Layout design move error')
-            );
-            Mage::logException($e);
-        }
-    }
-
-    /**
-     * Tree Action
-     * Retrieve layout design tree
-     *
-     * @access public
-     * @return void
-     * @author Ultimate Module Creator
-     */
-    public function treeAction()
-    {
-        $layoutdesignId = (int) $this->getRequest()->getParam('id');
-        $layoutdesign = $this->_initLayoutdesign();
-        $block = $this->getLayout()->createBlock('dls_dlsblog/adminhtml_layoutdesign_tree');
-        $root  = $block->getRoot();
-        $this->getResponse()->setBody(
-            Mage::helper('core')->jsonEncode(
-                array(
-                    'data' => $block->getTree(),
-                    'parameters' => array(
-                        'text'          => $block->buildNodeName($root),
-                        'draggable'     => false,
-                        'allowDrop'     => ($root->getIsVisible()) ? true : false,
-                        'id'            => (int) $root->getId(),
-                        'expanded'      => (int) $block->getIsWasExpanded(),
-                        'layoutdesign_id' => (int) $layoutdesign->getId(),
-                        'root_visible'  => (int) $root->getIsVisible()
-                    )
-                )
-            )
+        Mage::getSingleton('adminhtml/session')->addError(
+            Mage::helper('dls_dlsblog')->__('Unable to find layout design to save.')
         );
+        $this->_redirect('*/*/');
     }
 
     /**
-     * Build response for refresh input element 'path' in form
-     *
-     * @access public
-     * @return void
-     * @author Ultimate Module Creator
-     */
-    public function refreshPathAction()
-    {
-        if ($id = (int) $this->getRequest()->getParam('id')) {
-            $layoutdesign = Mage::getModel('dls_dlsblog/layoutdesign')->load($id);
-            $this->getResponse()->setBody(
-                Mage::helper('core')->jsonEncode(
-                    array(
-                       'id' => $id,
-                       'path' => $layoutdesign->getPath(),
-                    )
-                )
-            );
-        }
-    }
-
-    /**
-     * Delete layout design action
+     * delete layout design - action
      *
      * @access public
      * @return void
@@ -253,29 +156,185 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
      */
     public function deleteAction()
     {
-        if ($id = (int) $this->getRequest()->getParam('id')) {
+        if ( $this->getRequest()->getParam('id') > 0) {
             try {
-                $layoutdesign = Mage::getModel('dls_dlsblog/layoutdesign')->load($id);
-                Mage::getSingleton('admin/session')->setLayoutdesignDeletedPath($layoutdesign->getPath());
-
-                $layoutdesign->delete();
+                $layoutdesign = Mage::getModel('dls_dlsblog/layoutdesign');
+                $layoutdesign->setId($this->getRequest()->getParam('id'))->delete();
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('dls_dlsblog')->__('The layout design has been deleted.')
+                    Mage::helper('dls_dlsblog')->__('Layout design was successfully deleted.')
                 );
+                $this->_redirect('*/*/');
+                return;
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->getResponse()->setRedirect($this->getUrl('*/*/edit', array('_current'=>true)));
-                return;
+                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('dls_dlsblog')->__('An error occurred while trying to delete the layout design.')
+                    Mage::helper('dls_dlsblog')->__('There was an error deleting layout design.')
                 );
-                $this->getResponse()->setRedirect($this->getUrl('*/*/edit', array('_current'=>true)));
+                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                 Mage::logException($e);
                 return;
             }
         }
-        $this->getResponse()->setRedirect($this->getUrl('*/*/', array('_current'=>true, 'id'=>null)));
+        Mage::getSingleton('adminhtml/session')->addError(
+            Mage::helper('dls_dlsblog')->__('Could not find layout design to delete.')
+        );
+        $this->_redirect('*/*/');
+    }
+
+    /**
+     * mass delete layout design - action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function massDeleteAction()
+    {
+        $layoutdesignIds = $this->getRequest()->getParam('layoutdesign');
+        if (!is_array($layoutdesignIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(
+                Mage::helper('dls_dlsblog')->__('Please select layout designs to delete.')
+            );
+        } else {
+            try {
+                foreach ($layoutdesignIds as $layoutdesignId) {
+                    $layoutdesign = Mage::getModel('dls_dlsblog/layoutdesign');
+                    $layoutdesign->setId($layoutdesignId)->delete();
+                }
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('dls_dlsblog')->__('Total of %d layout designs were successfully deleted.', count($layoutdesignIds))
+                );
+            } catch (Mage_Core_Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError(
+                    Mage::helper('dls_dlsblog')->__('There was an error deleting layout designs.')
+                );
+                Mage::logException($e);
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+    /**
+     * mass status change - action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function massStatusAction()
+    {
+        $layoutdesignIds = $this->getRequest()->getParam('layoutdesign');
+        if (!is_array($layoutdesignIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(
+                Mage::helper('dls_dlsblog')->__('Please select layout designs.')
+            );
+        } else {
+            try {
+                foreach ($layoutdesignIds as $layoutdesignId) {
+                $layoutdesign = Mage::getSingleton('dls_dlsblog/layoutdesign')->load($layoutdesignId)
+                            ->setStatus($this->getRequest()->getParam('status'))
+                            ->setIsMassupdate(true)
+                            ->save();
+                }
+                $this->_getSession()->addSuccess(
+                    $this->__('Total of %d layout designs were successfully updated.', count($layoutdesignIds))
+                );
+            } catch (Mage_Core_Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError(
+                    Mage::helper('dls_dlsblog')->__('There was an error updating layout designs.')
+                );
+                Mage::logException($e);
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+    /**
+     * mass Basic layout change - action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function massBasicLayoutAction()
+    {
+        $layoutdesignIds = $this->getRequest()->getParam('layoutdesign');
+        if (!is_array($layoutdesignIds)) {
+            Mage::getSingleton('adminhtml/session')->addError(
+                Mage::helper('dls_dlsblog')->__('Please select layout designs.')
+            );
+        } else {
+            try {
+                foreach ($layoutdesignIds as $layoutdesignId) {
+                $layoutdesign = Mage::getSingleton('dls_dlsblog/layoutdesign')->load($layoutdesignId)
+                    ->setBasicLayout($this->getRequest()->getParam('flag_basic_layout'))
+                    ->setIsMassupdate(true)
+                    ->save();
+                }
+                $this->_getSession()->addSuccess(
+                    $this->__('Total of %d layout designs were successfully updated.', count($layoutdesignIds))
+                );
+            } catch (Mage_Core_Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError(
+                    Mage::helper('dls_dlsblog')->__('There was an error updating layout designs.')
+                );
+                Mage::logException($e);
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+    /**
+     * export as csv - action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function exportCsvAction()
+    {
+        $fileName   = 'layoutdesign.csv';
+        $content    = $this->getLayout()->createBlock('dls_dlsblog/adminhtml_layoutdesign_grid')
+            ->getCsv();
+        $this->_prepareDownloadResponse($fileName, $content);
+    }
+
+    /**
+     * export as MsExcel - action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function exportExcelAction()
+    {
+        $fileName   = 'layoutdesign.xls';
+        $content    = $this->getLayout()->createBlock('dls_dlsblog/adminhtml_layoutdesign_grid')
+            ->getExcelFile();
+        $this->_prepareDownloadResponse($fileName, $content);
+    }
+
+    /**
+     * export as xml - action
+     *
+     * @access public
+     * @return void
+     * @author Ultimate Module Creator
+     */
+    public function exportXmlAction()
+    {
+        $fileName   = 'layoutdesign.xml';
+        $content    = $this->getLayout()->createBlock('dls_dlsblog/adminhtml_layoutdesign_grid')
+            ->getXml();
+        $this->_prepareDownloadResponse($fileName, $content);
     }
 
     /**
@@ -288,47 +347,5 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
     protected function _isAllowed()
     {
         return Mage::getSingleton('admin/session')->isAllowed('dls_dlsblog/layoutdesign');
-    }
-
-    /**
-     * Layout design save action
-     *
-     * @access public
-     * @return void
-     * @author Ultimate Module Creator
-     */
-    public function saveAction()
-    {
-        if (!$layoutdesign = $this->_initLayoutdesign()) {
-            return;
-        }
-        $refreshTree = 'false';
-        if ($data = $this->getRequest()->getPost('layoutdesign')) {
-            $layoutdesign->addData($data);
-            if (!$layoutdesign->getId()) {
-                $parentId = $this->getRequest()->getParam('parent');
-                if (!$parentId) {
-                    $parentId = Mage::helper('dls_dlsblog/layoutdesign')->getRootLayoutdesignId();
-                }
-                $parentLayoutdesign = Mage::getModel('dls_dlsblog/layoutdesign')->load($parentId);
-                $layoutdesign->setPath($parentLayoutdesign->getPath());
-            }
-            try {
-                $layoutdesign->save();
-                Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('dls_dlsblog')->__('The layout design has been saved.')
-                );
-                $refreshTree = 'true';
-            }
-            catch (Exception $e) {
-                $this->_getSession()->addError($e->getMessage())->setLayoutdesignData($data);
-                Mage::logException($e);
-                $refreshTree = 'false';
-            }
-        }
-        $url = $this->getUrl('*/*/edit', array('_current' => true, 'id' => $layoutdesign->getId()));
-        $this->getResponse()->setBody(
-            '<script type="text/javascript">parent.updateContent("' . $url . '", {}, '.$refreshTree.');</script>'
-        );
     }
 }

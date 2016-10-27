@@ -17,19 +17,20 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tabs extends Mage_Adminhtml_
      */
     public function __construct()
     {
-        $this->setId('layoutdesign_info_tabs');
-        $this->setDestElementId('layoutdesign_tab_content');
+        parent::__construct();
+        $this->setId('layoutdesign_tabs');
+        $this->setDestElementId('edit_form');
         $this->setTitle(Mage::helper('dls_dlsblog')->__('Layout design'));
-        $this->setTemplate('widget/tabshoriz.phtml');
     }
 
     /**
-     * Prepare Layout Content
+     * before render html
      *
-     * @access public
+     * @access protected
      * @return DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tabs
+     * @author Ultimate Module Creator
      */
-    protected function _prepareLayout()
+    protected function _beforeToHtml()
     {
         $this->addTab(
             'form_layoutdesign',

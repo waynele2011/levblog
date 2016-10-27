@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Blog setting admin grid block
+ * Layout design admin grid block
  *
  * @category    DLS
  * @package     DLS_DLSBlog
  * @author      Ultimate Module Creator
  */
-class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
     /**
      * constructor
@@ -18,7 +18,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
     public function __construct()
     {
         parent::__construct();
-        $this->setId('blogsetGrid');
+        $this->setId('layoutdesignGrid');
         $this->setDefaultSort('entity_id');
         $this->setDefaultDir('ASC');
         $this->setSaveParametersInSession(true);
@@ -29,12 +29,12 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
      * prepare collection
      *
      * @access protected
-     * @return DLS_DLSBlog_Block_Adminhtml_Blogset_Grid
+     * @return DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Grid
      * @author Ultimate Module Creator
      */
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel('dls_dlsblog/blogset')
+        $collection = Mage::getModel('dls_dlsblog/layoutdesign')
             ->getCollection();
         
         $this->setCollection($collection);
@@ -45,7 +45,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
      * prepare grid collection
      *
      * @access protected
-     * @return DLS_DLSBlog_Block_Adminhtml_Blogset_Grid
+     * @return DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Grid
      * @author Ultimate Module Creator
      */
     protected function _prepareColumns()
@@ -56,21 +56,6 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
                 'header' => Mage::helper('dls_dlsblog')->__('Id'),
                 'index'  => 'entity_id',
                 'type'   => 'number'
-            )
-        );
-        $this->addColumn(
-            'layoutdesign_id',
-            array(
-                'header'    => Mage::helper('dls_dlsblog')->__('Layout design'),
-                'index'     => 'layoutdesign_id',
-                'type'      => 'options',
-                'options'   => Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
-                    ->toOptionHash(),
-                'renderer'  => 'dls_dlsblog/adminhtml_helper_column_renderer_parent',
-                'params'    => array(
-                    'id'    => 'getLayoutdesignId'
-                ),
-                'base_link' => 'adminhtml/dlsblog_layoutdesign/edit'
             )
         );
         $this->addColumn(
@@ -92,6 +77,18 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
                     '1' => Mage::helper('dls_dlsblog')->__('Enabled'),
                     '0' => Mage::helper('dls_dlsblog')->__('Disabled'),
                 )
+            )
+        );
+        $this->addColumn(
+            'basic_layout',
+            array(
+                'header' => Mage::helper('dls_dlsblog')->__('Basic layout'),
+                'index'  => 'basic_layout',
+                'type'  => 'options',
+                'options' => Mage::helper('dls_dlsblog')->convertOptions(
+                    Mage::getModel('dls_dlsblog/layoutdesign_attribute_source_basiclayout')->getAllOptions(false)
+                )
+
             )
         );
         $this->addColumn(
@@ -123,13 +120,13 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
      * prepare mass action
      *
      * @access protected
-     * @return DLS_DLSBlog_Block_Adminhtml_Blogset_Grid
+     * @return DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Grid
      * @author Ultimate Module Creator
      */
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('entity_id');
-        $this->getMassactionBlock()->setFormFieldName('blogset');
+        $this->getMassactionBlock()->setFormFieldName('layoutdesign');
         $this->getMassactionBlock()->addItem(
             'delete',
             array(
@@ -158,39 +155,19 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
             )
         );
         $this->getMassactionBlock()->addItem(
-            'custom_default_filter',
+            'basic_layout',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change Default filter'),
-                'url'        => $this->getUrl('*/*/massCustomDefaultFilter', array('_current'=>true)),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Basic layout'),
+                'url'        => $this->getUrl('*/*/massBasicLayout', array('_current'=>true)),
                 'additional' => array(
-                    'flag_custom_default_filter' => array(
-                        'name'   => 'flag_custom_default_filter',
+                    'flag_basic_layout' => array(
+                        'name'   => 'flag_basic_layout',
                         'type'   => 'select',
                         'class'  => 'required-entry',
-                        'label'  => Mage::helper('dls_dlsblog')->__('Default filter'),
-                        'values' => Mage::getModel('dls_dlsblog/blogset_attribute_source_customdefaultfilter')
+                        'label'  => Mage::helper('dls_dlsblog')->__('Basic layout'),
+                        'values' => Mage::getModel('dls_dlsblog/layoutdesign_attribute_source_basiclayout')
                             ->getAllOptions(true),
 
-                    )
-                )
-            )
-        );
-        $values = Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')->toOptionHash();
-        $values = array_reverse($values, true);
-        $values[''] = '';
-        $values = array_reverse($values, true);
-        $this->getMassactionBlock()->addItem(
-            'layoutdesign_id',
-            array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change Layout design'),
-                'url'        => $this->getUrl('*/*/massLayoutdesignId', array('_current'=>true)),
-                'additional' => array(
-                    'flag_layoutdesign_id' => array(
-                        'name'   => 'flag_layoutdesign_id',
-                        'type'   => 'select',
-                        'class'  => 'required-entry',
-                        'label'  => Mage::helper('dls_dlsblog')->__('Layout design'),
-                        'values' => $values
                     )
                 )
             )
@@ -202,7 +179,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
      * get the row url
      *
      * @access public
-     * @param DLS_DLSBlog_Model_Blogset
+     * @param DLS_DLSBlog_Model_Layoutdesign
      * @return string
      * @author Ultimate Module Creator
      */
@@ -227,7 +204,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
      * after collection load
      *
      * @access protected
-     * @return DLS_DLSBlog_Block_Adminhtml_Blogset_Grid
+     * @return DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Grid
      * @author Ultimate Module Creator
      */
     protected function _afterLoadCollection()
