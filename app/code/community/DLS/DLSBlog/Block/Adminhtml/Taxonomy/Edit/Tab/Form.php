@@ -61,6 +61,29 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Tab_Form extends Mage_Adminhtml_
                 )
             );
         }
+        
+        $fieldset->addField(
+            'name',
+            'text',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Name'),
+                'name'  => 'name',
+                'required'  => true,
+                'class' => 'required-entry',
+
+           )
+        );
+
+        $fieldset->addField(
+            'description',
+            'textarea',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Description'),
+                'name'  => 'description',
+
+           )
+        );
+        
         $values = Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
             ->toOptionArray();
         array_unshift($values, array('label' => '', 'value' => ''));
@@ -93,28 +116,6 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Tab_Form extends Mage_Adminhtml_
                 'values'    => $values,
                 'after_element_html' => $html
             )
-        );
-
-        $fieldset->addField(
-            'name',
-            'text',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Name'),
-                'name'  => 'name',
-                'required'  => true,
-                'class' => 'required-entry',
-
-           )
-        );
-
-        $fieldset->addField(
-            'description',
-            'textarea',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Description'),
-                'name'  => 'description',
-
-           )
         );
 
         $fieldset->addField(
