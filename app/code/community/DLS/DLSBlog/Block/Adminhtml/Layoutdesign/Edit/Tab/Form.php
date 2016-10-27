@@ -48,29 +48,7 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tab_Form extends Mage_Adminh
 
            )
         );
-
-        $fieldset->addField(
-            'basic_layout',
-            'select',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Basic layout'),
-                'name'  => 'basic_layout',
-                'required'  => true,
-                'class' => 'required-entry',
-
-                'values'=> Mage::getModel('dls_dlsblog/layoutdesign_attribute_source_basiclayout')->getAllOptions(true),
-           )
-        );
-
-        $fieldset->addField(
-            'design_code',
-            'textarea',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Design frame'),
-                'name'  => 'design_code',
-
-           )
-        );
+        
         $fieldset->addField(
             'status',
             'select',

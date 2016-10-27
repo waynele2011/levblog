@@ -114,6 +114,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
         if ($data = $this->getRequest()->getPost('layoutdesign')) {
             try {
                 $layoutdesign = $this->_initLayoutdesign();
+                $data['design_code'] = Mage::helper('core')->jsonEncode($data['design_frame']);
                 $layoutdesign->addData($data);
                 $layoutdesign->save();
                 Mage::getSingleton('adminhtml/session')->addSuccess(
