@@ -166,8 +166,6 @@ class DLS_DLSBlog_Block_Adminhtml_Filter_Edit_Tab_Form extends Mage_Adminhtml_Bl
             array(
                 'label' => Mage::helper('dls_dlsblog')->__('Sorts'),
                 'name'  => 'sort_code',
-                'required'  => true,
-                'class' => 'required-entry',
 
            )
         );
