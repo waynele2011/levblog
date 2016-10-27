@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Taxonomy view template
+ *
+ * @category    DLS
+ * @package     DLS_DLSBlog
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_taxonomy = $this->getCurrentTaxonomy();?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title taxonomy-title">
+    <h1><?php echo $_taxonomy->getName(); ?></h1>
+</div>
+<div class="taxonomy-view">
+    <div class="taxonomy-name">
+        <?php echo Mage::helper('dls_dlsblog')->__('Name');?>:<?php echo $_taxonomy->getName();?>
+
+    </div>
+
+</div>

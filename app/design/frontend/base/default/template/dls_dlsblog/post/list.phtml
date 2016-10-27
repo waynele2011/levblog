@@ -1,0 +1,30 @@
+<?php 
+
+/**
+ * Post list template
+ *
+ * @category    DLS
+ * @package     DLS_DLSBlog
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $_posts = $this->getPosts(); ?>
+<div class="page-title post-title">
+    <h1><?php echo Mage::helper('dls_dlsblog')->__('Posts') ?></h1>
+</div>
+<?php if ($_posts->getSize() > 0) :?>
+    <?php echo $this->getPagerHtml(); ?>
+    <div class="post-list-container">
+    <?php foreach ($_posts as $_post) : ?>
+        <div class="post-list-item">
+            <a href="<?php echo $_post->getPostUrl()?>">
+                <?php echo $_post->getTitle();?>
+            </a><br />
+        </div>
+    <?php endforeach;?>
+    </div>
+    <?php echo $this->getPagerHtml(); ?>
+<?php else : ?>
+    <?php echo Mage::helper('dls_dlsblog')->__('There are no posts at this moment');?>
+<?php endif;?>

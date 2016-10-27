@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Layout design admin edit tabs
+ *
+ * @category    DLS
+ * @package     DLS_DLSBlog
+ * @author      Ultimate Module Creator
+ */
+class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
+{
+    /**
+     * Initialize Tabs
+     *
+     * @access public
+     * @author Ultimate Module Creator
+     */
+    public function __construct()
+    {
+        $this->setId('layoutdesign_info_tabs');
+        $this->setDestElementId('layoutdesign_tab_content');
+        $this->setTitle(Mage::helper('dls_dlsblog')->__('Layout design'));
+        $this->setTemplate('widget/tabshoriz.phtml');
+    }
+
+    /**
+     * Prepare Layout Content
+     *
+     * @access public
+     * @return DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tabs
+     */
+    protected function _prepareLayout()
+    {
+        $this->addTab(
+            'form_layoutdesign',
+            array(
+                'label'   => Mage::helper('dls_dlsblog')->__('Layout design'),
+                'title'   => Mage::helper('dls_dlsblog')->__('Layout design'),
+                'content' => $this->getLayout()->createBlock(
+                    'dls_dlsblog/adminhtml_layoutdesign_edit_tab_form'
+                )
+                ->toHtml(),
+            )
+        );
+        return parent::_beforeToHtml();
+    }
+
+    /**
+     * Retrieve layout design entity
+     *
+     * @access public
+     * @return DLS_DLSBlog_Model_Layoutdesign
+     * @author Ultimate Module Creator
+     */
+    public function getLayoutdesign()
+    {
+        return Mage::registry('current_layoutdesign');
+    }
+}

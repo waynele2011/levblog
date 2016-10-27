@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <DLS_DLSBlog>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Catalog />
+             </depends>
+        </DLS_DLSBlog>
+    </modules>
+</config>

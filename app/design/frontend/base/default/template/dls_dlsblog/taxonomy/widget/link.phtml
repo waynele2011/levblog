@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Taxonomy link widget template
+ *
+ * @category    DLS
+ * @package     DLS_DLSBlog
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_taxonomy = $this->getCurrentTaxonomy();?>
+<?php if ($_taxonomy) :?>
+    <div class="taxonomy-widget-link">
+        <a href="<?php echo $_taxonomy->getTaxonomyUrl()?>"><?php echo $_taxonomy->getName()?></a>
+    </div>
+<?php endif;?>

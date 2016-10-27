@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * Post view template
+ *
+ * @category    DLS
+ * @package     DLS_DLSBlog
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_post = $this->getCurrentPost();?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title post-title">
+    <h1><?php echo $_post->getTitle(); ?></h1>
+</div>
+<div class="post-view">
+    <div class="post-title">
+        <?php echo Mage::helper('dls_dlsblog')->__('Title');?>:<?php echo $_post->getTitle();?>
+
+    </div>
+    <div class="post-main_content">
+        <?php echo Mage::helper('dls_dlsblog')->__('Main content');?>:<?php echo $_post->getMainContent();?>
+
+    </div>
+    <div class="post-short_content">
+        <?php echo Mage::helper('dls_dlsblog')->__('Short content');?>:<?php echo $_post->getShortContent();?>
+
+    </div>
+
+</div>

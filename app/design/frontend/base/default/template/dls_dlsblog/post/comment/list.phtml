@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Post comments list template
+ *
+ * @category    DLS
+ * @package     DLS_DLSBlog
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_post = $this->getPost()?>
+<?php if ($_post->getAllowComments()) : ?>
+    <?php $_comments = $this->getComments(); ?>
+    <?php if (count($_comments)) : ?>
+        <div class="box-collateral box-reviews" id="post-reviews">
+            <h2><?php echo $this->__('Comments for: %s', $_post->getTitle()) ?></h2>
+            <?php echo $this->getPagerHtml() ?>
+            <dl>
+                <?php foreach ($_comments as $_comment):?>
+                <dt>
+                    <div class="author"><?php echo $this->__('On %s %s wrote:', $this->formatDate($_comment->getCreatedAt(), 'long'), $this->escapeHtml($_comment->getName()))?></div>
+                    <strong><?php echo $this->escapeHtml($_comment->getTitle()) ?></strong>
+                </dt>
+                <dd>
+                    <?php echo nl2br($this->escapeHtml($_comment->getComment())) ?>
+                </dd>
+                <?php endforeach; ?>
+            </dl>
+            <?php echo $this->getPagerHtml() ?>
+        </div>
+    <?php endif;?>
+    <?php echo $this->getChildHtml('comment_form') ?>
+<?php endif;?>

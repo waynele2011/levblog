@@ -1,0 +1,24 @@
+<?php 
+
+/**
+ * Taxonomy Blog setting list template
+ *
+ * @category    DLS
+ * @package     DLS_DLSBlog
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_blogsets = $this->getBlogsets(); ?>
+<?php if ($_blogsets->getSize() > 0) :?>
+<div class="page-title blogset-title">
+    <h2><?php echo Mage::helper('dls_dlsblog')->__('Blogs setting') ?></h2>
+</div>
+<div class="blogsets-list-container">
+    <?php foreach ($_blogsets as $_blogset) : ?>
+        <div class="blogset-list-item">
+            <?php echo $_blogset->getName();?>
+<br />
+        </div>
+    <?php endforeach;?>
+</div>
+<?php endif;?>

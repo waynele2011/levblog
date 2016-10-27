@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<layout>
+    
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="dls_dlsblog"><name>post_comments</name><path>dls_dlsblog/post_customer_comment</path><label>Posts Comments</label></action>
+        </reference>
+    </customer_account>
+    <dls_dlsblog_post_index translate="label" module="dls_dlsblog">
+        <label>Posts list</label>
+        <update handle="page_one_column" />
+        <reference name="content">
+            <block type="dls_dlsblog/post_list" name="post_list" template="dls_dlsblog/post/list.phtml" />
+        </reference>
+    </dls_dlsblog_post_index>
+    <dls_dlsblog_taxonomy_view translate="label" module="dls_dlsblog">
+        <label>Taxonomy view page</label>
+        <update handle="page_one_column" />
+        <reference name="head">
+            <action method="addItem" ifconfig="dls_dlsblog/taxonomy/tree"><type>skin_js</type><js>js/dls_dlsblog/tree.js</js></action>
+        </reference>
+        <reference name="content">
+            <block type="dls_dlsblog/taxonomy_view" name="taxonomy_view" template="dls_dlsblog/taxonomy/view.phtml" />
+            <block type="dls_dlsblog/taxonomy_children" name="taxonomy_children" template="dls_dlsblog/taxonomy/children.phtml" />
+            <block type="dls_dlsblog/taxonomy_blogset_list" name="taxonomy.blogset_list" as="taxonomy_blogsets" template="dls_dlsblog/taxonomy/blogset/list.phtml" />
+            <block type="dls_dlsblog/taxonomy_filter_list" name="taxonomy.filter_list" as="taxonomy_filters" template="dls_dlsblog/taxonomy/filter/list.phtml" />
+            <block type="dls_dlsblog/taxonomy_post_list" name="taxonomy.post_list" as="taxonomy_posts" template="dls_dlsblog/taxonomy/post/list.phtml" />
+        </reference>
+    </dls_dlsblog_taxonomy_view>
+    <dls_dlsblog_filter_view translate="label" module="dls_dlsblog">
+        <label>Filter view page</label>
+        <update handle="page_one_column" />
+        <reference name="content">
+            <block type="dls_dlsblog/filter_view" name="filter_view" template="dls_dlsblog/filter/view.phtml" />
+            <block type="dls_dlsblog/filter_taxonomy_list" name="filter.taxonomy_list" as="filter_taxonomies" template="dls_dlsblog/filter/taxonomy/list.phtml" />
+        </reference>
+    </dls_dlsblog_filter_view>
+    <dls_dlsblog_post_view translate="label" module="dls_dlsblog">
+        <label>Post view page</label>
+        <update handle="page_one_column" />
+        <reference name="content">
+            <block type="dls_dlsblog/post_view" name="post_view" template="dls_dlsblog/post/view.phtml" />
+            <block type="dls_dlsblog/post_catalog_product_list" name="post.info.products" as="post_products" template="dls_dlsblog/post/catalog/product/list.phtml" />
+            <block type="dls_dlsblog/post_taxonomy_list" name="post.taxonomy_list" as="post_taxonomies" template="dls_dlsblog/post/taxonomy/list.phtml" />
+            <block type="dls_dlsblog/post_tag_list" name="post.tag_list" as="post_tags" template="dls_dlsblog/post/tag/list.phtml" />
+            <block type="dls_dlsblog/post_comment_list" name="post.comments_list" as="post_comment_list" template="dls_dlsblog/post/comment/list.phtml">
+                <block type="dls_dlsblog/post_comment_form" name="comment_form" as="comment_form" template="dls_dlsblog/post/comment/form.phtml" />
+            </block>
+        </reference>
+    </dls_dlsblog_post_view>
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="dls_dlsblog/catalog_product_list_post" name="product.info.posts" as="product_posts" template="dls_dlsblog/catalog/product/list/post.phtml">
+                <action method="addToParentGroup"><group>detailed_info</group></action>
+                <action method="setTitle" translate="value" module="dls_dlsblog"><value>Posts</value></action>
+            </block>
+        </reference>
+    </catalog_product_view>
+    <dls_dlsblog_post_customer_comment_index translate="label" module="dls_dlsblog">
+        <label>My Posts comments</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="dls_dlsblog/post_customer_comment_list" name="customer_post_comments" template="dls_dlsblog/post/customer/comment/list.phtml"/>
+        </reference>
+    </dls_dlsblog_post_customer_comment_index>
+    <dls_dlsblog_post_customer_comment_view translate="label" module="dls_dlsblog">
+        <label>My Posts comment view</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="dls_dlsblog/post_customer_comment_view" name="customer_post_comment" template="dls_dlsblog/post/customer/comment/view.phtml"/>
+        </reference>
+    </dls_dlsblog_post_customer_comment_view>
+</layout>
