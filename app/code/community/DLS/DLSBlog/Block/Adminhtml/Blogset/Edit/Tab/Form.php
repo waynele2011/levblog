@@ -30,7 +30,29 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tab_Form extends Mage_Adminhtml_B
             'image',
             Mage::getConfig()->getBlockClassName('dls_dlsblog/adminhtml_blogset_helper_image')
         );
-        $values = Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
+
+        $fieldset->addField(
+            'name',
+            'text',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Name'),
+                'name'  => 'name',
+                'required'  => true,
+                'class' => 'required-entry',
+
+           )
+        );
+
+        $fieldset->addField(
+            'description',
+            'textarea',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Blog description'),
+                'name'  => 'description',
+
+           )
+        );
+$values = Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
             ->toOptionArray();
         array_unshift($values, array('label' => '', 'value' => ''));
 
@@ -62,28 +84,6 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tab_Form extends Mage_Adminhtml_B
                 'values'    => $values,
                 'after_element_html' => $html
             )
-        );
-
-        $fieldset->addField(
-            'name',
-            'text',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Name'),
-                'name'  => 'name',
-                'required'  => true,
-                'class' => 'required-entry',
-
-           )
-        );
-
-        $fieldset->addField(
-            'description',
-            'textarea',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Blog description'),
-                'name'  => 'description',
-
-           )
         );
 
         $fieldset->addField(
