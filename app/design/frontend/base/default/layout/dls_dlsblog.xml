@@ -1,7 +1,18 @@
 <?xml version="1.0"?>
 
 <layout>
-    
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/dls_dlsblog/custom.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/dls_dlsblog/fonts/font-awesome.min.css</name>
+            </action>
+        </reference>
+    </default>
     <customer_account>
         <reference name="customer_account_navigation">
             <action method="addLink" translate="label" module="dls_dlsblog"><name>post_comments</name><path>dls_dlsblog/post_customer_comment</path><label>Posts Comments</label></action>
@@ -16,48 +27,80 @@
     </dls_dlsblog_post_index>
     <dls_dlsblog_blogset_view translate="label" module="dls_dlsblog">
         <label>Blog setting view page</label>
-        <update handle="page_one_column" />
+        <reference name="header">
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml" before="breadcrumbs"/>
+        </reference>
+        <reference name="left">
+            <block type="dls_dlsblog/left" name="block_left" template="dls_dlsblog/left.phtml"/>
+        </reference>
+        <reference name="right">
+            <block type="dls_dlsblog/right" name="block_right" template="dls_dlsblog/right.phtml"/>
+        </reference>
         <reference name="content">
-            <block type="dls_dlsblog/blogset_view" name="blogset_view" template="dls_dlsblog/blogset/view.phtml" />
+            <block type="dls_dlsblog/top"  name="block_top" template="dls_dlsblog/top.phtml"/>
             <block type="dls_dlsblog/blogset_filter_list" name="blogset.filter_list" as="blogset_filters" template="dls_dlsblog/blogset/filter/list.phtml" />
-            <block type="dls_dlsblog/blogset_tag_list" name="blogset.tag_list" as="blogset_tags" template="dls_dlsblog/blogset/tag/list.phtml" />
-            <block type="dls_dlsblog/blogset_post_list" name="blogset.post_list" as="blogset_posts" template="dls_dlsblog/blogset/post/list.phtml" />
+            <block type="dls_dlsblog/blogset_post_list" name="blogset.post_list" as="blogset_posts" template="dls_dlsblog/blogset/post/view.phtml" />
             <block type="dls_dlsblog/blogset_taxonomy_list" name="blogset.taxonomy_list" as="blogset_taxonomies" template="dls_dlsblog/blogset/taxonomy/list.phtml" />
+            <block type="dls_dlsblog/blogset_tag_list" name="blogset.tag_list" as="blogset_tags" template="dls_dlsblog/blogset/tag/list.phtml" />
+            <block type="dls_dlsblog/bottom"  name="block_bottom" template="dls_dlsblog/bottom.phtml"/>
         </reference>
     </dls_dlsblog_blogset_view>
     <dls_dlsblog_taxonomy_view translate="label" module="dls_dlsblog">
         <label>Taxonomy view page</label>
-        <update handle="page_one_column" />
         <reference name="head">
             <action method="addItem" ifconfig="dls_dlsblog/taxonomy/tree"><type>skin_js</type><js>js/dls_dlsblog/tree.js</js></action>
         </reference>
+        <reference name="left">
+            <block type="dls_dlsblog/left" name="block_left" template="dls_dlsblog/left.phtml"/>
+        </reference>
+        <reference name="right">
+            <block type="dls_dlsblog/right" name="block_right" template="dls_dlsblog/right.phtml"/>
+        </reference>
         <reference name="content">
-            <block type="dls_dlsblog/taxonomy_view" name="taxonomy_view" template="dls_dlsblog/taxonomy/view.phtml" />
-            <block type="dls_dlsblog/taxonomy_children" name="taxonomy_children" template="dls_dlsblog/taxonomy/children.phtml" />
-            <block type="dls_dlsblog/taxonomy_blogset_list" name="taxonomy.blogset_list" as="taxonomy_blogsets" template="dls_dlsblog/taxonomy/blogset/list.phtml" />
-            <block type="dls_dlsblog/taxonomy_filter_list" name="taxonomy.filter_list" as="taxonomy_filters" template="dls_dlsblog/taxonomy/filter/list.phtml" />
-            <block type="dls_dlsblog/taxonomy_post_list" name="taxonomy.post_list" as="taxonomy_posts" template="dls_dlsblog/taxonomy/post/list.phtml" />
+            <block type="dls_dlsblog/top"  name="block_top" template="dls_dlsblog/top.phtml"/>
+            <block type="dls_dlsblog/taxonomy_post_list" name="taxonomy.post_list" as="taxonomy_posts" template="dls_dlsblog/taxonomy/post/view.phtml" />
+            <block type="dls_dlsblog/bottom"  name="block_bottom" template="dls_dlsblog/bottom.phtml"/>
         </reference>
     </dls_dlsblog_taxonomy_view>
     <dls_dlsblog_filter_view translate="label" module="dls_dlsblog">
         <label>Filter view page</label>
-        <update handle="page_one_column" />
+        <reference name="header">
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml" before="breadcrumbs"/>
+        </reference>
+        <reference name="left">
+            <block type="dls_dlsblog/left" name="block_left" template="dls_dlsblog/left.phtml"/>
+        </reference>
+        <reference name="right">
+            <block type="dls_dlsblog/right" name="block_right" template="dls_dlsblog/right.phtml"/>
+        </reference>
         <reference name="content">
+            <block type="dls_dlsblog/top"  name="block_top" template="dls_dlsblog/top.phtml"/>
             <block type="dls_dlsblog/filter_view" name="filter_view" template="dls_dlsblog/filter/view.phtml" />
             <block type="dls_dlsblog/filter_taxonomy_list" name="filter.taxonomy_list" as="filter_taxonomies" template="dls_dlsblog/filter/taxonomy/list.phtml" />
+            <block type="dls_dlsblog/bottom"  name="block_bottom" template="dls_dlsblog/bottom.phtml"/>
         </reference>
     </dls_dlsblog_filter_view>
     <dls_dlsblog_post_view translate="label" module="dls_dlsblog">
         <label>Post view page</label>
-        <update handle="page_one_column" />
+        <reference name="header">
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml" before="breadcrumbs"/>
+        </reference>
+        <reference name="left">
+            <block type="dls_dlsblog/left" name="block_left" template="dls_dlsblog/left.phtml"/>
+        </reference>
+        <reference name="right">
+            <block type="dls_dlsblog/right" name="block_right" template="dls_dlsblog/right.phtml"/>
+        </reference>
         <reference name="content">
+            <block type="dls_dlsblog/top"  name="block_top" template="dls_dlsblog/top.phtml"/>
             <block type="dls_dlsblog/post_view" name="post_view" template="dls_dlsblog/post/view.phtml" />
-            <block type="dls_dlsblog/post_catalog_product_list" name="post.info.products" as="post_products" template="dls_dlsblog/post/catalog/product/list.phtml" />
             <block type="dls_dlsblog/post_taxonomy_list" name="post.taxonomy_list" as="post_taxonomies" template="dls_dlsblog/post/taxonomy/list.phtml" />
             <block type="dls_dlsblog/post_tag_list" name="post.tag_list" as="post_tags" template="dls_dlsblog/post/tag/list.phtml" />
+            <block type="dls_dlsblog/post_catalog_product_list" name="post.info.products" as="post_products" template="dls_dlsblog/post/catalog/product/list.phtml" />
             <block type="dls_dlsblog/post_comment_list" name="post.comments_list" as="post_comment_list" template="dls_dlsblog/post/comment/list.phtml">
                 <block type="dls_dlsblog/post_comment_form" name="comment_form" as="comment_form" template="dls_dlsblog/post/comment/form.phtml" />
             </block>
+            <block type="dls_dlsblog/bottom"  name="block_bottom" template="dls_dlsblog/bottom.phtml"/>
         </reference>
     </dls_dlsblog_post_view>
     <catalog_product_view>

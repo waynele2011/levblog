@@ -21,8 +21,8 @@ class DLS_DLSBlog_Block_Taxonomy_Post_List extends DLS_DLSBlog_Block_Post_List
         parent::__construct();
         $taxonomy = $this->getTaxonomy();
          if ($taxonomy) {
-             $this->getPosts()->addTaxonomyFilter($taxonomy->getId());
-             $this->getPosts()->unshiftOrder('related_taxonomy.position', 'ASC');
+             $collection = $this->getPosts()->addTaxonomyFilter($taxonomy->getId());
+             $this->setCollection($collection);
          }
     }
 
@@ -35,6 +35,11 @@ class DLS_DLSBlog_Block_Taxonomy_Post_List extends DLS_DLSBlog_Block_Post_List
      */
     protected function _prepareLayout()
     {
+        $pager = $this->getLayout()->createBlock('page/html_pager', 'list.pager');
+        $pager->setAvailableLimit(array(5 => 5, 10 => 10, 20 => 20, 'all' => 'all'));
+        $pager->setCollection($this->getCollection());
+        $this->setChild('pager', $pager);
+        $this->getCollection()->load();
         return $this;
     }
 
@@ -48,5 +53,9 @@ class DLS_DLSBlog_Block_Taxonomy_Post_List extends DLS_DLSBlog_Block_Post_List
     public function getTaxonomy()
     {
         return Mage::registry('current_taxonomy');
+    }
+    
+    public function getPagerHtml() {
+        return $this->getChildHtml('pager');
     }
 }

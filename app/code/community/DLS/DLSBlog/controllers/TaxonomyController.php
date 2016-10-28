@@ -56,6 +56,7 @@ class DLS_DLSBlog_TaxonomyController extends Mage_Core_Controller_Front_Action
         $this->_initLayoutMessages('checkout/session');
         if ($root = $this->getLayout()->getBlock('root')) {
             $root->addBodyClass('dlsblog-taxonomy dlsblog-taxonomy' . $taxonomy->getId());
+            $root->addBodyClass('dlsblog');
         }
         if (Mage::helper('dls_dlsblog/taxonomy')->getUseBreadcrumbs()) {
             if ($breadcrumbBlock = $this->getLayout()->getBlock('breadcrumbs')) {

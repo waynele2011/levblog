@@ -9,7 +9,7 @@
  */
 ?>
 <?php $data = $this->getCommentData();?>
-<div class="form-add">
+<div class="form-add" id="form-add">
     <h2><?php echo $this->__('Write Your Comment') ?></h2>
     <?php if ($this->getAllowWriteCommentFlag()): ?>
         <form action="<?php echo $this->getAction() ?>" method="post" id="comment-form">

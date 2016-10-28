@@ -52,6 +52,7 @@ class DLS_DLSBlog_FilterController extends Mage_Core_Controller_Front_Action
         $this->_initLayoutMessages('checkout/session');
         if ($root = $this->getLayout()->getBlock('root')) {
             $root->addBodyClass('dlsblog-filter dlsblog-filter' . $filter->getId());
+            $root->addBodyClass('dlsblog');
         }
         if (Mage::helper('dls_dlsblog/filter')->getUseBreadcrumbs()) {
             if ($breadcrumbBlock = $this->getLayout()->getBlock('breadcrumbs')) {

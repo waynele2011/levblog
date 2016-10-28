@@ -95,6 +95,7 @@ class DLS_DLSBlog_PostController extends Mage_Core_Controller_Front_Action
         $this->_initLayoutMessages('checkout/session');
         if ($root = $this->getLayout()->getBlock('root')) {
             $root->addBodyClass('dlsblog-post dlsblog-post' . $post->getId());
+            $root->addBodyClass('dlsblog');
         }
         if (Mage::helper('dls_dlsblog/post')->getUseBreadcrumbs()) {
             if ($breadcrumbBlock = $this->getLayout()->getBlock('breadcrumbs')) {

@@ -1,0 +1,39 @@
+<?php $_taxonomies = $this->getTaxonomiesArray() ?>
+<?php $curent_blogset = $this->getBlogset(); ?>
+<?php if ($_taxonomies->getSize() > 0) : ?>
+    <div class="taxonomies-list-container">
+        <div class="taxonomy-list-item">
+            <ol class="nav-primary sub-menu-taxonomies clearfix">
+                <li class="parent sub-menu-title-wrapper">
+                    <a href="<?php Mage::getUrl($curent_blogset->getUrlKey()) ?>" class="sub-menu-title">
+                        <?php if ($curent_blogset->getLogo()) : ?>
+                            <img src="<?php echo Mage::helper('dls_dlsblog/blogset_image')->init($curent_blogset, 'logo'); ?>"
+                                 alt="<?php echo $this->escapeHtml($curent_blogset->getName()); ?>" />
+                             <?php else: ?>
+                                 <?php echo Mage::helper('dls_dlsblog')->__('Blog'); ?>
+                             <?php endif; ?>
+                    </a>
+                </li>
+                <?php foreach ($_taxonomies as $_taxonomy) : ?>
+                    <?php if ($_taxonomy->getLevel() <= 1): ?>
+                        <li class="parent">
+                            <a href="<?php echo ($_taxonomy->getTaxonomyUrl()) ?>" class="level0 menu-item">
+                                <?php echo $_taxonomy->getName(); ?>
+                            </a>
+                            <ul class="children" style="display: none;">
+                                <?php $_childrenTaxonomy = $_taxonomy->getChildrenTaxonomies(); ?>
+                                <?php foreach ($_childrenTaxonomy as $_childTaxonomy) : ?>
+                                    <li class="child-item">
+                                        <a href="<?php echo ($_childTaxonomy->getTaxonomyUrl()) ?>" class="level0 menu-item">
+                                            <?php echo $_childTaxonomy->getName(); ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ol>
+        </div>
+    </div>
+<?php endif; ?>

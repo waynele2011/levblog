@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 /**
  * Blogset Taxonomy list template
  *
@@ -9,17 +8,30 @@
  */
 ?>
 <?php $_taxonomies = $this->getTaxonomies(); ?>
-<?php if ($_taxonomies->getSize() > 0) :?>
-<div class="page-title taxonomy-title">
-    <h2><?php echo Mage::helper('dls_dlsblog')->__('Taxonomies') ?></h2>
-</div>
-<div class="taxonomies-list-container">
-    <?php foreach ($_taxonomies as $_taxonomy) : ?>
+<?php if ($_taxonomies->getSize() > 0) : ?>
+    <div class="taxonomies-list-container">
         <div class="taxonomy-list-item">
-            <a href="<?php echo $_taxonomy->getTaxonomyUrl()?>">
-                <?php echo $_taxonomy->getName();?>
-            </a><br />
+            <i class="fa fa-folder-open" aria-hidden="true"></i>
+            <?php
+            $count = 1;
+            $total = ($_taxonomies->getSize());
+            ?>
+            <?php foreach ($_taxonomies as $_taxonomy) : ?>
+                <?php if ($count == $total || $total == 1) : ?>
+                    <a href="<?php echo $_taxonomy->getTaxonomyUrl() ?>">
+                        <?php echo $_taxonomy->getName(); ?>
+                    </a>
+                <?php else :
+                    ?>
+                    <a href="<?php echo $_taxonomy->getTaxonomyUrl() ?>">
+                        <?php echo $_taxonomy->getName(); ?>
+                    </a>
+                    <span>,</span>
+                    <?php
+                    $count++;
+                endif;
+                ?>
+            <?php endforeach; ?>
         </div>
-    <?php endforeach;?>
-</div>
-<?php endif;?>
+    </div>
+<?php endif; ?>

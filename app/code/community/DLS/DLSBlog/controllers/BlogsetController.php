@@ -52,6 +52,7 @@ class DLS_DLSBlog_BlogsetController extends Mage_Core_Controller_Front_Action
         $this->_initLayoutMessages('checkout/session');
         if ($root = $this->getLayout()->getBlock('root')) {
             $root->addBodyClass('dlsblog-blogset dlsblog-blogset' . $blogset->getId());
+            $root->addBodyClass('dlsblog');
         }
         if (Mage::helper('dls_dlsblog/blogset')->getUseBreadcrumbs()) {
             if ($breadcrumbBlock = $this->getLayout()->getBlock('breadcrumbs')) {

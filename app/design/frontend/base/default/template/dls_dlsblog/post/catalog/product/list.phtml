@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Post product list template
  *
@@ -8,16 +7,22 @@
  * @author      Ultimate Module Creator
  */
 ?>
-<?php $products = $this->getProductCollection();?>
-<?php if ($products->count() > 0) :?>
-<h2><?php echo Mage::helper('catalog')->__('Products');?></h2>
-<div class="box-collateral box-products box-up-sell">
-    <?php foreach ($products as $product) : ?>
-        <div class="item">
-            <a href="<?php echo $product->getProductUrl()?>">
-                <?php echo $product->getName();?><br />
-            </a>
-        </div>
-    <?php endforeach; ?>
-</div>
-<?php endif;?>
+<?php $products = $this->getProductCollection(); ?>
+<?php if ($products->count() > 0) : ?>
+    <h2 class="blog-related-product"><?php echo Mage::helper('catalog')->__('Related Products'); ?></h2>
+    <div class="box-collateral box-products box-up-sell">
+        <?php $productMediaConfig = Mage::getModel('catalog/product_media_config'); ?>
+        <?php foreach ($products as $product) : ?>
+            <div class="item">
+                <a href="<?php echo $product->getProductUrl() ?>">
+                    <div class="related-product-image" style="">
+                        <img src="<?php echo (string)Mage::helper('catalog/image')->init($product, 'thumbnail')->resize(200);?>">
+                    </div>
+                    <span style="">
+                        <?php echo $product->getName(); ?>
+                    </span>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
