@@ -151,6 +151,18 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_PostController extends Mage_Adminhtml_Contro
                 $post->setTagsData(
                     Mage::helper('adminhtml/js')->decodeGridSerializedInput($data['tags'])
                 );
+            } elseif (isset($data['post']['tags_custom_hidden'])) {
+                $tagsNameArray = array_map('trim', explode(',', $data['post']['tags_custom_hidden']));
+                $tagsData = array();
+                foreach($tagsNameArray as $tagName ) {
+                    $tagsCollection = Mage::getModel('dls_dlsblog/tag')->getCollection();
+                    if(empty($tagName)) continue;
+                    $tagsCollection->addFieldToFilter('name', $tagName);
+                    if($tagsCollection->count() < 1) continue;
+                    $tagInstance = $tagsCollection->getFirstItem();
+                    $tagsData[$tagInstance->getId()] = array('position'=>'');
+                }
+                $post->setTagsData($tagsData);
             }
                 $taxonomies = $this->getRequest()->getPost('taxonomy_ids', -1);
                 if ($taxonomies != -1) {

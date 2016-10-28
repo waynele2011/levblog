@@ -1,0 +1,10 @@
+ul.ui-autocomplete {
+    width: 280px;
+    background: #f0f3f9;
+    padding: 1px 10px;
+    border: 1px solid #DDD;
+}
+ul.ui-autocomplete:hover {
+    background: #a9c5e9;
+    cursor: pointer;
+}

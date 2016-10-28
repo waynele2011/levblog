@@ -31,7 +31,37 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Edit_Tab_Attributes extends Mage_Adminhtm
         foreach ($attributes as $attribute) {
             $attribute->setEntity(Mage::getResourceModel('dls_dlsblog/post'));
         }
+
+        $post = Mage::registry('current_post');
+        $selectedTags = $post->getSelectedTags();
+        $tagsValue = array();
+        foreach ($selectedTags as $tag){
+            $tagsValue[] = $tag->getName();
+        }
+        
+        
         $this->_setFieldset($attributes, $fieldset, array());
+        $fieldset->addType('tags_autocomplete', 'DLS_DLSBlog_Block_Adminhtml_Post_Renderer_TagsAutocomplete');
+        $fieldset->addField(
+            'tags_autocomplete',
+            'tags_autocomplete',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Tags'),
+                'name'  => 'tags_autocomplete',
+                'value' => implode(',',$tagsValue),
+           )
+        );
+
+        $fieldset->addField(
+            'tags_custom_hidden',
+            'hidden',
+            array(
+                'name'  => 'tags_custom_hidden',
+                'class'  => 'tags-custom-hidden',
+                'value' => implode(',',$tagsValue),
+           )
+        );
+        
         $formValues = Mage::registry('current_post')->getData();
         if (!Mage::registry('current_post')->getId()) {
             foreach ($attributes as $attribute) {

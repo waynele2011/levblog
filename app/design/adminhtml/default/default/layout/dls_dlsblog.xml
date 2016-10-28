@@ -9,7 +9,6 @@
         </reference>
         <reference name="content">
             <block type="dls_dlsblog/adminhtml_blogset" name="blogset" />
-
         </reference>
     </adminhtml_dlsblog_blogset_index>
     <adminhtml_dlsblog_blogset_grid>
@@ -170,6 +169,21 @@
     <!-- Post add/edit action -->
     <adminhtml_dlsblog_post_edit>
         <update handle="editor"/>
+        <reference name="head">
+            <action method="setCanLoadTinyMce"><load>1</load></action>
+            <action method="addJs">
+                <script>lib/jquery/jquery-1.10.2.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>lib/jquery/jquery-ui-1.11.4.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>lib/jquery/noconflict.js</script>
+            </action>
+            <action method="addCss">
+                <name>dls_dlsblog/tags-autocomplete.css</name>
+            </action>
+        </reference>
         <reference name="menu">
             <action method="setActive">
                 <menupath>dls_dlsblog/post</menupath>
@@ -181,9 +195,6 @@
         <reference name="left">
             <block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>
             <block type="dls_dlsblog/adminhtml_post_edit_tabs" name="post_tabs"></block>
-        </reference>
-        <reference name="head">
-            <action method="setCanLoadTinyMce"><load>1</load></action>
         </reference>
         <reference name="js">
             <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
