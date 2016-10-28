@@ -286,9 +286,7 @@ $table = $this->getConnection()
     ->addColumn(
         'sort_code',
         Varien_Db_Ddl_Table::TYPE_TEXT, '64k',
-        array(
-            'nullable'  => false,
-        ),
+        array(),
         'Sorts'
     )
     ->addColumn(

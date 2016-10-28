@@ -26,6 +26,29 @@ class DLS_DLSBlog_Block_Adminhtml_Filter_Edit_Tab_Form extends Mage_Adminhtml_Bl
             'filter_form',
             array('legend' => Mage::helper('dls_dlsblog')->__('Filter'))
         );
+
+        $fieldset->addField(
+            'name',
+            'text',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Name'),
+                'name'  => 'name',
+                'required'  => true,
+                'class' => 'required-entry',
+
+           )
+        );
+
+        $fieldset->addField(
+            'description',
+            'textarea',
+            array(
+                'label' => Mage::helper('dls_dlsblog')->__('Description'),
+                'name'  => 'description',
+
+           )
+        );
+        
         $values = Mage::getResourceModel('dls_dlsblog/blogset_collection')
             ->toOptionArray();
         array_unshift($values, array('label' => '', 'value' => ''));
@@ -93,94 +116,6 @@ class DLS_DLSBlog_Block_Adminhtml_Filter_Edit_Tab_Form extends Mage_Adminhtml_Bl
             )
         );
 
-        $fieldset->addField(
-            'name',
-            'text',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Name'),
-                'name'  => 'name',
-                'required'  => true,
-                'class' => 'required-entry',
-
-           )
-        );
-
-        $fieldset->addField(
-            'description',
-            'textarea',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Description'),
-                'name'  => 'description',
-
-           )
-        );
-
-        $fieldset->addField(
-            'exposed',
-            'select',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Exposed filter'),
-                'name'  => 'exposed',
-                'required'  => true,
-                'class' => 'required-entry',
-
-            'values'=> array(
-                array(
-                    'value' => 1,
-                    'label' => Mage::helper('dls_dlsblog')->__('Yes'),
-                ),
-                array(
-                    'value' => 0,
-                    'label' => Mage::helper('dls_dlsblog')->__('No'),
-                ),
-            ),
-           )
-        );
-
-        $fieldset->addField(
-            'type',
-            'select',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Filter type'),
-                'name'  => 'type',
-                'required'  => true,
-                'class' => 'required-entry',
-
-                'values'=> Mage::getModel('dls_dlsblog/filter_attribute_source_type')->getAllOptions(true),
-           )
-        );
-
-        $fieldset->addField(
-            'condition_code',
-            'textarea',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Condition'),
-                'name'  => 'condition_code',
-
-           )
-        );
-
-        $fieldset->addField(
-            'sort_code',
-            'textarea',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Sorts'),
-                'name'  => 'sort_code',
-                'required'  => true,
-                'class' => 'required-entry',
-
-           )
-        );
-
-        $fieldset->addField(
-            'paging_code',
-            'textarea',
-            array(
-                'label' => Mage::helper('dls_dlsblog')->__('Paging'),
-                'name'  => 'paging_code',
-
-           )
-        );
         $fieldset->addField(
             'url_key',
             'text',
