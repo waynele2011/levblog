@@ -9,7 +9,8 @@
  */
 ?>
 <?php $_post = $this->getPost()?>
-<?php if ($_post->getAllowComments()) : ?>
+<?php $isAllow = Mage::helper('dls_dlsblog/post')->isAllowToShowPost($_post);?>
+<?php if ($_post->getAllowComments() && $isAllow) : ?>
     <?php $_comments = $this->getComments(); ?>
     <?php if (count($_comments)) : ?>
         <div class="box-collateral box-reviews" id="post-reviews">

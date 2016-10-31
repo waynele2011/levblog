@@ -170,4 +170,21 @@ class DLS_DLSBlog_Helper_Post extends Mage_Core_Helper_Abstract
         }
         return $this->_templateProcessor;
     }
+    
+    public function isAllowToShowPost($_post) {
+        $_current_date = date('Y-m-d H:i:s');
+        $_date = date('Y-m-d H:i:s', strtotime($_post->getPublishDate()));
+        $_statusId = $_post->getPublishStatus();
+        $_statusLabel = Mage::getModel('dls_dlsblog/post')
+                // ->setStoreId($store_id)
+                ->setData('publish_status', $_statusId)
+                ->getAttributeText('publish_status');
+        if ($_date > $_current_date || $_statusLabel != DLS_DLSBlog_Model_Post::APPROVED_STATUS){
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }

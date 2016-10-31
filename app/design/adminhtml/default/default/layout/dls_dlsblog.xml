@@ -171,6 +171,10 @@
         <update handle="editor"/>
         <reference name="head">
             <action method="setCanLoadTinyMce"><load>1</load></action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>dls_dlsblog/wysiwyg-default.js</name>
+            </action>
             <action method="addJs">
                 <script>lib/jquery/jquery-1.10.2.min.js</script>
             </action>

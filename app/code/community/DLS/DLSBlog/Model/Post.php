@@ -15,7 +15,7 @@ class DLS_DLSBlog_Model_Post extends Mage_Catalog_Model_Abstract
      */
     const ENTITY    = 'dls_dlsblog_post';
     const CACHE_TAG = 'dls_dlsblog_post';
-
+    const APPROVED_STATUS = 'approved' ;
     /**
      * Prefix of model events names
      *
@@ -45,6 +45,7 @@ class DLS_DLSBlog_Model_Post extends Mage_Catalog_Model_Abstract
         parent::_construct();
         $this->_init('dls_dlsblog/post');
     }
+    
 
     /**
      * before save post
