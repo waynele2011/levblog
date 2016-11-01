@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Blog setting image helper
+ * Blog image helper
  *
  * @category    DLS
  * @package     DLS_DLSBlog

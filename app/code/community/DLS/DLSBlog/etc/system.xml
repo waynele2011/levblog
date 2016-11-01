@@ -3,7 +3,7 @@
 <config>
     <tabs>
         <dls translate="label" module="dls_dlsblog">
-            <label>DLS Blog</label>
+            <label>DLS Software Studios</label>
             <sort_order>2000</sort_order>
         </dls>
     </tabs>
@@ -19,7 +19,7 @@
             <show_in_store>1</show_in_store>
             <groups>
                 <blogset translate="label" module="dls_dlsblog">
-                    <label>Blog setting</label>
+                    <label>Blog</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>0</sort_order>
                     <show_in_default>1</show_in_default>

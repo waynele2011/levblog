@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting Tags list block
+ * Blog Tags list block
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -37,7 +37,7 @@ class DLS_DLSBlog_Block_Blogset_Tag_List extends DLS_DLSBlog_Block_Tag_List
     }
 
     /**
-     * get the current blog setting
+     * get the current blog
      *
      * @access public
      * @return DLS_DLSBlog_Model_Blogset

@@ -19,7 +19,7 @@ $table = $this->getConnection()
             'nullable'  => false,
             'primary'   => true,
         ),
-        'Blog setting ID'
+        'Blog ID'
     )
     ->addColumn(
         'layoutdesign_id',
@@ -68,7 +68,7 @@ $table = $this->getConnection()
         Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
         null,
         array(),
-        'Blog setting Modification Time'
+        'Blog Modification Time'
     )
     ->addColumn(
         'url_key',
@@ -81,10 +81,10 @@ $table = $this->getConnection()
         Varien_Db_Ddl_Table::TYPE_TIMESTAMP,
         null,
         array(),
-        'Blog setting Creation Time'
+        'Blog Creation Time'
     ) 
     ->addIndex($this->getIdxName('dls_dlsblog/layoutdesign', array('layoutdesign_id')), array('layoutdesign_id'))
-    ->setComment('Blog setting Table');
+    ->setComment('Blog Table');
 $this->getConnection()->createTable($table);
 $table = $this->getConnection()
     ->newTable($this->getTable('dls_dlsblog/taxonomy'))
@@ -237,7 +237,7 @@ $table = $this->getConnection()
         array(
             'unsigned'  => true,
         ),
-        'Blog setting ID'
+        'Blog ID'
     )
     ->addColumn(
         'layoutdesign_id',
@@ -425,7 +425,7 @@ $table = $this->getConnection()
         array(
             'unsigned'  => true,
         ),
-        'Blog setting ID'
+        'Blog ID'
     )
     ->addColumn(
         'name',
@@ -1001,7 +1001,7 @@ $table = $this->getConnection()
             'nullable'  => false,
             'default'   => '0',
         ),
-        'Blog setting ID'
+        'Blog ID'
     )
     ->addColumn(
         'taxonomy_id',
@@ -1059,7 +1059,7 @@ $table = $this->getConnection()
         array('blogset_id', 'taxonomy_id'),
         array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE)
     )
-    ->setComment('Blog setting to Taxonomy Linkage Table');
+    ->setComment('Blog to Taxonomy Linkage Table');
 $this->getConnection()->createTable($table);
 $table = $this->getConnection()
     ->newTable($this->getTable('dls_dlsblog/taxonomy_filter'))

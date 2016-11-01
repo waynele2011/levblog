@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting resource model
+ * Blog resource model
  *
  * @category    DLS
  * @package     DLS_DLSBlog

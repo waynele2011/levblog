@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting admin grid block
+ * Blog admin grid block
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -13,7 +13,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
      * constructor
      *
      * @access public
-     * @author Ultimate Module Creator
+     * @author Ultimate Module Creators
      */
     public function __construct()
     {
@@ -97,7 +97,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
         $this->addColumn(
             'url_key',
             array(
-                'header' => Mage::helper('dls_dlsblog')->__('URL key'),
+                'header' => Mage::helper('dls_dlsblog')->__('URL Key'),
                 'index'  => 'url_key',
             )
         );

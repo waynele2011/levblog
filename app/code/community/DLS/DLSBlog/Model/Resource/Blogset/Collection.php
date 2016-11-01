@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting collection resource model
+ * Blog collection resource model
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -25,7 +25,7 @@ class DLS_DLSBlog_Model_Resource_Blogset_Collection extends Mage_Core_Model_Reso
     }
 
     /**
-     * get blogs setting as array
+     * get blogs as array
      *
      * @access protected
      * @param string $valueField

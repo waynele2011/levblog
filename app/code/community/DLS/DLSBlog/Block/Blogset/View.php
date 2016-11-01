@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting view block
+ * Blog view block
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -10,7 +10,7 @@
 class DLS_DLSBlog_Block_Blogset_View extends Mage_Core_Block_Template
 {
     /**
-     * get the current blog setting
+     * get the current blog
      *
      * @access public
      * @return mixed (DLS_DLSBlog_Model_Blogset|null)

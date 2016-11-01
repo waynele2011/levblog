@@ -61,7 +61,7 @@ class DLS_DLSBlog_Block_Adminhtml_Filter_Grid extends Mage_Adminhtml_Block_Widge
         $this->addColumn(
             'blogset_id',
             array(
-                'header'    => Mage::helper('dls_dlsblog')->__('Blog setting'),
+                'header'    => Mage::helper('dls_dlsblog')->__('Blog'),
                 'index'     => 'blogset_id',
                 'type'      => 'options',
                 'options'   => Mage::getResourceModel('dls_dlsblog/blogset_collection')
@@ -224,14 +224,14 @@ class DLS_DLSBlog_Block_Adminhtml_Filter_Grid extends Mage_Adminhtml_Block_Widge
         $this->getMassactionBlock()->addItem(
             'blogset_id',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change Blog setting'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Blog'),
                 'url'        => $this->getUrl('*/*/massBlogsetId', array('_current'=>true)),
                 'additional' => array(
                     'flag_blogset_id' => array(
                         'name'   => 'flag_blogset_id',
                         'type'   => 'select',
                         'class'  => 'required-entry',
-                        'label'  => Mage::helper('dls_dlsblog')->__('Blog setting'),
+                        'label'  => Mage::helper('dls_dlsblog')->__('Blog'),
                         'values' => $values
                     )
                 )

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting edit form
+ * Blog edit form
  *
  * @category    DLS
  * @package     DLS_DLSBlog

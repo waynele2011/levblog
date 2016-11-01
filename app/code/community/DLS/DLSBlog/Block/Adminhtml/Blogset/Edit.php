@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting admin edit form
+ * Blog admin edit form
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -24,12 +24,12 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit extends Mage_Adminhtml_Block_Widg
         $this->_updateButton(
             'save',
             'label',
-            Mage::helper('dls_dlsblog')->__('Save Blog setting')
+            Mage::helper('dls_dlsblog')->__('Save Blog')
         );
         $this->_updateButton(
             'delete',
             'label',
-            Mage::helper('dls_dlsblog')->__('Delete Blog setting')
+            Mage::helper('dls_dlsblog')->__('Delete Blog')
         );
         $this->_addButton(
             'saveandcontinue',
@@ -58,11 +58,11 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit extends Mage_Adminhtml_Block_Widg
     {
         if (Mage::registry('current_blogset') && Mage::registry('current_blogset')->getId()) {
             return Mage::helper('dls_dlsblog')->__(
-                "Edit Blog setting '%s'",
+                "Edit Blog'%s'",
                 $this->escapeHtml(Mage::registry('current_blogset')->getName())
             );
         } else {
-            return Mage::helper('dls_dlsblog')->__('Add Blog setting');
+            return Mage::helper('dls_dlsblog')->__('Add Blog');
         }
     }
 }

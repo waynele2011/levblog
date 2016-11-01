@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting admin edit tabs
+ * Blog admin edit tabs
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -20,7 +20,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tabs extends Mage_Adminhtml_Block
         parent::__construct();
         $this->setId('blogset_tabs');
         $this->setDestElementId('edit_form');
-        $this->setTitle(Mage::helper('dls_dlsblog')->__('Blog setting'));
+        $this->setTitle(Mage::helper('dls_dlsblog')->__('Blog'));
     }
 
     /**
@@ -35,8 +35,8 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tabs extends Mage_Adminhtml_Block
         $this->addTab(
             'form_blogset',
             array(
-                'label'   => Mage::helper('dls_dlsblog')->__('Blog setting'),
-                'title'   => Mage::helper('dls_dlsblog')->__('Blog setting'),
+                'label'   => Mage::helper('dls_dlsblog')->__('Blog'),
+                'title'   => Mage::helper('dls_dlsblog')->__('Blog'),
                 'content' => $this->getLayout()->createBlock(
                     'dls_dlsblog/adminhtml_blogset_edit_tab_form'
                 )
@@ -55,7 +55,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tabs extends Mage_Adminhtml_Block
     }
 
     /**
-     * Retrieve blog setting entity
+     * Retrieve blog entity
      *
      * @access public
      * @return DLS_DLSBlog_Model_Blogset

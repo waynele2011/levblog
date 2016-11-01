@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting front contrller
+ * Blog front contrller
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -11,7 +11,7 @@ class DLS_DLSBlog_BlogsetController extends Mage_Core_Controller_Front_Action
 {
 
     /**
-     * init Blog setting
+     * init Blog
      *
      * @access protected
      * @return DLS_DLSBlog_Model_Blogset
@@ -32,7 +32,7 @@ class DLS_DLSBlog_BlogsetController extends Mage_Core_Controller_Front_Action
     }
 
     /**
-     * view blog setting action
+     * view blog action
      *
      * @access public
      * @return void

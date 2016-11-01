@@ -75,7 +75,7 @@ class DLS_DLSBlog_Block_Adminhtml_Filter_Edit_Tab_Form extends Mage_Adminhtml_Bl
             'blogset_id',
             'select',
             array(
-                'label'     => Mage::helper('dls_dlsblog')->__('Blog setting'),
+                'label'     => Mage::helper('dls_dlsblog')->__('Blog'),
                 'name'      => 'blogset_id',
                 'required'  => false,
                 'values'    => $values,

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting source model
+ * Blog source model
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -84,7 +84,7 @@ class DLS_DLSBlog_Model_Blogset_Source extends Mage_Eav_Model_Entity_Attribute_S
         } else {
             $column['type']     = Varien_Db_Ddl_Table::TYPE_INTEGER;
             $column['nullable'] = true;
-            $column['comment']  = $attributeCode . ' Blog setting column';
+            $column['comment']  = $attributeCode . ' Blog column';
         }
         return array($attributeCode => $column);
     }

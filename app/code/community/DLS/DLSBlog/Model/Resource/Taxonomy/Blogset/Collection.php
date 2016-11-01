@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy - Blog setting relation resource model collection
+ * Taxonomy - Blog relation resource model collection
  *
  * @category    DLS
  * @package     DLS_DLSBlog

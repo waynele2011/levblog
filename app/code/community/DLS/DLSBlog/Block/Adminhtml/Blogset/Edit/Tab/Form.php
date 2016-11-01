@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting edit form tab
+ * Blog edit form tab
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -24,7 +24,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tab_Form extends Mage_Adminhtml_B
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'blogset_form',
-            array('legend' => Mage::helper('dls_dlsblog')->__('Blog setting'))
+            array('legend' => Mage::helper('dls_dlsblog')->__('Blog'))
         );
         $fieldset->addType(
             'image',

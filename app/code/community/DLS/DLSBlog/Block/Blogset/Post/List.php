@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting Posts list block
+ * Blog Posts list block
  *
  * @category    DLS
  * @package     DLS_DLSBlog

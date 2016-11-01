@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Blog setting admin controller
+ * Blog admin controller
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -10,7 +10,7 @@
 class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Controller_Adminhtml_DLSBlog
 {
     /**
-     * init the blog setting
+     * init the blog
      *
      * @access protected
      * @return DLS_DLSBlog_Model_Blogset
@@ -37,7 +37,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
     {
         $this->loadLayout();
         $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
-             ->_title(Mage::helper('dls_dlsblog')->__('Blogs setting'));
+             ->_title(Mage::helper('dls_dlsblog')->__('Blogs'));
         $this->renderLayout();
     }
 
@@ -54,7 +54,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
     }
 
     /**
-     * edit blog setting - action
+     * edit blog - action
      *
      * @access public
      * @return void
@@ -66,7 +66,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
         $blogset      = $this->_initBlogset();
         if ($blogsetId && !$blogset->getId()) {
             $this->_getSession()->addError(
-                Mage::helper('dls_dlsblog')->__('This blog setting no longer exists.')
+                Mage::helper('dls_dlsblog')->__('This blog no longer exists.')
             );
             $this->_redirect('*/*/');
             return;
@@ -78,11 +78,11 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
         Mage::register('blogset_data', $blogset);
         $this->loadLayout();
         $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
-             ->_title(Mage::helper('dls_dlsblog')->__('Blogs setting'));
+             ->_title(Mage::helper('dls_dlsblog')->__('Blogs'));
         if ($blogset->getId()) {
             $this->_title($blogset->getName());
         } else {
-            $this->_title(Mage::helper('dls_dlsblog')->__('Add blog setting'));
+            $this->_title(Mage::helper('dls_dlsblog')->__('Add blog'));
         }
         if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
             $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
@@ -91,7 +91,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
     }
 
     /**
-     * new blog setting action
+     * new blog action
      *
      * @access public
      * @return void
@@ -103,7 +103,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
     }
 
     /**
-     * save blog setting - action
+     * save blog - action
      *
      * @access public
      * @return void
@@ -129,7 +129,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                 }
                 $blogset->save();
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('dls_dlsblog')->__('Blog setting was successfully saved')
+                    Mage::helper('dls_dlsblog')->__('Blog was successfully saved')
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
@@ -152,7 +152,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                     $data['logo'] = $data['logo']['value'];
                 }
                 Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('dls_dlsblog')->__('There was a problem saving the blog setting.')
+                    Mage::helper('dls_dlsblog')->__('There was a problem saving the blog.')
                 );
                 Mage::getSingleton('adminhtml/session')->setBlogsetData($data);
                 $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
@@ -160,13 +160,13 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
             }
         }
         Mage::getSingleton('adminhtml/session')->addError(
-            Mage::helper('dls_dlsblog')->__('Unable to find blog setting to save.')
+            Mage::helper('dls_dlsblog')->__('Unable to find blog to save.')
         );
         $this->_redirect('*/*/');
     }
 
     /**
-     * delete blog setting - action
+     * delete blog - action
      *
      * @access public
      * @return void
@@ -179,7 +179,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                 $blogset = Mage::getModel('dls_dlsblog/blogset');
                 $blogset->setId($this->getRequest()->getParam('id'))->delete();
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('dls_dlsblog')->__('Blog setting was successfully deleted.')
+                    Mage::helper('dls_dlsblog')->__('Blog was successfully deleted.')
                 );
                 $this->_redirect('*/*/');
                 return;
@@ -188,7 +188,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                 $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('dls_dlsblog')->__('There was an error deleting blog setting.')
+                    Mage::helper('dls_dlsblog')->__('There was an error deleting blog.')
                 );
                 $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                 Mage::logException($e);
@@ -196,13 +196,13 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
             }
         }
         Mage::getSingleton('adminhtml/session')->addError(
-            Mage::helper('dls_dlsblog')->__('Could not find blog setting to delete.')
+            Mage::helper('dls_dlsblog')->__('Could not find blog to delete.')
         );
         $this->_redirect('*/*/');
     }
 
     /**
-     * mass delete blog setting - action
+     * mass delete blog - action
      *
      * @access public
      * @return void
@@ -213,7 +213,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
         $blogsetIds = $this->getRequest()->getParam('blogset');
         if (!is_array($blogsetIds)) {
             Mage::getSingleton('adminhtml/session')->addError(
-                Mage::helper('dls_dlsblog')->__('Please select blogs setting to delete.')
+                Mage::helper('dls_dlsblog')->__('Please select blogs to delete.')
             );
         } else {
             try {
@@ -222,13 +222,13 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                     $blogset->setId($blogsetId)->delete();
                 }
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('dls_dlsblog')->__('Total of %d blogs setting were successfully deleted.', count($blogsetIds))
+                    Mage::helper('dls_dlsblog')->__('Total of %d blogs were successfully deleted.', count($blogsetIds))
                 );
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('dls_dlsblog')->__('There was an error deleting blogs setting.')
+                    Mage::helper('dls_dlsblog')->__('There was an error deleting blogs.')
                 );
                 Mage::logException($e);
             }
@@ -248,7 +248,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
         $blogsetIds = $this->getRequest()->getParam('blogset');
         if (!is_array($blogsetIds)) {
             Mage::getSingleton('adminhtml/session')->addError(
-                Mage::helper('dls_dlsblog')->__('Please select blogs setting.')
+                Mage::helper('dls_dlsblog')->__('Please select blogs.')
             );
         } else {
             try {
@@ -259,13 +259,13 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                             ->save();
                 }
                 $this->_getSession()->addSuccess(
-                    $this->__('Total of %d blogs setting were successfully updated.', count($blogsetIds))
+                    $this->__('Total of %d blogs were successfully updated.', count($blogsetIds))
                 );
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('dls_dlsblog')->__('There was an error updating blogs setting.')
+                    Mage::helper('dls_dlsblog')->__('There was an error updating blogs.')
                 );
                 Mage::logException($e);
             }
@@ -285,7 +285,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
         $blogsetIds = $this->getRequest()->getParam('blogset');
         if (!is_array($blogsetIds)) {
             Mage::getSingleton('adminhtml/session')->addError(
-                Mage::helper('dls_dlsblog')->__('Please select blogs setting.')
+                Mage::helper('dls_dlsblog')->__('Please select blogs.')
             );
         } else {
             try {
@@ -296,13 +296,13 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                     ->save();
                 }
                 $this->_getSession()->addSuccess(
-                    $this->__('Total of %d blogs setting were successfully updated.', count($blogsetIds))
+                    $this->__('Total of %d blogs were successfully updated.', count($blogsetIds))
                 );
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('dls_dlsblog')->__('There was an error updating blogs setting.')
+                    Mage::helper('dls_dlsblog')->__('There was an error updating blogs.')
                 );
                 Mage::logException($e);
             }
@@ -322,7 +322,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
         $blogsetIds = $this->getRequest()->getParam('blogset');
         if (!is_array($blogsetIds)) {
             Mage::getSingleton('adminhtml/session')->addError(
-                Mage::helper('dls_dlsblog')->__('Please select blogs setting.')
+                Mage::helper('dls_dlsblog')->__('Please select blogs.')
             );
         } else {
             try {
@@ -333,13 +333,13 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
                     ->save();
                 }
                 $this->_getSession()->addSuccess(
-                    $this->__('Total of %d blogs setting were successfully updated.', count($blogsetIds))
+                    $this->__('Total of %d blogs were successfully updated.', count($blogsetIds))
                 );
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('dls_dlsblog')->__('There was an error updating blogs setting.')
+                    Mage::helper('dls_dlsblog')->__('There was an error updating blogs.')
                 );
                 Mage::logException($e);
             }

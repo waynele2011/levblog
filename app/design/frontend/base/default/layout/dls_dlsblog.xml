@@ -11,6 +11,10 @@
                 <type>skin_css</type>
                 <name>css/dls_dlsblog/fonts/font-awesome.min.css</name>
             </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <js>js/dls_dlsblog/custom.js</js>
+            </action>
         </reference>
     </default>
     <customer_account>
@@ -21,6 +25,10 @@
     <dls_dlsblog_post_index translate="label" module="dls_dlsblog">
         <label>Posts list</label>
         <update handle="page_one_column" />
+        <reference name="catalog.topnav">
+            <action method="setTemplate"><template>dls_dlsblog/topmenu.phtml</template></action>
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml"/>
+        </reference>
         <reference name="content">
             <block type="dls_dlsblog/post_list" name="post_list" template="dls_dlsblog/post/list.phtml" />
         </reference>
@@ -50,6 +58,10 @@
         <label>Taxonomy view page</label>
         <reference name="head">
             <action method="addItem" ifconfig="dls_dlsblog/taxonomy/tree"><type>skin_js</type><js>js/dls_dlsblog/tree.js</js></action>
+        </reference>
+        <reference name="catalog.topnav">
+            <action method="setTemplate"><template>dls_dlsblog/topmenu.phtml</template></action>
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml"/>
         </reference>
         <reference name="left">
             <block type="dls_dlsblog/left" name="block_left" template="dls_dlsblog/left.phtml"/>
@@ -116,6 +128,10 @@
     </catalog_product_view>
     <dls_dlsblog_post_customer_comment_index translate="label" module="dls_dlsblog">
         <label>My Posts comments</label>
+        <reference name="catalog.topnav">
+            <action method="setTemplate"><template>dls_dlsblog/topmenu.phtml</template></action>
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml"/>
+        </reference>
         <update handle="customer_account"/>
         <reference name="my.account.wrapper">
             <block type="dls_dlsblog/post_customer_comment_list" name="customer_post_comments" template="dls_dlsblog/post/customer/comment/list.phtml"/>
@@ -123,6 +139,10 @@
     </dls_dlsblog_post_customer_comment_index>
     <dls_dlsblog_post_customer_comment_view translate="label" module="dls_dlsblog">
         <label>My Posts comment view</label>
+        <reference name="catalog.topnav">
+            <action method="setTemplate"><template>dls_dlsblog/topmenu.phtml</template></action>
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml"/>
+        </reference>
         <update handle="customer_account"/>
         <reference name="my.account.wrapper">
             <block type="dls_dlsblog/post_customer_comment_view" name="customer_post_comment" template="dls_dlsblog/post/customer/comment/view.phtml"/>

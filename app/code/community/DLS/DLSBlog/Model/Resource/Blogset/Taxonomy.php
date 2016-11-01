@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Blog setting - Taxonomy relation model
+ * Blog - Taxonomy relation model
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -23,7 +23,7 @@ class DLS_DLSBlog_Model_Resource_Blogset_Taxonomy extends Mage_Core_Model_Resour
     }
 
     /**
-     * Save blog setting - taxonomy relations
+     * Save blog - taxonomy relations
      *
      * @access public
      * @param DLS_DLSBlog_Model_Blogset $blogset

@@ -88,7 +88,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn(
             'blogset_id',
             array(
-                'header'    => Mage::helper('dls_dlsblog')->__('Blog setting'),
+                'header'    => Mage::helper('dls_dlsblog')->__('Blog'),
                 'index'     => 'blogset_id',
                 'type'      => 'options',
                 'options'   => Mage::getResourceModel('dls_dlsblog/blogset_collection')
@@ -103,7 +103,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn(
             'layoutdesign_id',
             array(
-                'header'    => Mage::helper('dls_dlsblog')->__('Layout design'),
+                'header'    => Mage::helper('dls_dlsblog')->__('Layout Design'),
                 'index'     => 'layoutdesign_id',
                 'type'      => 'options',
                 'options'   => Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
@@ -150,7 +150,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn(
             'publish_status',
             array(
-                'header' => Mage::helper('dls_dlsblog')->__('Publishing status'),
+                'header' => Mage::helper('dls_dlsblog')->__('Publishing Status'),
                 'index'  => 'publish_status',
                 'type'  => 'options',
                 'options' => Mage::helper('dls_dlsblog')->convertOptions(
@@ -162,7 +162,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn(
             'publish_date',
             array(
-                'header' => Mage::helper('dls_dlsblog')->__('Publish date'),
+                'header' => Mage::helper('dls_dlsblog')->__('Publish Date'),
                 'index'  => 'publish_date',
                 'type'=> 'date',
 
@@ -171,7 +171,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn(
             'url_key',
             array(
-                'header' => Mage::helper('dls_dlsblog')->__('URL key'),
+                'header' => Mage::helper('dls_dlsblog')->__('URL Key'),
                 'index'  => 'url_key',
             )
         );
@@ -182,15 +182,6 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
                 'index'  => 'created_at',
                 'width'  => '120px',
                 'type'   => 'datetime',
-            )
-        );
-        $this->addColumn(
-            'updated_at',
-            array(
-                'header'    => Mage::helper('dls_dlsblog')->__('Updated at'),
-                'index'     => 'updated_at',
-                'width'     => '120px',
-                'type'      => 'datetime',
             )
         );
         $this->addColumn(
@@ -294,14 +285,14 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->getMassactionBlock()->addItem(
             'blogset_id',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change Blog setting'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Blog'),
                 'url'        => $this->getUrl('*/*/massBlogsetId', array('_current'=>true)),
                 'additional' => array(
                     'flag_blogset_id' => array(
                         'name'   => 'flag_blogset_id',
                         'type'   => 'select',
                         'class'  => 'required-entry',
-                        'label'  => Mage::helper('dls_dlsblog')->__('Blog setting'),
+                        'label'  => Mage::helper('dls_dlsblog')->__('Blog'),
                         'values' => $values
                     )
                 )
