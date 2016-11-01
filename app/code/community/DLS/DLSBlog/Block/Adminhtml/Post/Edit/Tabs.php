@@ -97,7 +97,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Edit_Tabs extends Mage_Adminhtml_Block_Wi
         $this->addTab(
             'products',
             array(
-                'label' => Mage::helper('dls_dlsblog')->__('Associated products'),
+                'label' => Mage::helper('dls_dlsblog')->__('Associated Products'),
                 'url'   => $this->getUrl('*/*/products', array('_current' => true)),
                 'class' => 'ajax'
             )

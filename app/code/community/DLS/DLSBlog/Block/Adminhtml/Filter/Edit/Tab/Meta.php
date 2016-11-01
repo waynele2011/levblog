@@ -23,7 +23,7 @@ class DLS_DLSBlog_Block_Adminhtml_Filter_Edit_Tab_Meta extends Mage_Adminhtml_Bl
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'filter_meta_form',
-            array('legend' => Mage::helper('dls_dlsblog')->__('Meta information'))
+            array('legend' => Mage::helper('dls_dlsblog')->__('Meta Information'))
         );
         $fieldset->addField(
             'meta_title',

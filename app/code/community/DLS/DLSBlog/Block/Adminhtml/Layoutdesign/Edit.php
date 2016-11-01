@@ -24,12 +24,12 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit extends Mage_Adminhtml_Block
         $this->_updateButton(
             'save',
             'label',
-            Mage::helper('dls_dlsblog')->__('Save Layout design')
+            Mage::helper('dls_dlsblog')->__('Save Layout Design')
         );
         $this->_updateButton(
             'delete',
             'label',
-            Mage::helper('dls_dlsblog')->__('Delete Layout design')
+            Mage::helper('dls_dlsblog')->__('Delete Layout Design')
         );
         $this->_addButton(
             'saveandcontinue',
@@ -58,11 +58,11 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit extends Mage_Adminhtml_Block
     {
         if (Mage::registry('current_layoutdesign') && Mage::registry('current_layoutdesign')->getId()) {
             return Mage::helper('dls_dlsblog')->__(
-                "Edit Layout design '%s'",
+                "Edit Layout Design '%s'",
                 $this->escapeHtml(Mage::registry('current_layoutdesign')->getName())
             );
         } else {
-            return Mage::helper('dls_dlsblog')->__('Add Layout design');
+            return Mage::helper('dls_dlsblog')->__('Add Layout Design');
         }
     }
 }

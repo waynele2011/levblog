@@ -35,8 +35,8 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Edit_Tabs extends Mage_Adminhtml_
         $this->addTab(
             'form_post_comment',
             array(
-                'label'   => Mage::helper('dls_dlsblog')->__('Post comment'),
-                'title'   => Mage::helper('dls_dlsblog')->__('Post comment'),
+                'label'   => Mage::helper('dls_dlsblog')->__('Post Comment'),
+                'title'   => Mage::helper('dls_dlsblog')->__('Post Comment'),
                 'content' => $this->getLayout()->createBlock(
                     'dls_dlsblog/adminhtml_post_comment_edit_tab_form'
                 )
@@ -47,8 +47,8 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Edit_Tabs extends Mage_Adminhtml_
             $this->addTab(
                 'form_store_post_comment',
                 array(
-                    'label'   => Mage::helper('dls_dlsblog')->__('Store views'),
-                    'title'   => Mage::helper('dls_dlsblog')->__('Store views'),
+                    'label'   => Mage::helper('dls_dlsblog')->__('Store Views'),
+                    'title'   => Mage::helper('dls_dlsblog')->__('Store Views'),
                     'content' => $this->getLayout()->createBlock(
                         'dls_dlsblog/adminhtml_post_comment_edit_tab_stores'
                     )

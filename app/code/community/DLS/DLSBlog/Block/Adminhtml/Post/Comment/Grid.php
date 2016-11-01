@@ -77,7 +77,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Grid extends Mage_Adminhtml_Block
         $this->addColumn(
             'ct_name',
             array(
-                'header'        => Mage::helper('dls_dlsblog')->__('Poster name'),
+                'header'        => Mage::helper('dls_dlsblog')->__('Poster Name'),
                 'index'         => 'ct_name',
                 'filter_index'  => 'ct.name',
             )
@@ -85,7 +85,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Grid extends Mage_Adminhtml_Block
         $this->addColumn(
             'ct_email',
             array(
-                'header'        => Mage::helper('dls_dlsblog')->__('Poster email'),
+                'header'        => Mage::helper('dls_dlsblog')->__('Poster Email'),
                 'index'         => 'ct_email',
                 'filter_index'  => 'ct.email',
             )
@@ -110,7 +110,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Grid extends Mage_Adminhtml_Block
         $this->addColumn(
             'ct_created_at',
             array(
-                'header'        => Mage::helper('dls_dlsblog')->__('Created at'),
+                'header'        => Mage::helper('dls_dlsblog')->__('Created At'),
                 'index'         => 'ct_created_at',
                 'width'         => '120px',
                 'type'          => 'datetime',
@@ -120,7 +120,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Grid extends Mage_Adminhtml_Block
         $this->addColumn(
             'ct_updated_at',
             array(
-                'header'        => Mage::helper('dls_dlsblog')->__('Updated at'),
+                'header'        => Mage::helper('dls_dlsblog')->__('Updated At'),
                 'index'         => 'ct_updated_at',
                 'width'         => '120px',
                 'type'          => 'datetime',
@@ -190,7 +190,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Grid extends Mage_Adminhtml_Block
         $this->getMassactionBlock()->addItem(
             'status',
             array(
-                'label' => Mage::helper('dls_dlsblog')->__('Change status'),
+                'label' => Mage::helper('dls_dlsblog')->__('Change Status'),
                 'url'   => $this->getUrl('*/*/massStatus', array('_current'=>true)),
                 'additional' => array(
                     'status' => array(

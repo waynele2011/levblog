@@ -23,7 +23,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Tab_Meta extends Mage_Adminhtml_
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'taxonomy_meta_form',
-            array('legend' => Mage::helper('dls_dlsblog')->__('Meta information'))
+            array('legend' => Mage::helper('dls_dlsblog')->__('Meta Information'))
         );
         $fieldset->addField(
             'meta_title',

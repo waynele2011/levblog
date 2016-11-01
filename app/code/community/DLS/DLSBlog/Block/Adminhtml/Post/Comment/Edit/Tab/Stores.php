@@ -23,7 +23,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Edit_Tab_Stores extends Mage_Admi
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'post_comment_stores_form',
-            array('legend' => Mage::helper('dls_dlsblog')->__('Store views'))
+            array('legend' => Mage::helper('dls_dlsblog')->__('Store Views'))
         );
         $field = $fieldset->addField(
             'store_id',

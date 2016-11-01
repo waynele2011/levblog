@@ -178,7 +178,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->addColumn(
             'created_at',
             array(
-                'header' => Mage::helper('dls_dlsblog')->__('Created at'),
+                'header' => Mage::helper('dls_dlsblog')->__('Created At'),
                 'index'  => 'created_at',
                 'width'  => '120px',
                 'type'   => 'datetime',
@@ -244,7 +244,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->getMassactionBlock()->addItem(
             'status',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change status'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Status'),
                 'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
                 'additional' => array(
                     'status' => array(
@@ -263,14 +263,14 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->getMassactionBlock()->addItem(
             'publish_status',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change Publishing status'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Publishing Status'),
                 'url'        => $this->getUrl('*/*/massPublishStatus', array('_current'=>true)),
                 'additional' => array(
                     'flag_publish_status' => array(
                         'name'   => 'flag_publish_status',
                         'type'   => 'select',
                         'class'  => 'required-entry',
-                        'label'  => Mage::helper('dls_dlsblog')->__('Publishing status'),
+                        'label'  => Mage::helper('dls_dlsblog')->__('Publishing Status'),
                         'values' => Mage::getModel('eav/config')->getAttribute('dls_dlsblog_post', 'publish_status')
                             ->getSource()->getAllOptions(true),
 
@@ -305,14 +305,14 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Grid extends Mage_Adminhtml_Block_Widget_
         $this->getMassactionBlock()->addItem(
             'layoutdesign_id',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change Layout design'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Layout Design'),
                 'url'        => $this->getUrl('*/*/massLayoutdesignId', array('_current'=>true)),
                 'additional' => array(
                     'flag_layoutdesign_id' => array(
                         'name'   => 'flag_layoutdesign_id',
                         'type'   => 'select',
                         'class'  => 'required-entry',
-                        'label'  => Mage::helper('dls_dlsblog')->__('Layout design'),
+                        'label'  => Mage::helper('dls_dlsblog')->__('Layout Design'),
                         'values' => $values
                     )
                 )

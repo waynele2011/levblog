@@ -20,7 +20,7 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tabs extends Mage_Adminhtml_
         parent::__construct();
         $this->setId('layoutdesign_tabs');
         $this->setDestElementId('edit_form');
-        $this->setTitle(Mage::helper('dls_dlsblog')->__('Layout design'));
+        $this->setTitle(Mage::helper('dls_dlsblog')->__('Layout Design'));
     }
 
     /**
@@ -35,8 +35,8 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tabs extends Mage_Adminhtml_
         $this->addTab(
             'form_layoutdesign',
             array(
-                'label'   => Mage::helper('dls_dlsblog')->__('Layout design'),
-                'title'   => Mage::helper('dls_dlsblog')->__('Layout design'),
+                'label'   => Mage::helper('dls_dlsblog')->__('Layout Design'),
+                'title'   => Mage::helper('dls_dlsblog')->__('Layout Design'),
                 'content' => $this->getLayout()->createBlock(
                     'dls_dlsblog/adminhtml_layoutdesign_edit_tab_form'
                 )

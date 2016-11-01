@@ -82,7 +82,7 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Grid extends Mage_Adminhtml_Block
         $this->addColumn(
             'basic_layout',
             array(
-                'header' => Mage::helper('dls_dlsblog')->__('Basic layout'),
+                'header' => Mage::helper('dls_dlsblog')->__('Basic Layout'),
                 'index'  => 'basic_layout',
                 'type'  => 'options',
                 'options' => Mage::helper('dls_dlsblog')->convertOptions(
@@ -138,7 +138,7 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Grid extends Mage_Adminhtml_Block
         $this->getMassactionBlock()->addItem(
             'status',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change status'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Status'),
                 'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
                 'additional' => array(
                     'status' => array(
@@ -157,14 +157,14 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Grid extends Mage_Adminhtml_Block
         $this->getMassactionBlock()->addItem(
             'basic_layout',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change Basic layout'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Basic Layout'),
                 'url'        => $this->getUrl('*/*/massBasicLayout', array('_current'=>true)),
                 'additional' => array(
                     'flag_basic_layout' => array(
                         'name'   => 'flag_basic_layout',
                         'type'   => 'select',
                         'class'  => 'required-entry',
-                        'label'  => Mage::helper('dls_dlsblog')->__('Basic layout'),
+                        'label'  => Mage::helper('dls_dlsblog')->__('Basic Layout'),
                         'values' => Mage::getModel('dls_dlsblog/layoutdesign_attribute_source_basiclayout')
                             ->getAllOptions(true),
 

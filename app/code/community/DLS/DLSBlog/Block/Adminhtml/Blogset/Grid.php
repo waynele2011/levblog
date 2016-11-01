@@ -61,7 +61,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
         $this->addColumn(
             'layoutdesign_id',
             array(
-                'header'    => Mage::helper('dls_dlsblog')->__('Layout design'),
+                'header'    => Mage::helper('dls_dlsblog')->__('Layout Design'),
                 'index'     => 'layoutdesign_id',
                 'type'      => 'options',
                 'options'   => Mage::getResourceModel('dls_dlsblog/layoutdesign_collection')
@@ -148,7 +148,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
         $this->getMassactionBlock()->addItem(
             'status',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change status'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Status'),
                 'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
                 'additional' => array(
                     'status' => array(
@@ -174,7 +174,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
                         'name'   => 'flag_custom_default_filter',
                         'type'   => 'select',
                         'class'  => 'required-entry',
-                        'label'  => Mage::helper('dls_dlsblog')->__('Default filter'),
+                        'label'  => Mage::helper('dls_dlsblog')->__('Default Filter'),
                         'values' => Mage::getModel('dls_dlsblog/blogset_attribute_source_customdefaultfilter')
                             ->getAllOptions(true),
 
@@ -189,14 +189,14 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Grid extends Mage_Adminhtml_Block_Widg
         $this->getMassactionBlock()->addItem(
             'layoutdesign_id',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change Layout design'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Layout Design'),
                 'url'        => $this->getUrl('*/*/massLayoutdesignId', array('_current'=>true)),
                 'additional' => array(
                     'flag_layoutdesign_id' => array(
                         'name'   => 'flag_layoutdesign_id',
                         'type'   => 'select',
                         'class'  => 'required-entry',
-                        'label'  => Mage::helper('dls_dlsblog')->__('Layout design'),
+                        'label'  => Mage::helper('dls_dlsblog')->__('Layout Design'),
                         'values' => $values
                     )
                 )

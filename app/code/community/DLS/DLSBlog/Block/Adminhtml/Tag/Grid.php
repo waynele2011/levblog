@@ -150,7 +150,7 @@ class DLS_DLSBlog_Block_Adminhtml_Tag_Grid extends Mage_Adminhtml_Block_Widget_G
         $this->getMassactionBlock()->addItem(
             'status',
             array(
-                'label'      => Mage::helper('dls_dlsblog')->__('Change status'),
+                'label'      => Mage::helper('dls_dlsblog')->__('Change Status'),
                 'url'        => $this->getUrl('*/*/massStatus', array('_current'=>true)),
                 'additional' => array(
                     'status' => array(

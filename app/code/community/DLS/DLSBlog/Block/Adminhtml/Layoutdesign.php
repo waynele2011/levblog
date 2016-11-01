@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Layout design admin block
+ * Layout Design admin block
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -21,8 +21,8 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign extends Mage_Adminhtml_Block_Widg
         $this->_controller         = 'adminhtml_layoutdesign';
         $this->_blockGroup         = 'dls_dlsblog';
         parent::__construct();
-        $this->_headerText         = Mage::helper('dls_dlsblog')->__('Layout design');
-        $this->_updateButton('add', 'label', Mage::helper('dls_dlsblog')->__('Add Layout design'));
+        $this->_headerText         = Mage::helper('dls_dlsblog')->__('Layout Designs');
+        $this->_updateButton('add', 'label', Mage::helper('dls_dlsblog')->__('Add Layout Design'));
 
     }
 }

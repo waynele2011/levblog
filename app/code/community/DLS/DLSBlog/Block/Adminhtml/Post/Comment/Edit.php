@@ -24,12 +24,12 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Edit extends Mage_Adminhtml_Block
         $this->_updateButton(
             'save',
             'label',
-            Mage::helper('dls_dlsblog')->__('Save Post comment')
+            Mage::helper('dls_dlsblog')->__('Save Post Comment')
         );
         $this->_updateButton(
             'delete',
             'label',
-            Mage::helper('dls_dlsblog')->__('Delete Post comment')
+            Mage::helper('dls_dlsblog')->__('Delete Post Comment')
         );
         $this->_addButton(
             'saveandcontinue',
@@ -58,7 +58,7 @@ class DLS_DLSBlog_Block_Adminhtml_Post_Comment_Edit extends Mage_Adminhtml_Block
     {
         if (Mage::registry('comment_data') && Mage::registry('comment_data')->getId()) {
             return Mage::helper('dls_dlsblog')->__(
-                "Edit Post comment '%s'",
+                "Edit Post Comment '%s'",
                 $this->escapeHtml(Mage::registry('comment_data')->getTitle())
             );
         }

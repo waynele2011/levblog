@@ -24,7 +24,7 @@ class DLS_DLSBlog_Block_Adminhtml_Layoutdesign_Edit_Tab_Form extends Mage_Adminh
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'layoutdesign_form',
-            array('legend' => Mage::helper('dls_dlsblog')->__('Layout design'))
+            array('legend' => Mage::helper('dls_dlsblog')->__('Layout Design'))
         );
 
         $fieldset->addField(
