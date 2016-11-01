@@ -1,0 +1,13 @@
+
+<?php $_filter = $this->getCurrentFilter(); ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title filter-title">
+    <h1><?php echo $_filter->getName(); ?></h1>
+</div>
+<div class="filter-view">
+    <div class="filter-name">
+        <?php echo Mage::helper('dls_blog')->__('Name'); ?>:<?php echo $_filter->getName(); ?>
+
+    </div>
+
+</div>

@@ -1,0 +1,15 @@
+
+
+<?php $_menu = $this->getHtml('level-top') ?>
+
+<?php if ($_menu): ?>
+    <nav id="nav">
+        <ol class="nav-primary">
+            <?php echo $_menu ?>
+        </ol>
+    </nav>
+<?php endif ?>
+
+<div id="header-taxonomy-menu">
+    <?php echo $this->getChildHtml('blog_menu') ?>
+</div>

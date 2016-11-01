@@ -1,0 +1,29 @@
+
+<?php $_post = $this->getCurrentPost(); ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php
+$isAllow = Mage::helper('dls_blog/post')->isAllowToShowPost($_post);
+if (!$isAllow):
+    ?>
+    <div class="message">
+        <center><p>Cannot display this post at this moment!</p></center>
+    </div>
+<?php else : ?>
+    <div class="post-view">
+        <div class="post-header">
+            <h1 class="post-title"><?php echo $_post->getTitle(); ?></h1>
+            <p class="post-meta">
+                <time class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i><?php echo date('d F, Y', strtotime($_post->getPublishDate())); ?></time>
+                <span class="post-comment-link"><i class="fa fa-comment-o" aria-hidden="true"></i><a class="post-comment" href="#form-add">Leave a comment</a></span>
+            </p>
+        </div>
+        <div class="post-large_image">
+            <?php if ($_post->getLargeImage()) : ?>
+                <center><img src="<?php echo Mage::helper('dls_blog/post_image')->init($_post, 'large_image'); ?>" alt="<?php echo $this->escapeHtml($_post->getTitile()); ?>" /></center>
+            <?php endif; ?>
+        </div>
+        <div class="post-main_content">
+            <p class="main_content"><?php echo $_post->getMainContent(); ?></p>
+        </div>
+    </div>
+<?php endif; ?>

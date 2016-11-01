@@ -1,0 +1,29 @@
+
+<?php $_taxonomies = $this->getTaxonomies(); ?>
+<?php if ($_taxonomies->getSize() > 0) : ?>
+    <div class="taxonomies-list-container">
+        <div class="taxonomy-list-item">
+            <i class="fa fa-folder-open" aria-hidden="true"></i>
+            <?php
+            $count = 1;
+            $total = ($_taxonomies->getSize());
+            ?>
+            <?php foreach ($_taxonomies as $_taxonomy) : ?>
+                <?php if ($count == $total || $total == 1) : ?>
+                    <a href="<?php echo $_taxonomy->getTaxonomyUrl() ?>">
+                        <?php echo $_taxonomy->getName(); ?>
+                    </a>
+                <?php else :
+                    ?>
+                    <a href="<?php echo $_taxonomy->getTaxonomyUrl() ?>">
+                        <?php echo $_taxonomy->getName(); ?>
+                    </a>
+                    <span>,</span>
+                    <?php
+                    $count++;
+                endif;
+                ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>

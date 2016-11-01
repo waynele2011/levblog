@@ -1,0 +1,7 @@
+
+<?php $_taxonomy = $this->getCurrentTaxonomy(); ?>
+<?php if ($_taxonomy) : ?>
+    <div class="taxonomy-widget-link">
+        <a href="<?php echo $_taxonomy->getTaxonomyUrl() ?>"><?php echo $_taxonomy->getName() ?></a>
+    </div>
+<?php endif; ?>

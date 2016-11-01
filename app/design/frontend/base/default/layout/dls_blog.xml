@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/dls_blog/custom.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/dls_blog/fonts/font-awesome.min.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <js>js/dls_blog/custom.js</js>
+            </action>
+        </reference>
+    </default>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="dls_blog">
+                <name>post_comments</name>
+                <path>dls_blog/post_customer_comment</path>
+                <label>Posts Comments</label>
+            </action>
+        </reference>
+    </customer_account>
+    <dls_blog_post_index translate="label" module="dls_blog">
+        <label>Posts list</label>
+        <update handle="page_one_column" />
+        <reference name="catalog.topnav">
+            <action method="setTemplate">
+                <template>dls_blog/topmenu.phtml</template>
+            </action>
+            <block type="dls_blog/menu" name="blog_menu" template="dls_blog/menu.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="dls_blog/post_list" name="post_list" template="dls_blog/post/list.phtml" />
+        </reference>
+    </dls_blog_post_index>
+    <dls_blog_blogset_view translate="label" module="dls_blog">
+        <label>Blog setting view page</label>
+        <reference name="catalog.topnav">
+            <action method="setTemplate">
+                <template>dls_blog/topmenu.phtml</template>
+            </action>
+            <block type="dls_blog/menu" name="blog_menu" template="dls_blog/menu.phtml"/>
+        </reference>
+        <reference name="left">
+            <block type="dls_blog/left" name="block_left" template="dls_blog/left.phtml"/>
+        </reference>
+        <reference name="right">
+            <block type="dls_blog/right" name="block_right" template="dls_blog/right.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="dls_blog/top"  name="block_top" template="dls_blog/top.phtml"/>
+            <block type="dls_blog/blogset_filter_list" name="blogset.filter_list" as="blogset_filters" template="dls_blog/blogset/filter/list.phtml" />
+            <block type="dls_blog/blogset_post_list" name="blogset.post_list" as="blogset_posts" template="dls_blog/blogset/post/view.phtml" />
+            <block type="dls_blog/blogset_taxonomy_list" name="blogset.taxonomy_list" as="blogset_taxonomies" template="dls_blog/blogset/taxonomy/list.phtml" />
+            <block type="dls_blog/blogset_tag_list" name="blogset.tag_list" as="blogset_tags" template="dls_blog/blogset/tag/list.phtml" />
+            <block type="dls_blog/bottom"  name="block_bottom" template="dls_blog/bottom.phtml"/>
+        </reference>
+    </dls_blog_blogset_view>
+    <dls_blog_taxonomy_view translate="label" module="dls_blog">
+        <label>Taxonomy view page</label>
+        <reference name="head">
+            <action method="addItem" ifconfig="dls_blog/taxonomy/tree">
+                <type>skin_js</type>
+                <js>js/dls_blog/tree.js</js>
+            </action>
+        </reference>
+        <reference name="catalog.topnav">
+            <action method="setTemplate">
+                <template>dls_blog/topmenu.phtml</template>
+            </action>
+            <block type="dls_blog/menu" name="blog_menu" template="dls_blog/menu.phtml"/>
+        </reference>
+        <reference name="left">
+            <block type="dls_blog/left" name="block_left" template="dls_blog/left.phtml"/>
+        </reference>
+        <reference name="right">
+            <block type="dls_blog/right" name="block_right" template="dls_blog/right.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="dls_blog/top"  name="block_top" template="dls_blog/top.phtml"/>
+            <block type="dls_blog/taxonomy_post_list" name="taxonomy.post_list" as="taxonomy_posts" template="dls_blog/taxonomy/post/view.phtml" />
+            <block type="dls_blog/bottom"  name="block_bottom" template="dls_blog/bottom.phtml"/>
+        </reference>
+    </dls_blog_taxonomy_view>
+    <dls_blog_filter_view translate="label" module="dls_blog">
+        <label>Filter view page</label>
+        <reference name="catalog.topnav">
+            <action method="setTemplate">
+                <template>dls_blog/topmenu.phtml</template>
+            </action>
+            <block type="dls_blog/menu" name="blog_menu" template="dls_blog/menu.phtml"/>
+        </reference>
+        <reference name="left">
+            <block type="dls_blog/left" name="block_left" template="dls_blog/left.phtml"/>
+        </reference>
+        <reference name="right">
+            <block type="dls_blog/right" name="block_right" template="dls_blog/right.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="dls_blog/top"  name="block_top" template="dls_blog/top.phtml"/>
+            <block type="dls_blog/filter_view" name="filter_view" template="dls_blog/filter/view.phtml" />
+            <block type="dls_blog/filter_taxonomy_list" name="filter.taxonomy_list" as="filter_taxonomies" template="dls_blog/filter/taxonomy/list.phtml" />
+            <block type="dls_blog/bottom"  name="block_bottom" template="dls_blog/bottom.phtml"/>
+        </reference>
+    </dls_blog_filter_view>
+    <dls_blog_post_view translate="label" module="dls_blog">
+        <label>Post view page</label>
+        <reference name="catalog.topnav">
+            <action method="setTemplate">
+                <template>dls_blog/topmenu.phtml</template>
+            </action>
+            <block type="dls_blog/menu" name="blog_menu" template="dls_blog/menu.phtml"/>
+        </reference>
+        <reference name="left">
+            <block type="dls_blog/left" name="block_left" template="dls_blog/left.phtml"/>
+        </reference>
+        <reference name="right">
+            <block type="dls_blog/right" name="block_right" template="dls_blog/right.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="dls_blog/top"  name="block_top" template="dls_blog/top.phtml"/>
+            <block type="dls_blog/post_view" name="post_view" template="dls_blog/post/view.phtml" />
+            <block type="dls_blog/post_taxonomy_list" name="post.taxonomy_list" as="post_taxonomies" template="dls_blog/post/taxonomy/list.phtml" />
+            <block type="dls_blog/post_tag_list" name="post.tag_list" as="post_tags" template="dls_blog/post/tag/list.phtml" />
+            <block type="dls_blog/post_catalog_product_list" name="post.info.products" as="post_products" template="dls_blog/post/catalog/product/list.phtml" />
+            <block type="dls_blog/post_comment_list" name="post.comments_list" as="post_comment_list" template="dls_blog/post/comment/list.phtml">
+                <block type="dls_blog/post_comment_form" name="comment_form" as="comment_form" template="dls_blog/post/comment/form.phtml" />
+            </block>
+            <block type="dls_blog/bottom"  name="block_bottom" template="dls_blog/bottom.phtml"/>
+        </reference>
+    </dls_blog_post_view>
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="dls_blog/catalog_product_list_post" name="product.info.posts" as="product_posts" template="dls_blog/catalog/product/list/post.phtml">
+                <action method="addToParentGroup">
+                    <group>detailed_info</group>
+                </action>
+                <action method="setTitle" translate="value" module="dls_blog">
+                    <value>Posts</value>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
+    <dls_blog_post_customer_comment_index translate="label" module="dls_blog">
+        <label>My Posts comments</label>
+        <reference name="catalog.topnav">
+            <action method="setTemplate">
+                <template>dls_blog/topmenu.phtml</template>
+            </action>
+            <block type="dls_blog/menu" name="blog_menu" template="dls_blog/menu.phtml"/>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="dls_blog/post_customer_comment_list" name="customer_post_comments" template="dls_blog/post/customer/comment/list.phtml"/>
+        </reference>
+    </dls_blog_post_customer_comment_index>
+    <dls_blog_post_customer_comment_view translate="label" module="dls_blog">
+        <label>My Posts comment view</label>
+        <reference name="catalog.topnav">
+            <action method="setTemplate">
+                <template>dls_blog/topmenu.phtml</template>
+            </action>
+            <block type="dls_blog/menu" name="blog_menu" template="dls_blog/menu.phtml"/>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="dls_blog/post_customer_comment_view" name="customer_post_comment" template="dls_blog/post/customer/comment/view.phtml"/>
+        </reference>
+    </dls_blog_post_customer_comment_view>
+</layout>

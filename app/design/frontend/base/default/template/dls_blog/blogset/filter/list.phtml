@@ -1,0 +1,16 @@
+
+<?php $_filters = $this->getFilters(); ?>
+<?php if ($_filters->getSize() > 0) : ?>
+    <div class="filter-title">
+        <h2><?php echo Mage::helper('dls_blog')->__('Filters') ?></h2>
+    </div>
+    <div class="filters-list-container">
+        <?php foreach ($_filters as $_filter) : ?>
+            <div class="filter-list-item">
+                <a href="<?php echo $_filter->getFilterUrl() ?>">
+                    <?php echo $_filter->getName(); ?>
+                </a><br />
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <dls_blog translate="title" module="dls_blog">
+                                        <title>Blog</title>
+                                    </dls_blog>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <dls_blog translate="title" module="dls_blog">
+                        <title>Blog</title>
+                        <children>
+                            <post translate="title" module="dls_blog">
+                                <title>Post</title>
+                                <sort_order>0</sort_order>
+                            </post>
+                            <taxonomy translate="title" module="dls_blog">
+                                <title>Categories</title>
+                                <sort_order>10</sort_order>
+                            </taxonomy>
+                            <post_comments translate="title" module="dls_blog">
+                                <title>Post Comments</title>
+                                <sort_order>20</sort_order>
+                            </post_comments>
+                            <layoutdesign translate="title" module="dls_blog">
+                                <title>Layout Designs</title>
+                                <sort_order>30</sort_order>
+                            </layoutdesign>
+                            <tag translate="title" module="dls_blog">
+                                <title>Tags</title>
+                                <sort_order>40</sort_order>
+                            </tag>
+                            <post_attributes translate="title" module="dls_blog">
+                                <title>Post Attributes</title>
+                                <sort_order>50</sort_order>
+                            </post_attributes>
+                            <blogset translate="title" module="dls_blog">
+                                <title>Blogs</title>
+                                <sort_order>60</sort_order>
+                            </blogset>
+                            <filter translate="title" module="dls_blog">
+                                <title>Filter</title>
+                                <sort_order>100</sort_order>
+                            </filter>
+                        </children>
+                    </dls_blog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <dls_blog translate="title" module="dls_blog">
+            <title>Blog</title>
+            <sort_order>65</sort_order>
+            <children>
+                <post translate="title" module="dls_blog">
+                    <title>Posts</title>
+                    <action>adminhtml/blog_post</action>
+                    <sort_order>0</sort_order>
+                </post>
+                <taxonomy translate="title" module="dls_blog">
+                    <title>Categories</title>
+                    <action>adminhtml/blog_taxonomy</action>
+                    <sort_order>10</sort_order>
+                </taxonomy>
+                <post_comments translate="title" module="dls_blog">
+                    <title>Comments</title>
+                    <action>adminhtml/blog_post_comment</action>
+                    <sort_order>20</sort_order>
+                </post_comments>
+                <layoutdesign translate="title" module="dls_blog">
+                    <title>Layout Designs</title>
+                    <action>adminhtml/blog_layoutdesign</action>
+                    <sort_order>30</sort_order>
+                </layoutdesign>
+                <tag translate="title" module="dls_blog">
+                    <title>Tags</title>
+                    <action>adminhtml/blog_tag</action>
+                    <sort_order>40</sort_order>
+                </tag>
+                <post_attributes translate="title" module="dls_blog">
+                    <title>Post Attributes</title>
+                    <action>adminhtml/blog_post_attribute</action>
+                    <sort_order>50</sort_order>
+                </post_attributes>
+                <blogset translate="title" module="dls_blog">
+                    <title>Blogs</title>
+                    <action>adminhtml/blog_blogset</action>
+                    <sort_order>60</sort_order>
+                </blogset>
+                <filter translate="title" module="dls_blog">
+                    <title>Filter</title>
+                    <action>adminhtml/blog_filter</action>
+                    <sort_order>100</sort_order>
+                </filter>
+            </children>
+        </dls_blog>
+    </menu>
+</config>

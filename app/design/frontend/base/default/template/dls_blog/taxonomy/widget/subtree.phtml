@@ -1,0 +1,13 @@
+
+<?php $_taxonomies = $this->getTaxonomies(); ?>
+<?php if ($_taxonomies->getSize() > 0) : ?>
+    <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/dls_blog/tree.js') ?>"></script>
+    <ul id="<?php echo $this->getUniqueId() ?>">
+        <?php foreach ($_taxonomies as $_taxonomy) : ?>
+            <?php echo $this->drawTaxonomy($_taxonomy); ?>
+        <?php endforeach; ?>
+    </ul>
+    <script type="text/javascript">
+        blogTree('<?php echo $this->getUniqueId() ?>');
+    </script>
+<?php endif; ?>
