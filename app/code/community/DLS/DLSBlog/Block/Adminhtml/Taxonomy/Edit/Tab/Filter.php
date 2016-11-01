@@ -1,7 +1,7 @@
 <?php
 
 /**
- * taxonomy - filter relation edit block
+ * category - filter relation edit block
  *
  * @category    DLS
  * @package     DLS_DLSBlog

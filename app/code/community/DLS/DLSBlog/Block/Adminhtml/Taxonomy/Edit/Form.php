@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy edit form
+ * Category edit form
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -10,7 +10,7 @@
 class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Form extends DLS_DLSBlog_Block_Adminhtml_Taxonomy_Abstract
 {
     /**
-     * Additional buttons on taxonomy page
+     * Additional buttons on category page
      * @var array
      */
     protected $_additionalButtons = array();
@@ -47,7 +47,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Form extends DLS_DLSBlog_Block_A
             $this->getLayout()->createBlock('adminhtml/widget_button')
                 ->setData(
                     array(
-                        'label'   => Mage::helper('dls_dlsblog')->__('Save Taxonomy'),
+                        'label'   => Mage::helper('dls_dlsblog')->__('Save Category'),
                         'onclick' => "taxonomySubmit('" . $this->getSaveUrl() . "', true)",
                         'class'   => 'save'
                     )
@@ -60,7 +60,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Form extends DLS_DLSBlog_Block_A
                 $this->getLayout()->createBlock('adminhtml/widget_button')
                     ->setData(
                         array(
-                            'label'   => Mage::helper('dls_dlsblog')->__('Delete Taxonomy'),
+                            'label'   => Mage::helper('dls_dlsblog')->__('Delete Category'),
                             'onclick' => "taxonomyDelete('" . $this->getUrl(
                                 '*/*/delete',
                                 array('_current' => true)
@@ -205,7 +205,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Form extends DLS_DLSBlog_Block_A
         if ($this->getTaxonomyId()) {
             return $this->getTaxonomyName();
         } else {
-            return Mage::helper('dls_dlsblog')->__('New Root Taxonomy');
+            return Mage::helper('dls_dlsblog')->__('New Root Category');
         }
     }
 

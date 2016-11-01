@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy admin edit form
+ * Category admin edit form
  *
  * @category    DLS
  * @package     DLS_DLSBlog

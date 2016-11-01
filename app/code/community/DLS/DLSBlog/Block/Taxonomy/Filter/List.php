@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy Filters list block
+ * Category Filters list block
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -39,7 +39,7 @@ class DLS_DLSBlog_Block_Taxonomy_Filter_List extends DLS_DLSBlog_Block_Filter_Li
     }
 
     /**
-     * get the current taxonomy
+     * get the current category
      *
      * @access public
      * @return DLS_DLSBlog_Model_Taxonomy

@@ -65,7 +65,7 @@
                     </fields>
                 </blogset>
                 <taxonomy translate="label" module="dls_dlsblog">
-                    <label>Taxonomy</label>
+                    <label>Category</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>

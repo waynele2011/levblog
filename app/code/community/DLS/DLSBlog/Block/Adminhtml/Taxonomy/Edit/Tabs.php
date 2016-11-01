@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy admin edit tabs
+ * Category admin edit tabs
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -19,7 +19,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Tabs extends Mage_Adminhtml_Bloc
     {
         $this->setId('taxonomy_info_tabs');
         $this->setDestElementId('taxonomy_tab_content');
-        $this->setTitle(Mage::helper('dls_dlsblog')->__('Taxonomy'));
+        $this->setTitle(Mage::helper('dls_dlsblog')->__('Category'));
         $this->setTemplate('widget/tabshoriz.phtml');
     }
 
@@ -34,8 +34,8 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Tabs extends Mage_Adminhtml_Bloc
         $this->addTab(
             'form_taxonomy',
             array(
-                'label'   => Mage::helper('dls_dlsblog')->__('Taxonomy'),
-                'title'   => Mage::helper('dls_dlsblog')->__('Taxonomy'),
+                'label'   => Mage::helper('dls_dlsblog')->__('Category'),
+                'title'   => Mage::helper('dls_dlsblog')->__('Category'),
                 'content' => $this->getLayout()->createBlock(
                     'dls_dlsblog/adminhtml_taxonomy_edit_tab_form'
                 )

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy Blogs setting list block
+ * Category Blogs setting list block
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -39,7 +39,7 @@ class DLS_DLSBlog_Block_Taxonomy_Blogset_List extends DLS_DLSBlog_Block_Blogset_
     }
 
     /**
-     * get the current taxonomy
+     * get the current category
      *
      * @access public
      * @return DLS_DLSBlog_Model_Taxonomy

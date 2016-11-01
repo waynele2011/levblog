@@ -37,8 +37,11 @@ class DLS_DLSBlog_Block_Adminhtml_Form_Renderer_Designframe extends Mage_Core_Bl
     public function getLayoutDesignCode() {
         if (Mage::registry('current_layoutdesign') && Mage::registry('current_layoutdesign')->getId()) {
             $layout_design = Mage::registry('current_layoutdesign')->getData();
+            $_design_code = Mage::helper('core')->jsonDecode($layout_design['design_code']);
         }
-        $_design_code = Mage::helper('core')->jsonDecode($layout_design['design_code']);
+        else{
+            $_design_code = '';
+        }
         return $_design_code;
     }
 

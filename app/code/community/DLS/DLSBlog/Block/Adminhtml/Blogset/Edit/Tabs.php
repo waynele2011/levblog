@@ -46,7 +46,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit_Tabs extends Mage_Adminhtml_Block
         $this->addTab(
             'taxonomies',
             array(
-                'label' => Mage::helper('dls_dlsblog')->__('Taxonomies'),
+                'label' => Mage::helper('dls_dlsblog')->__('Categories'),
                 'url'   => $this->getUrl('*/*/taxonomies', array('_current' => true)),
                 'class' => 'ajax'
             )

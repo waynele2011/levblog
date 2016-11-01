@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy admin block abstract
+ * Category admin block abstract
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -10,7 +10,7 @@
 class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Abstract extends Mage_Adminhtml_Block_Template
 {
     /**
-     * get current taxonomy
+     * get current category
      *
      * @access public
      * @return DLS_DLSBlog_Model_Entity
@@ -22,7 +22,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Abstract extends Mage_Adminhtml_Block
     }
 
     /**
-     * get current taxonomy id
+     * get current category id
      *
      * @access public
      * @return int
@@ -37,7 +37,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Abstract extends Mage_Adminhtml_Block
     }
 
     /**
-     * get current taxonomy Name
+     * get current category Name
      *
      * @access public
      * @return string
@@ -49,7 +49,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Abstract extends Mage_Adminhtml_Block
     }
 
     /**
-     * get current taxonomy path
+     * get current category path
      *
      * @access public
      * @return string
@@ -64,7 +64,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Abstract extends Mage_Adminhtml_Block
     }
 
     /**
-     * check if there is a root taxonomy
+     * check if there is a root category
      *
      * @access public
      * @return bool

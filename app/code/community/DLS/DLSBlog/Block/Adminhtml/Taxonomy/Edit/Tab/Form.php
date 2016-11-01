@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy edit form tab
+ * Category edit form tab
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -24,7 +24,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Edit_Tab_Form extends Mage_Adminhtml_
         $this->setForm($form);
         $fieldset = $form->addFieldset(
             'taxonomy_form',
-            array('legend' => Mage::helper('dls_dlsblog')->__('Taxonomy'))
+            array('legend' => Mage::helper('dls_dlsblog')->__('Category'))
         );
         $fieldset->addType(
             'image',

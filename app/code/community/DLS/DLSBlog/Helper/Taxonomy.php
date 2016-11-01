@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Taxonomy helper
+ * Category helper
  *
  * @category    DLS
  * @package     DLS_DLSBlog

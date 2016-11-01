@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy admin widget chooser
+ * Category admin widget chooser
  *
  * @category    DLS
  * @package     DLS_DLSBlog

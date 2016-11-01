@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy admin tree block
+ * Category admin tree block
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -47,7 +47,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Tree extends DLS_DLSBlog_Block_Adminh
             $this->getLayout()->createBlock('adminhtml/widget_button')
                 ->setData(
                     array(
-                        'label'   => Mage::helper('dls_dlsblog')->__('Add Child Taxonomy'),
+                        'label'   => Mage::helper('dls_dlsblog')->__('Add Child Category'),
                         'onclick' => "addNew('".$addUrl."', false)",
                         'class'   => 'add',
                         'id'      => 'add_child_taxonomy_button',
@@ -61,7 +61,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Tree extends DLS_DLSBlog_Block_Adminh
             $this->getLayout()->createBlock('adminhtml/widget_button')
                 ->setData(
                     array(
-                        'label'   => Mage::helper('dls_dlsblog')->__('Add Root Taxonomy'),
+                        'label'   => Mage::helper('dls_dlsblog')->__('Add Root Category'),
                         'onclick' => "addNew('".$addUrl."', true)",
                         'class'   => 'add',
                         'id'      => 'add_root_taxonomy_button'
@@ -343,7 +343,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Tree extends DLS_DLSBlog_Block_Adminh
     }
 
     /**
-     * Check if page loaded by outside link to taxonomy edit
+     * Check if page loaded by outside link to category edit
      *
      * @access public
      * @return boolean
@@ -355,7 +355,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Tree extends DLS_DLSBlog_Block_Adminh
     }
 
     /**
-     * Check availability of adding root taxonomy
+     * Check availability of adding root category
      *
      * @access public
      * @return boolean
@@ -367,7 +367,7 @@ class DLS_DLSBlog_Block_Adminhtml_Taxonomy_Tree extends DLS_DLSBlog_Block_Adminh
     }
 
     /**
-     * Check availability of adding child taxonomy
+     * Check availability of adding child category
      *
      * @access public
      * @return boolean

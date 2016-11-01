@@ -9,13 +9,13 @@
             <taxonomy_id type="complex" translate="label">
                 <visible>1</visible>
                 <required>1</required>
-                <label>Taxonomy</label>
+                <label>Category</label>
                 <type>label</type>
                 <helper_block>
                     <type>dls_dlsblog/adminhtml_taxonomy_widget_chooser</type>
                     <data>
                         <button translate="open">
-                            <open>Select Taxonomy</open>
+                            <open>Select Category</open>
                         </button>
                     </data>
                 </helper_block>
@@ -24,20 +24,20 @@
         </parameters>
     </dlsblog_taxonomy_view>
     <dlsblog_taxonomy_link type="dls_dlsblog/taxonomy_widget_link" translate="name description" module="dls_dlsblog">
-        <name>Taxonomy link</name>
-        <description>Taxonomy link widget</description>
+        <name>Category link</name>
+        <description>Category link widget</description>
         <is_email_compatible>0</is_email_compatible>
         <parameters>
             <taxonomy_id type="complex" translate="label">
                 <visible>1</visible>
                 <required>1</required>
-                <label>Taxonomy</label>
+                <label>Category</label>
                 <type>label</type>
                 <helper_block>
                     <type>dls_dlsblog/adminhtml_taxonomy_widget_chooser</type>
                     <data>
                         <button translate="open">
-                            <open>Select Taxonomy</open>
+                            <open>Select Category</open>
                         </button>
                     </data>
                 </helper_block>
@@ -90,20 +90,20 @@
         </parameters>
     </dlsblog_post_link>
     <dlsblog_taxonomy_subtree type="dls_dlsblog/taxonomy_widget_subtree" translate="name description" module="dls_dlsblog">
-        <name>Taxonomy subtree</name>
-        <description>Taxonomy subtree widget</description>
+        <name>Category subtree</name>
+        <description>Category subtree widget</description>
         <is_email_compatible>0</is_email_compatible>
         <parameters>
             <taxonomy_id type="complex" translate="label">
                 <visible>1</visible>
                 <required>1</required>
-                <label>Taxonomy</label>
+                <label>Category</label>
                 <type>label</type>
                 <helper_block>
                     <type>dls_dlsblog/adminhtml_taxonomy_widget_chooser</type>
                     <data>
                         <button translate="open">
-                            <open>Select Taxonomy</open>
+                            <open>Select Category</open>
                         </button>
                     </data>
                 </helper_block>

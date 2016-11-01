@@ -113,6 +113,9 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
     {
         if ($data = $this->getRequest()->getPost('layoutdesign')) {
             try {
+                if(!isset($data['design_frame'])){
+                    $data['design_frame'] = '';
+                }
                 $layoutdesign = $this->_initLayoutdesign();
                 $data['design_code'] = Mage::helper('core')->jsonEncode($data['design_frame']);
                 $layoutdesign->addData($data);

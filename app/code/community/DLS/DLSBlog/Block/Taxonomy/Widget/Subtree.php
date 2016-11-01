@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy subtree block
+ * Category subtree block
  *
  * @category    DLS
  * @package     DLS_DLSBlog

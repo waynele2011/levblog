@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Taxonomy model
+ * Category model
  *
  * @category    DLS
  * @package     DLS_DLSBlog
@@ -47,7 +47,7 @@ class DLS_DLSBlog_Model_Taxonomy extends Mage_Core_Model_Abstract
     }
 
     /**
-     * before save taxonomy
+     * before save category
      *
      * @access protected
      * @return DLS_DLSBlog_Model_Taxonomy
@@ -65,7 +65,7 @@ class DLS_DLSBlog_Model_Taxonomy extends Mage_Core_Model_Abstract
     }
 
     /**
-     * get the url to the taxonomy details page
+     * get the url to the category details page
      *
      * @access public
      * @return string
@@ -102,7 +102,7 @@ class DLS_DLSBlog_Model_Taxonomy extends Mage_Core_Model_Abstract
     }
 
     /**
-     * save taxonomy relation
+     * save category relation
      *
      * @access public
      * @return DLS_DLSBlog_Model_Taxonomy
