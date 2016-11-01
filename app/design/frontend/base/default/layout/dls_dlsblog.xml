@@ -27,8 +27,9 @@
     </dls_dlsblog_post_index>
     <dls_dlsblog_blogset_view translate="label" module="dls_dlsblog">
         <label>Blog setting view page</label>
-        <reference name="header">
-            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml" before="breadcrumbs"/>
+        <reference name="catalog.topnav">
+            <action method="setTemplate"><template>dls_dlsblog/topmenu.phtml</template></action>
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml"/>
         </reference>
         <reference name="left">
             <block type="dls_dlsblog/left" name="block_left" template="dls_dlsblog/left.phtml"/>
@@ -64,8 +65,9 @@
     </dls_dlsblog_taxonomy_view>
     <dls_dlsblog_filter_view translate="label" module="dls_dlsblog">
         <label>Filter view page</label>
-        <reference name="header">
-            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml" before="breadcrumbs"/>
+        <reference name="catalog.topnav">
+            <action method="setTemplate"><template>dls_dlsblog/topmenu.phtml</template></action>
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml"/>
         </reference>
         <reference name="left">
             <block type="dls_dlsblog/left" name="block_left" template="dls_dlsblog/left.phtml"/>
@@ -82,8 +84,9 @@
     </dls_dlsblog_filter_view>
     <dls_dlsblog_post_view translate="label" module="dls_dlsblog">
         <label>Post view page</label>
-        <reference name="header">
-            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml" before="breadcrumbs"/>
+        <reference name="catalog.topnav">
+            <action method="setTemplate"><template>dls_dlsblog/topmenu.phtml</template></action>
+            <block type="dls_dlsblog/menu" name="dlsblog_menu" template="dls_dlsblog/menu.phtml"/>
         </reference>
         <reference name="left">
             <block type="dls_dlsblog/left" name="block_left" template="dls_dlsblog/left.phtml"/>
