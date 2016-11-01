@@ -154,20 +154,20 @@ class DLS_Blog_Model_Taxonomy extends Mage_Core_Model_Abstract {
         if (!$parent->getId()) {
             Mage::throwException(
                     Mage::helper('dls_blog')->__(
-                            'Taxonomy move operation is not possible: the new parent taxonomy was not found.'
+                            'Blog category move operation is not possible: the new parent taxonomy was not found.'
                     )
             );
         }
         if (!$this->getId()) {
             Mage::throwException(
                     Mage::helper('dls_blog')->__(
-                            'Taxonomy move operation is not possible: the current taxonomy was not found.'
+                            'Blog category move operation is not possible: the current taxonomy was not found.'
                     )
             );
         } elseif ($parent->getId() == $this->getId()) {
             Mage::throwException(
                     Mage::helper('dls_blog')->__(
-                            'Taxonomy move operation is not possible: parent taxonomy is equal to child taxonomy.'
+                            'Blog category move operation is not possible: parent taxonomy is equal to child taxonomy.'
                     )
             );
         }

@@ -42,7 +42,7 @@ class DLS_Blog_Model_Layoutdesign_Source extends Mage_Eav_Model_Entity_Attribute
         } else {
             $column['type'] = Varien_Db_Ddl_Table::TYPE_INTEGER;
             $column['nullable'] = true;
-            $column['comment'] = $attributeCode . ' Layout design column';
+            $column['comment'] = $attributeCode . ' Layout Design column';
         }
         return array($attributeCode => $column);
     }

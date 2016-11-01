@@ -97,11 +97,18 @@
                     <action>adminhtml/blog_blogset</action>
                     <sort_order>60</sort_order>
                 </blogset>
+                <blogset translate="title" module="dls_blog">
+                    <title>Settings</title>
+                    <action>admin/system_config/edit/section/dls_blog</action>
+                    <sort_order>60</sort_order>
+                </blogset>
+                <!--
                 <filter translate="title" module="dls_blog">
                     <title>Filter</title>
                     <action>adminhtml/blog_filter</action>
                     <sort_order>100</sort_order>
                 </filter>
+                -->
             </children>
         </dls_blog>
     </menu>

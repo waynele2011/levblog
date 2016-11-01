@@ -45,7 +45,7 @@ class DLS_Blog_Adminhtml_Blog_TaxonomyController extends DLS_Blog_Controller_Adm
         if (!($taxonomy = $this->_initTaxonomy())) {
             return;
         }
-        $this->_title($taxonomyId ? $taxonomy->getName() : $this->__('New Taxonomy'));
+        $this->_title($taxonomyId ? $taxonomy->getName() : $this->__('New Blog category'));
         $data = Mage::getSingleton('adminhtml/session')->getTaxonomyData(true);
         if (isset($data['taxonomy'])) {
             $taxonomy->addData($data['taxonomy']);
@@ -116,7 +116,7 @@ class DLS_Blog_Adminhtml_Blog_TaxonomyController extends DLS_Blog_Controller_Adm
         $taxonomy = $this->_initTaxonomy();
         if (!$taxonomy) {
             $this->getResponse()->setBody(
-                    Mage::helper('dls_blog')->__('Taxonomy move error')
+                    Mage::helper('dls_blog')->__('Blog category move error')
             );
             return;
         }
@@ -129,7 +129,7 @@ class DLS_Blog_Adminhtml_Blog_TaxonomyController extends DLS_Blog_Controller_Adm
             $this->getResponse()->setBody($e->getMessage());
         } catch (Exception $e) {
             $this->getResponse()->setBody(
-                    Mage::helper('dls_blog')->__('Taxonomy move error')
+                    Mage::helper('dls_blog')->__('Blog category move error')
             );
             Mage::logException($e);
         }

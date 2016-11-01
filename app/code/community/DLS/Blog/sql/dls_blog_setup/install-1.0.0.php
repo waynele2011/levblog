@@ -13,7 +13,7 @@ $table = $this->getConnection()
         ->addColumn(
                 'layoutdesign_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
             'unsigned' => true,
-                ), 'Layout design ID'
+                ), 'Layout Design ID'
         )
         ->addColumn(
                 'name', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
@@ -53,12 +53,12 @@ $table = $this->getConnection()
             'identity' => true,
             'nullable' => false,
             'primary' => true,
-                ), 'Taxonomy ID'
+                ), 'Blog category ID'
         )
         ->addColumn(
                 'layoutdesign_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
             'unsigned' => true,
-                ), 'Layout design ID'
+                ), 'Layout Design ID'
         )
         ->addColumn(
                 'name', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
@@ -113,13 +113,13 @@ $table = $this->getConnection()
                 'meta_description', Varien_Db_Ddl_Table::TYPE_TEXT, '64k', array(), 'Meta description'
         )
         ->addColumn(
-                'updated_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(), 'Taxonomy Modification Time'
+                'updated_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(), 'Blog category Modification Time'
         )
         ->addColumn(
-                'created_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(), 'Taxonomy Creation Time'
+                'created_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(), 'Blog category Creation Time'
         )
         ->addIndex($this->getIdxName('dls_blog/layoutdesign', array('layoutdesign_id')), array('layoutdesign_id'))
-        ->setComment('Taxonomy Table');
+        ->setComment('Blog category Table');
 $this->getConnection()->createTable($table);
 $table = $this->getConnection()
         ->newTable($this->getTable('dls_blog/filter'))
@@ -138,7 +138,7 @@ $table = $this->getConnection()
         ->addColumn(
                 'layoutdesign_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
             'unsigned' => true,
-                ), 'Layout design ID'
+                ), 'Layout Design ID'
         )
         ->addColumn(
                 'name', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
@@ -199,7 +199,7 @@ $table = $this->getConnection()
             'identity' => true,
             'nullable' => false,
             'primary' => true,
-                ), 'Layout design ID'
+                ), 'Layout Design ID'
         )
         ->addColumn(
                 'name', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
@@ -221,12 +221,12 @@ $table = $this->getConnection()
                 'status', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(), 'Enabled'
         )
         ->addColumn(
-                'updated_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(), 'Layout design Modification Time'
+                'updated_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(), 'Layout Design Modification Time'
         )
         ->addColumn(
-                'created_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(), 'Layout design Creation Time'
+                'created_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(), 'Layout Design Creation Time'
         )
-        ->setComment('Layout design Table');
+        ->setComment('Layout Design Table');
 $this->getConnection()->createTable($table);
 $table = $this->getConnection()
         ->newTable($this->getTable('dls_blog/tag'))
@@ -581,7 +581,7 @@ $table = $this->getConnection()
             'unsigned' => true,
             'nullable' => false,
             'default' => '0',
-                ), 'Taxonomy ID'
+                ), 'Blog category ID'
         )
         ->addColumn(
                 'position', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
@@ -604,7 +604,7 @@ $table = $this->getConnection()
                         'dls_blog/blogset_taxonomy', array('blogset_id', 'taxonomy_id'), Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
                 ), array('blogset_id', 'taxonomy_id'), array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE)
         )
-        ->setComment('Blog to Taxonomy Linkage Table');
+        ->setComment('Blog to Blog category Linkage Table');
 $this->getConnection()->createTable($table);
 $table = $this->getConnection()
         ->newTable($this->getTable('dls_blog/taxonomy_filter'))
@@ -621,7 +621,7 @@ $table = $this->getConnection()
             'unsigned' => true,
             'nullable' => false,
             'default' => '0',
-                ), 'Taxonomy ID'
+                ), 'Blog category ID'
         )
         ->addColumn(
                 'filter_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
@@ -651,7 +651,7 @@ $table = $this->getConnection()
                         'dls_blog/taxonomy_filter', array('taxonomy_id', 'filter_id'), Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
                 ), array('taxonomy_id', 'filter_id'), array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE)
         )
-        ->setComment('Taxonomy to Filter Linkage Table');
+        ->setComment('Blog category to Filter Linkage Table');
 $this->getConnection()->createTable($table);
 $table = $this->getConnection()
         ->newTable($this->getTable('dls_blog/taxonomy_post'))
@@ -668,7 +668,7 @@ $table = $this->getConnection()
             'unsigned' => true,
             'nullable' => false,
             'default' => '0',
-                ), 'Taxonomy ID'
+                ), 'Blog category ID'
         )
         ->addColumn(
                 'post_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
@@ -698,7 +698,7 @@ $table = $this->getConnection()
                         'dls_blog/taxonomy_post', array('taxonomy_id', 'post_id'), Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE
                 ), array('taxonomy_id', 'post_id'), array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_UNIQUE)
         )
-        ->setComment('Taxonomy to Post Linkage Table');
+        ->setComment('Blog category to Post Linkage Table');
 $this->getConnection()->createTable($table);
 $table = $this->getConnection()
         ->newTable($this->getTable('dls_blog/tag_post'))

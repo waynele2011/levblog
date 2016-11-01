@@ -170,7 +170,7 @@ class DLS_Blog_Model_Resource_Setup extends Mage_Catalog_Model_Resource_Setup {
                     'type' => 'int',
                     'backend' => '',
                     'frontend' => '',
-                    'label' => 'Layout design',
+                    'label' => 'Layout Design',
                     'input' => 'select',
                     'source' => 'dls_blog/layoutdesign_source',
                     'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,

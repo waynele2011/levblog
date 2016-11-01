@@ -79,7 +79,7 @@ class DLS_Blog_Block_Adminhtml_Taxonomy_Edit_Tab_Form extends Mage_Adminhtml_Blo
 
         $fieldset->addField(
                 'layoutdesign_id', 'select', array(
-            'label' => Mage::helper('dls_blog')->__('Layout design'),
+            'label' => Mage::helper('dls_blog')->__('Layout Design'),
             'name' => 'layoutdesign_id',
             'required' => false,
             'values' => $values,

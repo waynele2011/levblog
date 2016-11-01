@@ -43,7 +43,7 @@ class DLS_Blog_Block_Adminhtml_Filter_Grid extends Mage_Adminhtml_Block_Widget_G
         );
         $this->addColumn(
                 'layoutdesign_id', array(
-            'header' => Mage::helper('dls_blog')->__('Layout design'),
+            'header' => Mage::helper('dls_blog')->__('Layout Design'),
             'index' => 'layoutdesign_id',
             'type' => 'options',
             'options' => Mage::getResourceModel('dls_blog/layoutdesign_collection')
@@ -191,14 +191,14 @@ class DLS_Blog_Block_Adminhtml_Filter_Grid extends Mage_Adminhtml_Block_Widget_G
         $values = array_reverse($values, true);
         $this->getMassactionBlock()->addItem(
                 'layoutdesign_id', array(
-            'label' => Mage::helper('dls_blog')->__('Change Layout design'),
+            'label' => Mage::helper('dls_blog')->__('Change Layout Design'),
             'url' => $this->getUrl('*/*/massLayoutdesignId', array('_current' => true)),
             'additional' => array(
                 'flag_layoutdesign_id' => array(
                     'name' => 'flag_layoutdesign_id',
                     'type' => 'select',
                     'class' => 'required-entry',
-                    'label' => Mage::helper('dls_blog')->__('Layout design'),
+                    'label' => Mage::helper('dls_blog')->__('Layout Design'),
                     'values' => $values
                 )
             )

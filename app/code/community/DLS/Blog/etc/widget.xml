@@ -2,8 +2,8 @@
 
 <widgets>
     <blog_taxonomy_view type="dls_blog/taxonomy_widget_view" translate="name description" module="dls_blog">
-        <name>Taxonomy view</name>
-        <description>Taxonomy view widget</description>
+        <name>Blog category view</name>
+        <description>Blog category view widget</description>
         <is_email_compatible>0</is_email_compatible>
         <parameters>
             <taxonomy_id type="complex" translate="label">

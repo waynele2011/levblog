@@ -40,7 +40,7 @@
         </reference>
     </dls_blog_post_index>
     <dls_blog_blogset_view translate="label" module="dls_blog">
-        <label>Blog setting view page</label>
+        <label>Blog view page</label>
         <reference name="catalog.topnav">
             <action method="setTemplate">
                 <template>dls_blog/topmenu.phtml</template>
@@ -63,7 +63,7 @@
         </reference>
     </dls_blog_blogset_view>
     <dls_blog_taxonomy_view translate="label" module="dls_blog">
-        <label>Taxonomy view page</label>
+        <label>Blog category view page</label>
         <reference name="head">
             <action method="addItem" ifconfig="dls_blog/taxonomy/tree">
                 <type>skin_js</type>

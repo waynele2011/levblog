@@ -15,7 +15,7 @@ class DLS_Blog_Adminhtml_Blog_LayoutdesignController extends DLS_Blog_Controller
     public function indexAction() {
         $this->loadLayout();
         $this->_title(Mage::helper('dls_blog')->__('Blog'))
-                ->_title(Mage::helper('dls_blog')->__('Layout designs'));
+                ->_title(Mage::helper('dls_blog')->__('Layout Designs'));
         $this->renderLayout();
     }
 
@@ -40,7 +40,7 @@ class DLS_Blog_Adminhtml_Blog_LayoutdesignController extends DLS_Blog_Controller
         Mage::register('layoutdesign_data', $layoutdesign);
         $this->loadLayout();
         $this->_title(Mage::helper('dls_blog')->__('Blog'))
-                ->_title(Mage::helper('dls_blog')->__('Layout designs'));
+                ->_title(Mage::helper('dls_blog')->__('Layout Designs'));
         if ($layoutdesign->getId()) {
             $this->_title($layoutdesign->getName());
         } else {
@@ -67,7 +67,7 @@ class DLS_Blog_Adminhtml_Blog_LayoutdesignController extends DLS_Blog_Controller
                 $layoutdesign->addData($data);
                 $layoutdesign->save();
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                        Mage::helper('dls_blog')->__('Layout design was successfully saved')
+                        Mage::helper('dls_blog')->__('Layout Design was successfully saved')
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
@@ -103,7 +103,7 @@ class DLS_Blog_Adminhtml_Blog_LayoutdesignController extends DLS_Blog_Controller
                 $layoutdesign = Mage::getModel('dls_blog/layoutdesign');
                 $layoutdesign->setId($this->getRequest()->getParam('id'))->delete();
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                        Mage::helper('dls_blog')->__('Layout design was successfully deleted.')
+                        Mage::helper('dls_blog')->__('Layout Design was successfully deleted.')
                 );
                 $this->_redirect('*/*/');
                 return;
