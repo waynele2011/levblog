@@ -4,7 +4,7 @@
  * Taxonomy admin controller
  *
  * @category    DLS
- * @package     DLS_DLSBlog
+ * @package     DLS_Blog
  * @author      Ultimate Module Creator
  */
 class DLS_DLSBlog_Adminhtml_Dlsblog_TaxonomyController extends DLS_DLSBlog_Controller_Adminhtml_DLSBlog
@@ -13,7 +13,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_TaxonomyController extends DLS_DLSBlog_Contr
      * init taxonomy
      *
      * @access protected
-     * @return DLS_DLSBlog_Model_Taxonomy
+     * @return DLS_Blog_Model_Taxonomy
      * @author Ultimate Module Creator
      */
     protected function _initTaxonomy()
@@ -119,7 +119,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_TaxonomyController extends DLS_DLSBlog_Contr
             return;
         }
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Taxonomies'));
         $this->_setActiveMenu('dls_dlsblog/taxonomy');
         $this->getLayout()->getBlock('head')->setCanLoadExtJs(true)

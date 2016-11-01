@@ -4,7 +4,7 @@
  * Layout design admin controller
  *
  * @category    DLS
- * @package     DLS_DLSBlog
+ * @package     DLS_Blog
  * @author      Ultimate Module Creator
  */
 class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_Controller_Adminhtml_DLSBlog
@@ -13,7 +13,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
      * init the layout design
      *
      * @access protected
-     * @return DLS_DLSBlog_Model_Layoutdesign
+     * @return DLS_Blog_Model_Layoutdesign
      */
     protected function _initLayoutdesign()
     {
@@ -36,7 +36,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
     public function indexAction()
     {
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Layout designs'));
         $this->renderLayout();
     }
@@ -77,7 +77,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_LayoutdesignController extends DLS_DLSBlog_C
         }
         Mage::register('layoutdesign_data', $layoutdesign);
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Layout designs'));
         if ($layoutdesign->getId()) {
             $this->_title($layoutdesign->getName());

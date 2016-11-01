@@ -4,7 +4,7 @@
  * Blog admin controller
  *
  * @category    DLS
- * @package     DLS_DLSBlog
+ * @package     DLS_Blog
  * @author      Ultimate Module Creator
  */
 class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Controller_Adminhtml_DLSBlog
@@ -13,7 +13,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
      * init the blog
      *
      * @access protected
-     * @return DLS_DLSBlog_Model_Blogset
+     * @return DLS_Blog_Model_Blogset
      */
     protected function _initBlogset()
     {
@@ -36,7 +36,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
     public function indexAction()
     {
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Blogs'));
         $this->renderLayout();
     }
@@ -77,7 +77,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_BlogsetController extends DLS_DLSBlog_Contro
         }
         Mage::register('blogset_data', $blogset);
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Blogs'));
         if ($blogset->getId()) {
             $this->_title($blogset->getName());

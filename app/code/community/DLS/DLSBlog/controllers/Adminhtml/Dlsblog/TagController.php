@@ -4,7 +4,7 @@
  * Tag admin controller
  *
  * @category    DLS
- * @package     DLS_DLSBlog
+ * @package     DLS_Blog
  * @author      Ultimate Module Creator
  */
 class DLS_DLSBlog_Adminhtml_Dlsblog_TagController extends DLS_DLSBlog_Controller_Adminhtml_DLSBlog
@@ -13,7 +13,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_TagController extends DLS_DLSBlog_Controller
      * init the tag
      *
      * @access protected
-     * @return DLS_DLSBlog_Model_Tag
+     * @return DLS_Blog_Model_Tag
      */
     protected function _initTag()
     {
@@ -36,7 +36,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_TagController extends DLS_DLSBlog_Controller
     public function indexAction()
     {
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Tags'));
         $this->renderLayout();
     }
@@ -77,7 +77,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_TagController extends DLS_DLSBlog_Controller
         }
         Mage::register('tag_data', $tag);
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Tags'));
         if ($tag->getId()) {
             $this->_title($tag->getName());

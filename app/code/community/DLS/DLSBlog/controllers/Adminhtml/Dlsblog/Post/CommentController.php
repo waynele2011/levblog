@@ -4,7 +4,7 @@
  * Post admin controller
  *
  * @category    DLS
- * @package     DLS_DLSBlog
+ * @package     DLS_Blog
  * @author      Ultimate Module Creator
  */
 class DLS_DLSBlog_Adminhtml_Dlsblog_Post_CommentController extends Mage_Adminhtml_Controller_Action
@@ -13,7 +13,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_Post_CommentController extends Mage_Adminhtm
      * init the comment
      *
      * @access protected
-     * @return DLS_DLSBlog_Model_Post_Comment
+     * @return DLS_Blog_Model_Post_Comment
      * @author Ultimate Module Creator
      */
     protected function _initComment()
@@ -37,7 +37,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_Post_CommentController extends Mage_Adminhtm
     public function indexAction()
     {
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Posts'))
              ->_title(Mage::helper('dls_dlsblog')->__('Comments'));
         $this->renderLayout();
@@ -81,7 +81,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_Post_CommentController extends Mage_Adminhtm
         $post = Mage::getModel('dls_dlsblog/post')->load($comment->getPostId());
         Mage::register('current_post', $post);
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Posts'))
              ->_title(Mage::helper('dls_dlsblog')->__('Comments'))
              ->_title($comment->getTitle());

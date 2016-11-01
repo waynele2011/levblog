@@ -4,7 +4,7 @@
  * Filter admin controller
  *
  * @category    DLS
- * @package     DLS_DLSBlog
+ * @package     DLS_Blog
  * @author      Ultimate Module Creator
  */
 class DLS_DLSBlog_Adminhtml_Dlsblog_FilterController extends DLS_DLSBlog_Controller_Adminhtml_DLSBlog
@@ -13,7 +13,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_FilterController extends DLS_DLSBlog_Control
      * init the filter
      *
      * @access protected
-     * @return DLS_DLSBlog_Model_Filter
+     * @return DLS_Blog_Model_Filter
      */
     protected function _initFilter()
     {
@@ -36,7 +36,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_FilterController extends DLS_DLSBlog_Control
     public function indexAction()
     {
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Filters'));
         $this->renderLayout();
     }
@@ -77,7 +77,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_FilterController extends DLS_DLSBlog_Control
         }
         Mage::register('filter_data', $filter);
         $this->loadLayout();
-        $this->_title(Mage::helper('dls_dlsblog')->__('DLS Blog'))
+        $this->_title(Mage::helper('dls_dlsblog')->__('Blog'))
              ->_title(Mage::helper('dls_dlsblog')->__('Filters'));
         if ($filter->getId()) {
             $this->_title($filter->getName());

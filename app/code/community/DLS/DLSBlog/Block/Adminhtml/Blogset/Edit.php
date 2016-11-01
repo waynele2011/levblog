@@ -58,7 +58,7 @@ class DLS_DLSBlog_Block_Adminhtml_Blogset_Edit extends Mage_Adminhtml_Block_Widg
     {
         if (Mage::registry('current_blogset') && Mage::registry('current_blogset')->getId()) {
             return Mage::helper('dls_dlsblog')->__(
-                "Edit Blog'%s'",
+                "Edit Blog '%s'",
                 $this->escapeHtml(Mage::registry('current_blogset')->getName())
             );
         } else {

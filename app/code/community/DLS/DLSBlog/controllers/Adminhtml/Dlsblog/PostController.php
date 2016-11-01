@@ -4,7 +4,7 @@
  * Post admin controller
  *
  * @category    DLS
- * @package     DLS_DLSBlog
+ * @package     DLS_Blog
  * @author      Ultimate Module Creator
  */
 class DLS_DLSBlog_Adminhtml_Dlsblog_PostController extends Mage_Adminhtml_Controller_Action
@@ -26,12 +26,12 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_PostController extends Mage_Adminhtml_Contro
      * init the post
      *
      * @access protected 
-     * @return DLS_DLSBlog_Model_Post
+     * @return DLS_Blog_Model_Post
      * @author Ultimate Module Creator
      */
     protected function _initPost()
     {
-        $this->_title($this->__('DLS Blog'))
+        $this->_title($this->__('Blog'))
              ->_title($this->__('Manage Posts'));
 
         $postId  = (int) $this->getRequest()->getParam('id');
@@ -54,7 +54,7 @@ class DLS_DLSBlog_Adminhtml_Dlsblog_PostController extends Mage_Adminhtml_Contro
      */
     public function indexAction()
     {
-        $this->_title($this->__('DLS Blog'))
+        $this->_title($this->__('Blog'))
              ->_title($this->__('Manage Posts'));
         $this->loadLayout();
         $this->renderLayout();
