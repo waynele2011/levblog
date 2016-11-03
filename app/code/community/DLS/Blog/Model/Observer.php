@@ -30,16 +30,18 @@ class DLS_Blog_Model_Observer {
         $id = Mage::app()->getRequest()->getParam('id', 0);
         $layoutDesign = '';
         if ($name == 'dls_blog_blogset_view') {
-            if ($curent_blogset = Mage::registry('current_blogset')) {
-                $id = $curent_blogset->getId();
+            $current_blogset = Mage::registry('current_blogset');
+            if (isset($current_blogset)) {
+                $id = $current_blogset->getId();
             }
             $blogset = Mage::getModel('dls_blog/blogset')
                     ->load($id);
             $layoutDesign = $blogset->getParentLayoutdesign()->getBasicLayout();
         }
         if ($name == 'dls_blog_filter_view') {
-            if ($curent_filter = Mage::registry('current_filter')) {
-                $id = $curent_filter->getId();
+            $current_filter = Mage::registry('current_filter');
+            if (isset($current_filter)) {
+                $id = $current_filter->getId();
             }
             $filter = Mage::getModel('dls_blog/filter')
                     ->setStoreId(Mage::app()->getStore()->getId())
@@ -47,16 +49,18 @@ class DLS_Blog_Model_Observer {
             $layoutDesign = $filter->getParentLayoutdesign()->getBasicLayout();
         }
         if ($name == 'dls_blog_post_view') {
-            if ($curent_post = Mage::registry('current_post')) {
-                $id = $curent_post->getId();
+            $current_post = Mage::registry('current_post');
+            if (isset($current_post)) {
+                $id = $current_post->getId();
             }
             $post = Mage::getModel('dls_blog/post')
                     ->load($id);
             $layoutDesign = $post->getParentLayoutdesign()->getBasicLayout();
         }
         if ($name == 'dls_blog_taxonomy_view') {
-            if ($curent_taxonomy = Mage::registry('current_taxonomy')) {
-                $id = $curent_taxonomy->getId();
+            $current_taxonomy = Mage::registry('current_taxonomy');
+            if (issett($current_taxonomy)) {
+                $id = $current_taxonomy->getId();
             }
             $taxonomy = Mage::getModel('dls_blog/taxonomy')->load($id);
             $collections = $taxonomy->getSelectedBlogsetsCollection();
