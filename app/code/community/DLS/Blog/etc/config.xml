@@ -3,7 +3,7 @@
 <config>
     <modules>
         <DLS_Blog>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </DLS_Blog>
     </modules>
     <global>
@@ -187,8 +187,15 @@
                     </dls_blog>
                 </observers>
             </page_block_html_topmenu_gethtml_before>
+            <controller_action_layout_load_before>
+                <observers>
+                    <dls_dlsblog_controller_action_layout_load_before>
+                        <class>dls_dlsblog/observer</class>
+                        <method>controllerActionLayoutLoadBefore</method>
+                    </dls_dlsblog_controller_action_layout_load_before>
+                </observers>
+            </controller_action_layout_load_before>
         </events>
-
         <routers>
             <dls_blog>
                 <use>standard</use>

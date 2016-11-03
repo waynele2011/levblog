@@ -18,6 +18,7 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
+
                 <blogset translate="label" module="dls_blog">
                     <label>Blog</label>
                     <frontend_type>text</frontend_type>
@@ -64,6 +65,7 @@
                         </url_suffix>
                     </fields>
                 </blogset>
+
                 <taxonomy translate="label" module="dls_blog">
                     <label>Category</label>
                     <frontend_type>text</frontend_type>
@@ -118,6 +120,7 @@
                         </recursion>
                     </fields>
                 </taxonomy>
+
                 <filter translate="label" module="dls_blog">
                     <label>Filter</label>
                     <frontend_type>text</frontend_type>
@@ -164,6 +167,7 @@
                         </url_suffix>
                     </fields>
                 </filter>
+
                 <post translate="label" module="dls_blog">
                     <label>Post</label>
                     <frontend_type>text</frontend_type>
@@ -253,9 +257,18 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </meta_keywords>
+                        <short_conent_words_number translate="label">
+                            <label>Number of words in short content</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </short_conent_words_number>
                     </fields>
                 </post>
-                 <confirmed_comment translate="label" module="dls_blog">
+
+                <confirmed_comment translate="label" module="dls_blog">
                     <label>Confirmed Comment</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>60</sort_order>
@@ -281,7 +294,6 @@
                             <show_in_store>0</show_in_store>
                             <comment>List of emails to recieve new comments. Separated by comma</comment>
                         </emails>
-
                         <enabled_schedule translate="label comment">
                             <label>Send Confirmed Email with Schedule</label>
                             <frontend_type>select</frontend_type>
@@ -291,7 +303,6 @@
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </enabled_schedule>
-
                         <schedule>
                             <label>How often do you want the cron to run send email?</label>
                             <frontend_type>text</frontend_type>
@@ -299,7 +310,6 @@
                             <comment>Use Crontab Format (Eg. "*/5 * * * *" for every 5 minutes)</comment>
                             <show_in_default>1</show_in_default>
                         </schedule>
-
                         <template translate="label">
                             <label>New Comment Template</label>
                             <frontend_type>select</frontend_type>
@@ -309,7 +319,6 @@
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </template>
-                        
                     </fields>
                 </confirmed_comment>
             </groups>

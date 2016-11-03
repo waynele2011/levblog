@@ -16,13 +16,14 @@ class DLS_Blog_Block_Menu extends DLS_Blog_Block_Taxonomy_List {
     }
 
     public function getBlogset() {
-        $curent_blogset = Mage::registry('current_blogset');
-        if (empty($curent_blogset)) {
+        $current_blogset = Mage::registry('current_blogset');
+        if (empty($current_blogset)) {
             $_blogsets = Mage::getModel('dls_blog/blogset')->getCollection()->addFieldToFilter('status', 1);
-            if ($_blogsets->count() > 0)
-                $curent_blogset = $_blogsets->getFirstItem();
+            if ($_blogsets->count() > 0) {
+                $current_blogset = $_blogsets->getFirstItem();
+            }
         }
-        return $curent_blogset;
+        return $current_blogset;
     }
 
     public function getTaxonomiesArray() {

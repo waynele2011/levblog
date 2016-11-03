@@ -17,28 +17,31 @@ class DLS_Blog_Block_Bottom extends Mage_Core_Block_Template {
     protected function getCurrentLayoutDesign() {
         $id = Mage::app()->getRequest()->getParam('id', 0);
         $layoutDesign = '';
-
-        if ($curent_blogset = Mage::registry('current_blogset')) {
-            $id = $curent_blogset->getId();
+        $current_blogset = Mage::registry('current_blogset');
+        if (!empty($current_blogset)) {
+            $id = $current_blogset->getId();
             $blogset = Mage::getModel('dls_blog/blogset')
                     ->load($id);
             $layoutDesign = $blogset->getParentLayoutdesign();
         }
-        if ($curent_filter = Mage::registry('current_filter')) {
-            $id = $curent_filter->getId();
+        $current_filter = Mage::registry('current_filter');
+        if (!empty($current_filter)) {
+            $id = $current_filter->getId();
             $filter = Mage::getModel('dls_blog/filter')
                     ->setStoreId(Mage::app()->getStore()->getId())
                     ->load(1);
             $layoutDesign = $filter->getParentLayoutdesign();
         }
-        if ($curent_post = Mage::registry('current_post')) {
-            $id = $curent_post->getId();
+        $current_post = Mage::registry('current_post');
+        if (!empty($current_post)) {
+            $id = $current_post->getId();
             $post = Mage::getModel('dls_blog/post')
                     ->load($id);
             $layoutDesign = $post->getParentLayoutdesign();
         }
-        if ($curent_taxonomy = Mage::registry('current_taxonomy')) {
-            $id = $curent_taxonomy->getId();
+        $current_taxonomy = Mage::registry('current_taxonomy');
+        if (!empty($current_taxonomy)) {
+            $id = $current_taxonomy->getId();
             $taxonomy = Mage::getModel('dls_blog/taxonomy')->load($id);
             $collections = $taxonomy->getSelectedBlogsetsCollection();
             foreach ($collections as $blogset) {
@@ -49,5 +52,3 @@ class DLS_Blog_Block_Bottom extends Mage_Core_Block_Template {
     }
 
 }
-
-?>
