@@ -3,7 +3,7 @@
 <config>
     <modules>
         <DLS_Blog>
-            <version>1.0.0</version>
+            <version>1.0.3</version>
         </DLS_Blog>
     </modules>
     <global>
@@ -100,7 +100,28 @@
                 </observers>
             </controller_front_init_routers>
         </events>
+        <template>
+            <email>
+                <dls_blog_confirmed_comment_template translate="label" module="sales">
+                    <label>New Comment</label>
+                    <file>dls/post/new_comment.html</file>
+                    <type>html</type>
+                </dls_blog_confirmed_comment_template>
+            </email>
+        </template>
     </global>
+    <crontab>
+        <jobs>
+            <dls_blog_schedule_confirmed_email>
+                <schedule>
+                    <config_path>dls_blog/comment/schedule</config_path>
+                </schedule>
+                <run>
+                    <model>dls_blog/observer::sendConfirmedCommentOnSchedule</model>
+                </run>
+            </dls_blog_schedule_confirmed_email>
+        </jobs>
+    </crontab>
     <adminhtml>
         <layout>
             <updates>
@@ -214,6 +235,11 @@
                 <allow_comment>1</allow_comment>
                 <meta_title>Posts</meta_title>
             </post>
+            <confirmed_comment>
+                <enabled>1</enabled>
+                <enabled_schedule>0</enabled_schedule>
+                <schedule><![CDATA[0 2 * * *]]></schedule>
+            </confirmed_comment>
         </dls_blog>
     </default>
 </config>

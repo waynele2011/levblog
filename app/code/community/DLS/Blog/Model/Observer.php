@@ -23,6 +23,27 @@ class DLS_Blog_Model_Observer {
         return $this;
     }
 
+    public function sendConfirmedCommentOnSchedule(){
+        $helper = Mage::helper('dls_blog');
+
+        if(!$helper->getConfirmedEmails()){
+            return false;
+        }
+
+        if(!$helper->canSendBySchedule()){
+            return false;
+        }
+
+        $collection = Mage::getModel('dls_blog/post_comment')->getCollection();
+        $collection->addFieldToFilter('notified', array('neq' => 1));
+
+        foreach($collection as $comment){
+            $helper->sendConfirmedCommentEmail($comment);
+        }
+
+        return true;
+    }
+
     public function controllerActionLayoutLoadBefore(Varien_Event_Observer $observer) {
 
         $name = Mage::app()->getRequest()->getRouteName() . "_" . Mage::app()->getRequest()->getControllerName() . "_" . Mage::app()->getRequest()->getActionName();

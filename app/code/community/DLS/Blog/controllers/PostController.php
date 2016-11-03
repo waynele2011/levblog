@@ -103,6 +103,7 @@ class DLS_Blog_PostController extends Mage_Core_Controller_Front_Action {
 
     public function commentpostAction() {
         $data = $this->getRequest()->getPost();
+        $helper = Mage::helper('dls_blog');
         $post = $this->_initPost();
         $session = Mage::getSingleton('core/session');
         if ($post) {
@@ -117,7 +118,11 @@ class DLS_Blog_PostController extends Mage_Core_Controller_Front_Action {
                                     ->setStatus(DLS_Blog_Model_Post_Comment::STATUS_PENDING)
                                     ->setCustomerId(Mage::getSingleton('customer/session')->getCustomerId())
                                     ->setStores(array(Mage::app()->getStore()->getId()))
+                                    ->setRemoteIp(Mage::helper('core/http')->getRemoteAddr())
                                     ->save();
+                            if(!$helper->canSendBySchedule()){
+                                $helper->sendConfirmedCommentEmail($comment);
+                            }
                             $session->addSuccess($this->__('Your comment has been accepted for moderation.'));
                         } catch (Exception $e) {
                             $session->setPostCommentData($data);
