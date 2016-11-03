@@ -81,6 +81,11 @@ class DLS_Blog_Adminhtml_Blog_PostController extends Mage_Adminhtml_Controller_A
         if ($data) {
             $post = $this->_initPost();
             $postData = $this->getRequest()->getPost('post', array());
+            //
+            $pubDate = $postData['publish_date'];
+            $dtime = DateTime::createFromFormat("m/d/Y H:i A", $pubDate);
+            $postData['publish_date'] = $dtime->format('Y-m-d H:i:s');
+            //
             $post->addData($postData);
             $post->setAttributeSetId($post->getDefaultAttributeSetId());
             $products = $this->getRequest()->getPost('products', -1);

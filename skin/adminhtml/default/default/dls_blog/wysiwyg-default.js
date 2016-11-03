@@ -18,7 +18,9 @@ window.onload = function ()
         apply_source_formatting: 'true',
         convert_urls: 'false',
         force_br_newlines: 'true',
-        doctype: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'
+        doctype: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
+        height : '500',
+        content_css: '/skin/adminhtml/default/default/dls_blog/wysiwyg.css'
 
     });
 
@@ -40,7 +42,23 @@ window.onload = function ()
         apply_source_formatting: 'true',
         convert_urls: 'false',
         force_br_newlines: 'true',
-        doctype: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'
+        doctype: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
+        content_css: '/skin/adminhtml/default/default/dls_blog/wysiwyg.css'
 
     });
 };
+
+jQuery(document).ready(function(){
+    var bt = jQuery("<button class='scalable save' style='margin-top:5px;'>Show/Hide Short Description</button>");
+    var short_content = jQuery('#short_content').parent();
+    jQuery(short_content).parent().hide();
+    jQuery(bt).click(function (e) {
+        e.preventDefault();
+        var short_content = jQuery('#short_content').parent();
+        jQuery(short_content).parent().toggle(200);
+    });
+    jQuery('#main_content').parent().append(bt);
+    jQuery('#publish_date').attr('style', 'width: 16% !important');
+    
+});
+

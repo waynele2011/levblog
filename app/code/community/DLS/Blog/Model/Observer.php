@@ -31,7 +31,7 @@ class DLS_Blog_Model_Observer {
         $layoutDesign = '';
         if ($name == 'dls_blog_blogset_view') {
             $current_blogset = Mage::registry('current_blogset');
-            if (isset($current_blogset)) {
+            if (!empty($current_blogset)) {
                 $id = $current_blogset->getId();
             }
             $blogset = Mage::getModel('dls_blog/blogset')
@@ -40,7 +40,7 @@ class DLS_Blog_Model_Observer {
         }
         if ($name == 'dls_blog_filter_view') {
             $current_filter = Mage::registry('current_filter');
-            if (isset($current_filter)) {
+            if (!empty($current_filter)) {
                 $id = $current_filter->getId();
             }
             $filter = Mage::getModel('dls_blog/filter')
@@ -50,7 +50,7 @@ class DLS_Blog_Model_Observer {
         }
         if ($name == 'dls_blog_post_view') {
             $current_post = Mage::registry('current_post');
-            if (isset($current_post)) {
+            if (!empty($current_post)) {
                 $id = $current_post->getId();
             }
             $post = Mage::getModel('dls_blog/post')
@@ -59,7 +59,7 @@ class DLS_Blog_Model_Observer {
         }
         if ($name == 'dls_blog_taxonomy_view') {
             $current_taxonomy = Mage::registry('current_taxonomy');
-            if (issett($current_taxonomy)) {
+            if (!empty($current_taxonomy)) {
                 $id = $current_taxonomy->getId();
             }
             $taxonomy = Mage::getModel('dls_blog/taxonomy')->load($id);

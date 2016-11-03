@@ -22,6 +22,10 @@ class DLS_Blog_Block_Adminhtml_Post_Edit extends Mage_Adminhtml_Block_Widget_For
         $this->_updateButton(
                 'save', 'onclick', 'saveAndSubmit()'
         );
+        $number_value = Mage::getStoreConfig('dls_blog/post/short_conent_words_number');
+        if (empty($number_value)) {
+            $number_words = 20;
+        }
         $this->_formScripts[] = "
             function strip(content){
                 var div = document.createElement('div');
@@ -30,7 +34,8 @@ class DLS_Blog_Block_Adminhtml_Post_Edit extends Mage_Adminhtml_Block_Widget_For
                 return result.trim();
             }
             function copyAndSplitContent(content){
-                content = content.split(' ',20).join(' ');
+                var number_words = $number_words;
+                content = content.split(' ',number_words).join(' ');
                 return content.trim();
             }
             function saveAndContinueEdit() {

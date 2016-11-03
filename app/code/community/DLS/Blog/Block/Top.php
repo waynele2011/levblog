@@ -18,14 +18,14 @@ class DLS_Blog_Block_Top extends Mage_Core_Block_Template {
         $id = Mage::app()->getRequest()->getParam('id', 0);
         $layoutDesign = '';
         $current_blogset = Mage::registry('current_blogset');
-        if (isset($current_blogset)) {
+        if (!empty($current_blogset)) {
             $id = $current_blogset->getId();
             $blogset = Mage::getModel('dls_blog/blogset')
                     ->load($id);
             $layoutDesign = $blogset->getParentLayoutdesign();
         }
         $current_filter = Mage::registry('current_filter');
-        if (isset($current_filter)) {
+        if (!empty($current_filter)) {
             $id = $current_filter->getId();
             $filter = Mage::getModel('dls_blog/filter')
                     ->setStoreId(Mage::app()->getStore()->getId())
@@ -33,14 +33,14 @@ class DLS_Blog_Block_Top extends Mage_Core_Block_Template {
             $layoutDesign = $filter->getParentLayoutdesign();
         }
         $current_post = Mage::registry('current_post');
-        if (isset($current_post)) {
+        if (!empty($current_post)) {
             $id = $current_post->getId();
             $post = Mage::getModel('dls_blog/post')
                     ->load($id);
             $layoutDesign = $post->getParentLayoutdesign();
         }
         $current_taxonomy = Mage::registry('current_taxonomy');
-        if (isset($current_taxonomy)) {
+        if (!empty($current_taxonomy)) {
             $id = $current_taxonomy->getId();
             $taxonomy = Mage::getModel('dls_blog/taxonomy')->load($id);
             $collections = $taxonomy->getSelectedBlogsetsCollection();
